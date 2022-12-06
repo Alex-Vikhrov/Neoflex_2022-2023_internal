@@ -1,0 +1,110 @@
+figure {
+    margin: 0;
+}
+
+.connectivity {
+    width: 1300px;
+    height: 20%;
+    margin-top: 96px;
+    margin-bottom: 92px;
+    background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #F4F4F4;
+    word-break: break-all;
+
+    &__head {
+        @include flex_justify-between;
+        align-items: center;
+    }
+
+    &__phone {
+        line-height: 44px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            transition: 0.2s;
+            color: $neo_color-violet;
+        }
+    }
+
+    &__mail {
+        display: block;
+        margin-top: 6px;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            transition: 0.2s;
+            color: #7796C0;
+        }
+    }
+
+    &__navbar {
+        width: 100%;
+        margin-top: 32px;
+    }
+
+    &__list {
+        @include flex_justify-between;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        margin-right: 32px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+
+    &__link {
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            transition: 0.2s;
+            color: #B2A35F;
+        }
+    }
+
+    @media (max-width: 1125px) {
+        margin: 36px 5px 92px 5px;
+    }
+}
+
+div.horizontal-line {
+    margin-top: 28px;
+    margin-bottom: 32px;
+    width: 100%;
+    height: 2px;
+    background-color: #F4F4F4;
+}
+
+p {
+    word-break: break-word;
+    line-height: 23px;
+    color: #2D3748;
+}
+
+@media (max-width: 900px) {
+    .connectivity {
+        &__phone {
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .connectivity {
+        &__head,
+        &__list {
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+}
