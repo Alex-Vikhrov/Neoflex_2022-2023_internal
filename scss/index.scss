@@ -27,22 +27,18 @@ body {
     min-height: 100%;
 }
 
-header {
+header, main, footer {
     @include flex_justify-center;
     width: 100%;
 }
 
 main {
-    @include flex_justify-center;
-    width: 100%;
     flex: 1 1 auto;
     word-break: break-all;
 }
 
 
 footer {
-    @include flex_justify-center;
-    width: 100%;
     background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #F4F4F4;
 }
 
