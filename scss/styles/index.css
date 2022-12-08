@@ -343,9 +343,9 @@ template {
 /* #f0f0f0 */
 /* #f0f0f0 */
 /* #f0f0f0 */
-h1 {
+p {
   margin: 0;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #B4387A;
 }
@@ -364,7 +364,7 @@ h1 {
 }
 .menu__h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #B4387A;
   text-decoration: none;
@@ -379,6 +379,7 @@ h1 {
 }
 .menu__link {
   color: #1D1929;
+  font-size: 1.6rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -526,11 +527,6 @@ h1 {
     filter: alpha(opacity=30);
   }
 }
-article {
-  margin-bottom: 98px;
-  width: 1300px;
-}
-
 .card {
   display: flex;
   justify-content: space-between;
@@ -543,7 +539,7 @@ article {
 }
 .card__choice span {
   display: block;
-  font-size: 48px;
+  font-size: 4.8rem;
   font-weight: 700;
   line-height: 50px;
   word-break: break-word;
@@ -578,7 +574,7 @@ article {
     margin-right: 5px;
   }
   .card__choice span {
-    font-size: 30px;
+    font-size: 3rem;
     line-height: 35px;
   }
 }
@@ -592,7 +588,7 @@ article {
     align-items: center;
   }
   .card__choice span {
-    font-size: 28px;
+    font-size: 2.8rem;
     line-height: 32px;
   }
   .card__choice h2 {
@@ -622,7 +618,7 @@ article {
 .functions__case h3 {
   margin: 0;
   margin-bottom: 20px;
-  font-size: 35px;
+  font-size: 3.5rem;
   word-break: break-word;
   line-height: 50px;
   color: #0B132A;
@@ -630,8 +626,11 @@ article {
 .functions__case aside {
   word-break: break-word;
   word-wrap: break-word;
+  font-size: 1.6rem;
   font-weight: 400;
+  line-height: 30px;
   color: #4F5665;
+  margin-bottom: 25px;
 }
 @media (max-width: 950px) {
   .functions__case aside {
@@ -643,7 +642,7 @@ article {
 }
 .functions__item {
   display: flex;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400px;
   line-height: 30px;
   color: #4F5665;
@@ -697,7 +696,7 @@ article {
 }
 .courses__today h3 {
   word-break: break-word;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: 600;
   color: #1C1C1E;
 }
@@ -712,7 +711,7 @@ article {
 }
 .courses span {
   margin-left: 32px;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 600;
   color: #000;
 }
@@ -736,7 +735,7 @@ article {
 }
 .courses__item {
   margin-right: 32px;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 22px;
   color: #808080;
@@ -756,7 +755,7 @@ article {
   padding: 19px 0px 32px 32px;
 }
 .courses__all a {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 22px;
   text-decoration: none;
@@ -769,10 +768,10 @@ article {
 
 @media (max-width: 900px) {
   .courses__today h3 {
-    font-size: 26px;
+    font-size: 2.6rem;
   }
   .courses__today time {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }
 @media (max-width: 740px) {
@@ -780,7 +779,7 @@ article {
     flex-direction: column;
   }
   .courses__today h3 {
-    font-size: 24px;
+    font-size: 2.4rem;
     word-break: break-word;
   }
   .courses__today h3,
@@ -812,14 +811,14 @@ article {
 }
 .world h3 {
   margin: 0;
-  font-size: 30px;
+  font-size: 3rem;
   line-height: 50px;
   text-align: center;
   word-break: break-word;
   color: #1C1C1E;
 }
 .world figure figcaption {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 50px;
   text-align: center;
@@ -840,14 +839,14 @@ article {
 .support h3 {
   margin: 0;
   margin-bottom: 30px;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #EB801D;
 }
 .support a {
   margin-bottom: 30px;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: 600;
   line-height: 44px;
   color: #1C1C1E;
@@ -886,23 +885,17 @@ article {
 }
 .support__email {
   margin: 30px 10px 30px 0px;
-  font-size: 14px;
+  font-size: 1.4rem;
   height: 40px;
-  border: 0.5px solid #fff;
+  border: none;
   border-radius: 10px;
+  outline: none;
 }
 .support__email::placeholder {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 400;
   margin-left: 14px;
   color: #9092B0;
-}
-.support__email:hover {
-  border-color: #686DF1;
-}
-.support__email:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px #7d81fd;
 }
 @media (max-width: 550px) {
   .support__email {
@@ -933,7 +926,7 @@ article {
 
 @media (max-width: 400px) {
   .support a {
-    font-size: 22px;
+    font-size: 2.2rem;
     line-height: 34px;
   }
 }
@@ -941,7 +934,7 @@ figure {
   margin: 0;
 }
 
-.connectivity {
+.footer {
   width: 1300px;
   height: 20%;
   margin-top: 96px;
@@ -949,38 +942,39 @@ figure {
   background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #F4F4F4;
   word-break: break-all;
 }
-.connectivity__head {
+.footer__head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.connectivity__phone {
+.footer__phone {
   line-height: 44px;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: 700;
   color: #000;
   text-decoration: none;
 }
-.connectivity__phone:hover {
+.footer__phone:hover {
   transition: 0.2s;
   color: #B4387A;
 }
-.connectivity__mail {
+.footer__mail {
   display: block;
   margin-top: 6px;
+  font-size: 1.6rem;
   font-weight: 500;
   color: #000;
   text-decoration: none;
 }
-.connectivity__mail:hover {
+.footer__mail:hover {
   transition: 0.2s;
   color: #7796C0;
 }
-.connectivity__navbar {
+.footer__navbar {
   width: 100%;
   margin-top: 32px;
 }
-.connectivity__list {
+.footer__list {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -989,22 +983,29 @@ figure {
   padding: 0;
   list-style: none;
 }
-.connectivity__item {
+.footer__item {
   margin-right: 32px;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 24px;
 }
-.connectivity__link {
+.footer__link {
   color: #000;
   text-decoration: none;
 }
-.connectivity__link:hover {
+.footer__link:hover {
   transition: 0.2s;
   color: #B2A35F;
 }
+.footer__cooki {
+  word-break: break-word;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 23px;
+  color: #2D3748;
+}
 @media (max-width: 1125px) {
-  .connectivity {
+  .footer {
     margin: 36px 5px 92px 5px;
   }
 }
@@ -1017,19 +1018,13 @@ div.horizontal-line {
   background-color: #F4F4F4;
 }
 
-p {
-  word-break: break-word;
-  line-height: 23px;
-  color: #2D3748;
-}
-
 @media (max-width: 900px) {
-  .connectivity__phone {
-    font-size: 20px;
+  .footer__phone {
+    font-size: 2rem;
   }
 }
 @media (max-width: 500px) {
-  .connectivity__head, .connectivity__list {
+  .footer__head, .footer__list {
     justify-content: center;
     flex-direction: column;
   }
@@ -1046,6 +1041,7 @@ button {
   color: #fff;
   border: none;
   border-radius: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
 }
 button:hover {
@@ -1059,7 +1055,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-size: 16px;
+  font-size: 10px;
   font-family: "Ubuntu", sans-serif;
   background-color: #F5F4FF;
 }
@@ -1070,8 +1066,14 @@ body {
   flex-direction: column;
   min-height: 100%;
 }
+.wrapper__main {
+  margin-bottom: 98px;
+  width: 1300px;
+}
 
-header, main, footer {
+header,
+main,
+footer {
   display: flex;
   justify-content: center;
   width: 100%;

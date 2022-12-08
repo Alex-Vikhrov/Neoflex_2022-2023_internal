@@ -1,8 +1,3 @@
-article {
-    margin-bottom: 98px;
-    width: 1300px;
-}
-
 //Секция по выбору карт
 .card {
     @include flex_justify-between;
@@ -15,7 +10,7 @@ article {
 
         & span {
             display: block;
-            font-size: 48px;
+            font-size: 4.8rem;
             font-weight: 700;
             line-height: 50px;
             word-break: break-word;
@@ -58,7 +53,7 @@ article {
     .card {
         &__choice {
             & span {
-                font-size: 30px;
+                font-size: 3rem;
                 line-height: 35px;
             }
         }
@@ -75,7 +70,7 @@ article {
             align-items: center;
 
             & span {
-                font-size: 28px;
+                font-size: 2.8rem;
                 line-height: 32px;
             }
 
@@ -116,7 +111,7 @@ article {
         & h3 {
             margin: 0;
             margin-bottom: 20px;
-            font-size: 35px;
+            font-size: 3.5rem;
             word-break: break-word;
             line-height: 50px;
             color: #0B132A;
@@ -125,8 +120,11 @@ article {
         & aside {
             word-break: break-word;
             word-wrap: break-word;
+            font-size: 1.6rem;
             font-weight: 400;
+            line-height: 30px;
             color: #4F5665;
+            margin-bottom: 25px;
 
             @media (max-width:950px) {
                 width: 270px;
@@ -140,7 +138,7 @@ article {
 
     &__item {
         display: flex;
-        font-size: 14px;
+        font-size: 1.4rem;
         font-weight: 400px;
         line-height: 30px;
         color: #4F5665;
@@ -206,7 +204,7 @@ article {
 
         & h3 {
             word-break: break-word;
-            font-size: 30px;
+            font-size: 3rem;
             font-weight: 600;
             color: #1C1C1E;
         }
@@ -225,7 +223,7 @@ article {
 
     & span {
         margin-left: 32px;
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: 600;
         color: #000;
     }
@@ -250,7 +248,7 @@ article {
 
     &__item {
         margin-right: 32px;
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: 700;
         line-height: 22px;
         color: #808080;
@@ -275,7 +273,7 @@ article {
 
 
         & a {
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: 700;
             line-height: 22px;
             text-decoration: none;
@@ -293,11 +291,11 @@ article {
     .courses {
         &__today {
             & h3 {
-                font-size: 26px;
+                font-size: 2.6rem;
             }
 
             & time {
-                font-size: 12px;
+                font-size: 1.2rem;
             }
         }
     }
@@ -309,7 +307,7 @@ article {
             flex-direction: column;
 
             & h3 {
-                font-size: 24px;
+                font-size: 2.4rem;
                 word-break: break-word;
 
             }
@@ -355,7 +353,7 @@ article {
 
     & h3 {
         margin: 0;
-        font-size: 30px;
+        font-size: 3rem;
         line-height: 50px;
         text-align: center;
         word-break: break-word;
@@ -365,7 +363,7 @@ article {
 
     & figure {
         & figcaption {
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 600;
             line-height: 50px;
             text-align: center;
@@ -389,7 +387,7 @@ article {
     & h3 {
         margin: 0;
         margin-bottom: 30px;
-        font-size: 24px;
+        font-size: 2.4rem;
         font-weight: 700;
         color: #EB801D;
     }
@@ -397,7 +395,7 @@ article {
     & a {
         margin-bottom: 30px;
         text-decoration: none;
-        font-size: 30px;
+        font-size: 3rem;
         font-weight: 600;
         line-height: 44px;
         color: $h;
@@ -409,7 +407,7 @@ article {
     }
 
     &__form {
-        @include flex_justify-between_aling-center;
+        @include flex_justify-between_align-center;
         width: 524px;
         height: 89px;
         background-color: #fff;
@@ -437,25 +435,17 @@ article {
 
     &__email {
         margin: 30px 10px 30px 0px;
-        font-size: 14px;
+        font-size: 1.4rem;
         height: 40px;
-        border: 0.5px solid #fff;
+        border: none;
         border-radius: 10px;
+        outline: none;
 
         &::placeholder {
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: 400;
             margin-left: 14px;
             color: #9092B0;
-        }
-
-        &:hover {
-            border-color: #686DF1;
-        }
-
-        &:focus {
-            outline: none;
-            box-shadow: 0 0 0 1px #7d81fd;
         }
 
         @media (max-width: 550px) {
@@ -491,7 +481,7 @@ article {
 @media (max-width:400px) {
     .support {
         & a {
-            font-size: 22px;
+            font-size: 2.2rem;
             line-height: 34px;
         }
     }

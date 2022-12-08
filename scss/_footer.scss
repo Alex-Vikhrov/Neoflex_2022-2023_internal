@@ -2,7 +2,7 @@ figure {
     margin: 0;
 }
 
-.connectivity {
+.footer {
     width: 1300px;
     height: 20%;
     margin-top: 96px;
@@ -17,7 +17,7 @@ figure {
 
     &__phone {
         line-height: 44px;
-        font-size: 30px;
+        font-size: 3rem;
         font-weight: 700;
         color: #000;
         text-decoration: none;
@@ -31,6 +31,7 @@ figure {
     &__mail {
         display: block;
         margin-top: 6px;
+        font-size: 1.6rem;
         font-weight: 500;
         color: #000;
         text-decoration: none;
@@ -57,7 +58,7 @@ figure {
 
     &__item {
         margin-right: 32px;
-        font-size: 16px;
+        font-size: 1.6rem;
         font-weight: 600;
         line-height: 24px;
     }
@@ -70,6 +71,14 @@ figure {
             transition: 0.2s;
             color: #B2A35F;
         }
+    }
+
+    &__cooki {
+        word-break: break-word;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 23px;
+        color: #2D3748;
     }
 
     @media (max-width: 1125px) {
@@ -85,22 +94,17 @@ div.horizontal-line {
     background-color: #F4F4F4;
 }
 
-p {
-    word-break: break-word;
-    line-height: 23px;
-    color: #2D3748;
-}
-
 @media (max-width: 900px) {
-    .connectivity {
+    .footer {
         &__phone {
-            font-size: 20px;
+            font-size: 2rem;
         }
     }
 }
 
 @media (max-width: 500px) {
-    .connectivity {
+    .footer {
+
         &__head,
         &__list {
             justify-content: center;
