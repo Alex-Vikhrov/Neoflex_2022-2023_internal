@@ -1,12 +1,12 @@
-h1 {
+p {
     margin: 0;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
     color: $neo_color-violet;
 }
 
 .menu {
-    @include flex_justify-between_aling-center;
+    @include flex_justify-between_align-center;
     flex-flow: row nowrap;
     margin-top: 13px;
     width: 1300px;
@@ -18,7 +18,7 @@ h1 {
 
     &__h1 {
         margin: 0;
-        font-size: 24px;
+        font-size: 2.4rem;
         font-weight: 700;
         color: $neo_color-violet;
         text-decoration: none;
@@ -27,13 +27,14 @@ h1 {
     &__list {
         width: 437px;
         padding: 0;
-        @include flex_justify-between_aling-center;
+        @include flex_justify-between_align-center;
         list-style: none;
 
     }
 
     &__link {
         color: $header_link;
+        font-size: 1.6rem;
         font-weight: 700;
         text-decoration: none;
 

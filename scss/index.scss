@@ -14,7 +14,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-size: 16px;
+    font-size: 10px;
     font-family: 'Ubuntu', sans-serif;
     background-color: $background_site;
 
@@ -25,9 +25,16 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+
+    &__main {
+        margin-bottom: 98px;
+        width: 1300px;
+    }
 }
 
-header, main, footer {
+header,
+main,
+footer {
     @include flex_justify-center;
     width: 100%;
 }
@@ -37,8 +44,6 @@ main {
     word-break: break-all;
 }
 
-
 footer {
     background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #F4F4F4;
 }
-
