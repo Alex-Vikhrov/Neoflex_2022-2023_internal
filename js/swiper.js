@@ -1,7 +1,7 @@
 let track = document.getElementById('track');
 let cardCount = 0;
 
-function clearInnerHTML() {
+function clearInnerHTMLSwiper() {
     track.innerHTML = "";
 }
 
@@ -10,7 +10,7 @@ function enterSliderInnerHTML() {
     const business = axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`);
 
     business.then((response) => {
-        clearInnerHTML();
+        clearInnerHTMLSwiper();
         cardCount = response.data.articles.length;
         response.data.articles.map((item) => {
             let content = track.innerHTML;
