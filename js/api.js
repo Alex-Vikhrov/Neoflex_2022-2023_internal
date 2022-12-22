@@ -24,4 +24,7 @@ const fetchDefaultExchanges = () => {
     );
 };
 
-export const api = { fetchDefaultExchanges, fetchCurrency };
+const apiKey = '48c961b42cba45b18db7abaa46e4397c';
+const fetchBusinessNews = () => axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`);
+
+export const api = { fetchDefaultExchanges, fetchCurrency, fetchBusinessNews };
