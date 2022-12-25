@@ -35,11 +35,11 @@ function enterSliderInnerHTML() {
 enterSliderInnerHTML();
 
 let currentActiveIndex = 0;
+const slidesToShow = 3;
 const slidesToScroll = 1;
 const trackSwiper = document.querySelector('.swiper__track');
 const btnPrevElement = document.getElementById('prev');
 const btnNextElement = document.getElementById('next');
-
 
 btnNextElement.addEventListener('click', () => {
     currentActiveIndex = Math.min(currentActiveIndex + slidesToScroll, cardCount);
@@ -53,9 +53,8 @@ btnPrevElement.addEventListener('click', () => {
     checkBtns();
 });
 
-
 const checkBtns = () => {
-    btnNextElement.disabled = currentActiveIndex === cardCount - 3;
+    btnNextElement.disabled = currentActiveIndex === cardCount - slidesToShow;
     btnPrevElement.disabled = currentActiveIndex === 0;
 };
 
@@ -63,12 +62,4 @@ checkBtns();
 
 setInterval(() => {
     enterSliderInnerHTML();
-}, 60 * 1000 * 15);
-
-
-
-
-
-
-
-
+}, api.updateRequest(1000, 60, 15)); // ms, seconds, minuts

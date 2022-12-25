@@ -1,3 +1,14 @@
+const CURRENCY = [
+    { from: 'USD' },
+    { from: 'EUR' },
+    { from: 'CAD' },
+    { from: 'CNY' },
+    { from: 'CHF' },
+    { from: 'SGD' },
+];
+
+let currency = CURRENCY.map(item => item).map(i => (Object.values(i)));
+
 const options = {
     method: 'GET',
     url: 'https://currency-exchange.p.rapidapi.com/exchange',
@@ -11,15 +22,15 @@ const fetchCurrency = ({ from, to }) => {
     return axios.get(`https://currency-exchange.p.rapidapi.com/exchange?from=${from}&to=${to}&q=1.0`, options);
 };
 
-const fetchDefaultExchanges = () => {
+const fetchCurrencyList = () => {
     return Promise.allSettled(
         [
-            fetchCurrency({ from: 'USD', to: 'RUB' }),
-            fetchCurrency({ from: 'EUR', to: 'RUB' }),
-            fetchCurrency({ from: 'CAD', to: 'RUB' }),
-            fetchCurrency({ from: 'CNY', to: 'RUB' }),
-            fetchCurrency({ from: 'CHF', to: 'RUB' }),
-            fetchCurrency({ from: 'SGD', to: 'RUB' }),
+            fetchCurrency({ from: currency[0], to: 'RUB' }),
+            fetchCurrency({ from: currency[1], to: 'RUB' }),
+            fetchCurrency({ from: currency[2], to: 'RUB' }),
+            fetchCurrency({ from: currency[3], to: 'RUB' }),
+            fetchCurrency({ from: currency[4], to: 'RUB' }),
+            fetchCurrency({ from: currency[5], to: 'RUB' }),
         ]
     );
 };
@@ -27,4 +38,8 @@ const fetchDefaultExchanges = () => {
 const apiKey = '48c961b42cba45b18db7abaa46e4397c';
 const fetchBusinessNews = () => axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`);
 
-export const api = { fetchDefaultExchanges, fetchCurrency, fetchBusinessNews };
+const updateRequest = (ms, seconds, minutes) => {
+    return seconds * ms * minutes;
+};
+
+export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest, currency };
