@@ -807,7 +807,7 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 76px;
+  margin-bottom: 48px;
 }
 .world h3 {
   margin: 0;
@@ -830,11 +830,136 @@ p {
   width: 100%;
 }
 
+.news {
+  width: 100%;
+}
+.news h3 {
+  font-size: 3rem;
+  line-height: 50px;
+  text-align: center;
+  word-break: break-word;
+  color: #1C1C1E;
+}
+.news p {
+  font-size: 1.6rem;
+  text-align: center;
+  word-break: break-word;
+  color: #2D3748;
+}
+
+.swiper {
+  margin-top: 46px;
+}
+.swiper__container {
+  overflow: auto;
+}
+.swiper__container::-webkit-scrollbar {
+  width: 0px;
+}
+.swiper__track {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 78px;
+  transition: 0.6s;
+}
+.swiper__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 320px;
+  height: 448px;
+  margin: 5px 0px 5px 2px;
+  border: none;
+  border-radius: 28px;
+  background-color: #fff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.swiper__card figure {
+  width: 256px;
+  margin-bottom: 32px;
+}
+.swiper__card figure img {
+  width: 256px;
+  height: 120px;
+  margin-bottom: 32px;
+}
+.swiper__card figure figcaption {
+  height: 104px;
+  font-size: 2rem;
+  line-height: 25px;
+  word-break: break-word;
+  text-align: center;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.swiper__card a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  line-height: 23px;
+  text-align: center;
+  color: #000;
+}
+.swiper__card a p {
+  width: 256px;
+  height: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.swiper__buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.swiper-prev, .swiper-next {
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  margin-top: 48px;
+  margin-left: 20px;
+}
+.swiper-prev svg path, .swiper-next svg path {
+  stroke: #fff;
+}
+.swiper-prev:disabled,
+.swiper-prev button[disabled], .swiper-next:disabled,
+.swiper-next button[disabled] {
+  cursor: not-allowed;
+  border: 1px solid #003CFF;
+  background-color: #fff;
+}
+.swiper-prev:disabled svg path,
+.swiper-prev button[disabled] svg path, .swiper-next:disabled svg path,
+.swiper-next button[disabled] svg path {
+  stroke: #333;
+}
+@media (max-width: 1350px) {
+  .swiper__track {
+    width: 900px;
+  }
+}
+@media (max-width: 900px) {
+  .swiper__track {
+    width: 500px;
+  }
+}
+@media (max-width: 530px) {
+  .swiper__track {
+    width: 325px;
+  }
+  .swiper__card {
+    margin: 5px;
+    column-gap: 48px;
+  }
+}
+
 .support {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 64px;
 }
 .support h3 {
   margin: 0;

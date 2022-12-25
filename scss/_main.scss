@@ -349,7 +349,7 @@
     @include flex_justify-center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 76px;
+    margin-bottom: 48px;
 
     & h3 {
         margin: 0;
@@ -378,11 +378,159 @@
     }
 }
 
+//Секция с новостями 
+
+.news {
+    width: 100%;
+
+    & h3 {
+        font-size: 3rem;
+        line-height: 50px;
+        text-align: center;
+        word-break: break-word;
+        color: $h;
+    }
+
+    & p {
+        font-size: 1.6rem;
+        text-align: center;
+        word-break: break-word;
+        color: #2D3748;
+    }
+}
+
+.swiper {
+    margin-top: 46px;
+
+    &__container {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+    }
+
+    &__track {
+        @include flex_justify-between;
+        column-gap: 78px;
+        transition: 0.6s;
+    }
+
+    &__card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-width: 320px;
+        height: 448px;
+        margin: 5px 0px 5px 2px;
+        border: none;
+        border-radius: 28px;
+        background-color: #fff;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+        & figure {
+            width: 256px;
+            margin-bottom: 32px;
+
+            & img {
+                width: 256px;
+                height: 120px;
+                margin-bottom: 32px;
+            }
+
+            & figcaption {
+                height: 104px;
+                font-size: 2rem;
+                line-height: 25px;
+                word-break: break-word;
+                text-align: center;
+                color: #000;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        & a {
+            text-decoration: none;
+            font-size: 1.6rem;
+            line-height: 23px;
+            text-align: center;
+            color: #000;
+
+            & p {
+                width: 256px;
+                height: 96px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    &-prev,
+    &-next {
+        width: 64px;
+        height: 64px;
+        border-radius: 50px;
+        margin-top: 48px;
+        margin-left: 20px;
+
+        & svg {
+            & path {
+                stroke: #fff;
+            }
+        }
+
+        &:disabled,
+        button[disabled] {
+            cursor: not-allowed;
+            border: 1px solid #003CFF;
+            background-color: #fff;
+
+            & svg {
+                & path {
+                    stroke: #333;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1350px) {
+        &__track {
+            width: 900px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        &__track {
+            width: 500px;
+        }
+    }
+
+    @media (max-width: 530px) {
+        &__track {
+            width: 325px;
+        }
+
+        &__card {
+            margin: 5px;
+            column-gap: 48px;
+        }
+    }
+}
+
 //Секция с поддержкой
 .support {
     @include flex_justify-center;
     align-items: center;
     flex-direction: column;
+    margin-top: 64px;
 
     & h3 {
         margin: 0;
