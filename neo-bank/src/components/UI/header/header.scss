@@ -1,0 +1,227 @@
+@import 'scss/mixin';
+@import 'scss/vars';
+
+p {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: $neo_color-violet;
+}
+
+.menu {
+    @include flex_justify-between_align-center;
+    flex-flow: row nowrap;
+    margin-top: 13px;
+    width: 1300px;
+
+    #menu__toggle {
+        display: none;
+        opacity: 0;
+    }
+
+    // Стилизация navbar:
+
+    &__h1 {
+        margin: 0;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: $neo_color-violet;
+        text-decoration: none;
+    }
+
+    &__list {
+        width: 437px;
+        padding: 0;
+        @include flex_justify-between_align-center;
+        list-style: none;
+
+    }
+
+    &__link {
+        color: $header_link;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover {
+            transition: 0.2s;
+            color: #B2A35F;
+        }
+    }
+
+    .active {
+        &:visited {
+            color: #B2A35F;
+        }
+    }
+
+    &__button {
+        width: 128px;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    &__button-hamburger {
+        width: 128px;
+        display: none;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 1125px) {
+    .menu {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+
+@media (max-width:750px) {
+    .menu {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /* скрываем чекбокс */
+        #menu__toggle {
+            display: block;
+        }
+
+
+
+        /* стилизуем кнопку */
+        &__hamburger {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 100;
+
+            /* добавляем "гамбургер" */
+            &>span,
+            &>span::before,
+            &>span::after {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                border-radius: 2px;
+                background-color: $neo_color-violet;
+                transition-duration: .25s;
+            }
+
+            &>span::before {
+                content: '';
+                top: -8px;
+            }
+
+            &>span::after {
+                content: '';
+                top: 8px;
+            }
+        }
+
+        /* контейнер меню */
+        &__navbar {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            visibility: hidden;
+            top: 0;
+            right: -100%;
+            width: 50%;
+            height: 100%;
+            margin: 0;
+            padding: 80px 0;
+            background-color: $background_site;
+            box-shadow: 2px 0px 20px 10px #00000033;
+            transition-duration: .25s;
+            z-index: 5;
+        }
+
+        &__list {
+            display: block;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        &__item {
+            border-bottom: 1px solid #1D1929;
+        }
+
+        /* элементы меню */
+        &__link {
+            cursor: pointer;
+            display: block;
+            padding: 6px 12px;
+            transition-duration: .25s;
+
+            &:hover {
+                background-color: $neo_color-violet;
+                color: #F4F4F4;
+                transition: 0.2s;
+            }
+        }
+
+        &__button {
+            width: 128px;
+            display: none;
+            visibility: hidden;
+        }
+
+        &__button-hamburger {
+            display: inline-block;
+            position: fixed;
+            visibility: hidden;
+            right: -100%;
+        }
+
+        /* Открыть / закрыть меню */
+        #menu__toggle:checked~&__hamburger>span {
+            transform: rotate(45deg);
+        }
+
+        #menu__toggle:checked~&__hamburger>span::before {
+            top: 0;
+            transform: rotate(0);
+        }
+
+        #menu__toggle:checked~&__hamburger>span::after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+        #menu__toggle:checked~&__navbar {
+            visibility: visible;
+            right: 0;
+        }
+
+        #menu__toggle:checked~&__button-hamburger {
+            transition: 0.25s;
+            position: absolute;
+            visibility: visible;
+            bottom: -245px;
+            right: 2%;
+            z-index: 5;
+        }
+
+        #menu__toggle:checked~.overlayer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            cursor: default;
+            background-color: $black;
+            opacity: 0.2;
+            filter: alpha(opacity=30);
+        }
+    }
+}

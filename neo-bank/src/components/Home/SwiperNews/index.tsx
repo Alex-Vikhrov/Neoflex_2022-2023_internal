@@ -1,0 +1,1 @@
+export { SwiperNews } from './SwiperNews';

@@ -1,0 +1,72 @@
+.defaultSelect {
+    width: 100%;
+    margin-top: 8px;
+    padding: 13px 0px 13px 2px; // ???
+    border: 1px solid #80808033;
+    border-radius: 6px;
+    background-color: #F9F5E3;
+
+    &::placeholder {
+        padding-left: 14px;
+    }
+
+    &:hover {
+        border-color: #5a35d594;
+        border-right-width: 1px;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: #5B35D5; //#4baeff 5B35D5
+        box-shadow: 0 0 0 1px #7b59ec; //#69bbff 7b59ec
+        border-right-width: 1px;
+    }
+}
+
+.input-error {
+    border: 1px solid #FF5631;
+    box-shadow: 0 0 0 1px #FF5631;
+}
+
+.erros {
+    margin-top: 2px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #FF5631;
+}
+
+.erros-icon {
+    margin-right: 0px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+
+    &::before {
+        content: url(../../../img/error.svg);
+    }
+}
+
+.ok-icon {
+    margin-right: 0px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+
+    &::before {
+        content: url(../../../img/ok.svg);
+    }
+}
