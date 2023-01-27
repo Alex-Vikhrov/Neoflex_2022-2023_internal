@@ -8,4 +8,5 @@ export { Input } from './input';
 export { Label } from './label';
 export { Select } from './select';
 export { Loader } from './loader';
+export { Swiper } from './swiper';
 
