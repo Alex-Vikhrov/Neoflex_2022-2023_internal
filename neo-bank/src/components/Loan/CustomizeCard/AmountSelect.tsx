@@ -28,7 +28,6 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
                     <Input
                         id={id}
                         className={'amoutSum'}
-                        defaultValue={15000}
                         value={value}
                         placeholder={""}
                         onBlur={onBlur}

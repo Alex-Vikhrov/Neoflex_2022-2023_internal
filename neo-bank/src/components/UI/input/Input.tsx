@@ -19,7 +19,7 @@ const Input: FC<TInputProps> = ({
     max,
     step,
     maxLength,
-    defaultValue
+    // defaultValue
 }) => {
     return (
         <input
@@ -36,7 +36,7 @@ const Input: FC<TInputProps> = ({
             min={min}
             max={max}
             step={step}
-            defaultValue={defaultValue}
+            // defaultValue={defaultValue}
             maxLength={maxLength}
         />
     );

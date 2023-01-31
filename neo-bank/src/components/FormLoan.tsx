@@ -12,6 +12,7 @@ type TFormLoanProps = {
 const initialValues = {
     lastName: '',
     firstName: '',
+    patronymic: '',
     passportSeries: '',
     passportNumber: '',
     email: '',
@@ -69,6 +70,9 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             htmlFor: 'patronymic',
             img: null,
             id: 'patronymic',
+            value: values.patronymic,
+            onChange: handleChange,
+            onBlur: handleBlur,
             placeholder: 'For Example Victorovich',
         },
         {
@@ -165,7 +169,7 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
                                         className={''}
                                         htmlFor={item.htmlFor}
                                         name={item.id}
-                                        onChange={undefined}
+                                        onChange={item.onChange}
                                         options={item.options} />
                                     :
                                     <Input

@@ -12,7 +12,6 @@ import {
     Tabs,
     FormLoan,
     CustomizeCard,
-    AmountSelect,
 } from "../components";
 import { about, rates, cashback, faqReceivingCard, faqUsingCard, links, info, footerItem } from "constant";
 
@@ -45,8 +44,8 @@ const Loan: FC = () => {
                             { id: 3, label: 'Cashback', component: <Cashback cashback={cashback} /> },
                             {
                                 id: 4, label: 'FAQ', component: [
-                                    <FAQ faq={faqReceivingCard} topic='Issuing and receiving a card' />,
-                                    <FAQ faq={faqUsingCard} topic='Using a credit card' />,
+                                    <FAQ id={5} faq={faqReceivingCard} topic='Issuing and receiving a card' />,
+                                    <FAQ id={6} faq={faqUsingCard} topic='Using a credit card' />,
                                 ]
                             }
                         ]} />
@@ -58,7 +57,6 @@ const Loan: FC = () => {
                         isLoading ? <Loader /> :
                             <section ref={ref}>
                                 <CustomizeCard>
-                                    {/* <AmountSelect /> */}
                                     <FormLoan handleLoad={handleLoad} />
                                 </CustomizeCard>
                             </section>
