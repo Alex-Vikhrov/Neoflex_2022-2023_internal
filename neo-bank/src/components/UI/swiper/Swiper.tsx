@@ -15,15 +15,13 @@ const Swiper: FC<TSwiperProps> = ({
 }) => {
     let cardCount = 0;
     cardCount = news.length;
-    const [currentActiveIndex, setCurrentActiveIndex] = useState(1);
+    const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
 
     const scrollItem = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // if (!scrollItem.current?.children) return;
         const children = scrollItem.current?.children || [];
         if(children.length <= 0) return;
-        // debugger;
         scrollItem?.current?.children[currentActiveIndex].scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'start' });
     }, [currentActiveIndex]);
 
@@ -61,7 +59,7 @@ const Swiper: FC<TSwiperProps> = ({
                     className="swiper-prev"
                     id="prev"
                     onClick={handleBtnPrevElement}
-                    disabled={currentActiveIndex === 1}
+                    disabled={currentActiveIndex === 0}
                 >
                     <svg width="25" height="26" viewBox="0 0 25 26" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
