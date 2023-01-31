@@ -1,4 +1,4 @@
-interface ICurrency {
+export interface ICurrency {
     from: string;
     to: string;
 };

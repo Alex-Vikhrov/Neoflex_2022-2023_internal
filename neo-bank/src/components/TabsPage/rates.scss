@@ -1,3 +1,5 @@
+@import 'scss/mixin';
+
 .rates {
     margin-top: 16px;
 
@@ -8,9 +10,7 @@
     }
 
     &__item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex_justify-between_align-center;
         width: 1016px;
         border-bottom: 1px solid #7F92AC;
 
@@ -25,10 +25,6 @@
                     margin: 10px 0px 0px 0px;
                 }
             }
-
-            // & p {
-            //     // color: red;
-            // }
         }
 
         & h3 {

@@ -1,4 +1,3 @@
-export { AppRouter } from './AppRouter';
 export { Button, NavBar, Footer, Header, Tabs, Accordion, Label, Input, Select, Loader, } from './UI';
 export { ChooseCreditCard, FunctionsBank, ExchangeRates, SwiperNews, SubscribeNewsSupport, BankMap } from './Home';
 export { DescriptionCard, CustomizeCard, CustomizeTitle, InfoGetCard, AmountSelect } from './Loan';

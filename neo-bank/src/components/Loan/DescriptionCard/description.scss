@@ -1,6 +1,7 @@
+@import 'scss/mixin';
+
 .description-card {
-    display: flex;
-    justify-content: space-between;
+    @include flex_justify-between;
     width: 100%;
     margin-top: 20px;
     border: none;
@@ -29,9 +30,7 @@
         }
 
         & aside {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flex_justify-between_align-center;
             margin: 32px 0px;
 
             & div {

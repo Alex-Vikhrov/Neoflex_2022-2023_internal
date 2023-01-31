@@ -1,6 +1,7 @@
+@import 'scss/mixin';
+
 .cards {
-    display: flex;
-    justify-content: space-between;
+    @include flex_justify-between;
     flex-wrap: wrap;
     margin-top: 49px;
     gap: 40px;

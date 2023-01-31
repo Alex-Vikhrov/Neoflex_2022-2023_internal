@@ -1,3 +1,5 @@
+@import 'scss/mixin';
+
 .amountRange {
     border: none;
     width: 100%;
@@ -47,7 +49,5 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .amount__min-max {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex_justify-between_align-center;
 }

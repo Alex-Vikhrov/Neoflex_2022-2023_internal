@@ -4,12 +4,13 @@ import { CURRENCY } from 'constant';
 import './exchangeRates.scss';
 
 type TEchangeProps = {
-    currency: Array<string>
-}
+    currency: Array<any>;
+};
 
 const ExchangeRates: FC<TEchangeProps> = ({ currency }) => {
     let curren = CURRENCY.map(item => item).map(i => i.from);
     let count = 0;
+    console.log(currency.map((item) => console.log(item)));
 
     return (
         <section className="courses">
@@ -21,7 +22,9 @@ const ExchangeRates: FC<TEchangeProps> = ({ currency }) => {
             <div className="courses__case">
                 <ul className="courses__list" id="data">
                     {
-                        currency.map((item: any, index: number) => {
+                        currency.map((item, index: number) => {
+                            console.log(item);
+                            
                             return (
                                 <li className="courses__item" key={index}>
                                     {curren[count++]}:<span>{Number.parseFloat(item.value.data).toFixed(2)}</span>

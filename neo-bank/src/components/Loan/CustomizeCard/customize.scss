@@ -1,3 +1,5 @@
+@import 'scss/mixin';
+
 .customize-card {
     width: 100%;
     margin-top: 44px;
@@ -17,9 +19,7 @@
     }
 
     &__title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex_justify-between_align-center;
         width: 568px;
 
         & h3 {
@@ -89,8 +89,7 @@
     }
 
     &__amount {
-        display: flex;
-        justify-content: center;
+        @include flex_justify-center;
         flex-direction: column;
         margin-top: 32px;
         margin-left: 40px;
