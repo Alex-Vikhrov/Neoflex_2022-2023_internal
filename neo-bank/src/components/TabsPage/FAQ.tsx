@@ -11,7 +11,7 @@ const FAQ: FC<TFAQProps> = ({ faq, topic }) => {
         <div className='faq'>
             <h3>{topic}</h3>
             {
-                faq.map((item: any) => {
+                faq.map((item: any, index: number) => {
                     return (
                         <Accordion key={item.id} title={item.question} description={item.answer} />
                     );

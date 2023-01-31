@@ -1,0 +1,121 @@
+//Секция с поддержкой
+@import 'scss/vars';
+@import 'scss/mixin';
+
+.support {
+    @include flex_justify-center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 64px;
+
+    & h3 {
+        margin: 0;
+        margin-bottom: 30px;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #EB801D;
+    }
+
+    & a {
+        margin-bottom: 30px;
+        text-decoration: none;
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 44px;
+        color: $h;
+
+        &:hover {
+            transition: 0.2s;
+            color: #B2A35F;
+        }
+    }
+
+    &__form {
+        @include flex_justify-between_align-center;
+        width: 524px;
+        height: 89px;
+        background-color: #fff;
+        box-shadow: 0px 10px 20px rgba(54, 58, 120, 0.1);
+        border: none;
+        border-radius: 20px;
+
+        @media (max-width: 550px) {
+            width: 100%;
+        }
+    }
+
+    &__icon-mail {
+        cursor: pointer;
+        margin: 30px 9px 30px 69px;
+
+        & .fa {
+            color: #9092B0;
+        }
+
+        @media (max-width: 550px) {
+            margin: 20px 10px 20px 39px;
+        }
+    }
+
+    &__email {
+        margin: 30px 10px 30px 0px;
+        font-size: 1.4rem;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+
+        &::placeholder {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-left: 14px;
+            color: #9092B0;
+        }
+
+        @media (max-width: 550px) {
+            width: 100%;
+            margin: 20px 10px 20px 0px;
+        }
+    }
+
+    &__button {
+        width: 160px;
+        margin: 22px 32px 22px 0px;
+        background-color: #686DF1;
+        border-radius: 20px;
+        font-size: 1.6rem;
+        font-weight: 700;
+
+        & .fa {
+            margin: 2px 11px 2px 0px;
+            color: #fff;
+        }
+
+        &:hover {
+            transition: 0.2s;
+            background-color: #41449b;
+        }
+
+        @media (max-width: 550px) {
+            width: 100%;
+            margin: 22px 22px 22px 0px;
+        }
+    }
+}
+
+.subscribed {
+    margin-top: 64px;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #1C1C1E;
+}
+
+@media (max-width:400px) {
+    .support {
+        & a {
+            font-size: 2.2rem;
+            line-height: 34px;
+        }
+    }
+}

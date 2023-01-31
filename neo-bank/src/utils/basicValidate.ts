@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
-const clacDateBirthday = (birthday) => {
-    const ageDifMs = Date.now() - birthday;
+const calcDateBirthday = (birthday: number | Date ) => {
+    const ageDifMs = Date.now() - +birthday;
     const ageDate = new Date(ageDifMs);
     return Math.abs(ageDate.getFullYear() - 1970);
 };
@@ -19,8 +19,9 @@ export const basicShema = yup.object().shape({
     email: yup.string()
         .email('Incorrect email address')
         .required('Incorrect email address'),
-    birthday: yup.date().test("birthday", "Incorrect date of birth", (value) => {
-        return clacDateBirthday(new Date(value)) >= 18;
+    birthday: yup.date().test("birthday", "Incorrect date of birth", (value ? : Date) => {
+        if(!value) return false;
+        return calcDateBirthday(value) >= 18;
     }).required('Incorrect date of birth'),
     passportSeries: yup.string()
         .length(4, 'The series must be 4 digits')

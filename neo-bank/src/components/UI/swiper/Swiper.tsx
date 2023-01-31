@@ -1,28 +1,46 @@
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Button } from '../button';
 import newsImg from 'img/news.jpg';
 
 type TSwiperProps = {
     news: Array<string>;
-    btnPrevElement: () => void;
-    btnNextElement: () => void;
-    currentActiveIndex: number;
-    cardCount: number;
     slidesToShow: number;
+    slidesToScroll: number;
 };
 
 const Swiper: FC<TSwiperProps> = ({
     news,
-    btnPrevElement,
-    currentActiveIndex,
-    btnNextElement,
-    cardCount,
-    slidesToShow
+    slidesToScroll,
+    slidesToShow,
 }) => {
+    let cardCount = 0;
+    cardCount = news.length;
+    const [currentActiveIndex, setCurrentActiveIndex] = useState(1);
+
+    const scrollItem = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // if (!scrollItem.current?.children) return;
+        const children = scrollItem.current?.children || [];
+        if(children.length <= 0) return;
+        // debugger;
+        scrollItem?.current?.children[currentActiveIndex].scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'start' });
+    }, [currentActiveIndex]);
+
+    const handleBtnPrevElement = () => {
+        let currentActive = Math.max(currentActiveIndex - slidesToScroll, 0);
+        setCurrentActiveIndex(currentActive);
+    };
+
+    const btnNextElement = () => {
+        let currentActive = Math.min(currentActiveIndex + slidesToScroll, cardCount);
+        setCurrentActiveIndex(currentActive);
+    };
+
     return (
         <div className="swiper">
             <div className="swiper__container">
-                <div className="swiper__track" id="track">
+                <div className="swiper__track" id="track" ref={scrollItem}>
                     {news.map((card: any, index: number) => {
                         return (
                             <div key={index} className="swiper__card">
@@ -42,8 +60,8 @@ const Swiper: FC<TSwiperProps> = ({
                 <Button
                     className="swiper-prev"
                     id="prev"
-                    onClick={btnPrevElement}
-                    disabled={currentActiveIndex === 0}
+                    onClick={handleBtnPrevElement}
+                    disabled={currentActiveIndex === 1}
                 >
                     <svg width="25" height="26" viewBox="0 0 25 26" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

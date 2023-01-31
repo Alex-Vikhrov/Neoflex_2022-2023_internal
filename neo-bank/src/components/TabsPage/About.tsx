@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './cards.scss';
 
 type TAboutProps = {
     about: Array<any>/* [{ id: number, img: string, alt: string, title: string | number, description: string | number }] */;

@@ -7,20 +7,7 @@ type TLoaderProps = {
 
 const Loader: FC<TLoaderProps> = ({ className }) => {
     return (
-        <div className={className || "lds-default"}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+        <div className={className || "loader"}></div>
     );
 };
 

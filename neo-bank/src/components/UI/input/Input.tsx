@@ -1,23 +1,8 @@
-import React, { CSSProperties, FC } from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 import './input.scss';
 
 
-type TInputProps = {
-    id: string;
-    className?: string;
-    type?: string | undefined;
-    checked?: boolean;
-    value: string | number | undefined;
-    placeholder: string;
-    onChange: any;
-    required?: boolean;
-    onBlur: any;
-    min?: number;
-    max?: number;
-    style?: CSSProperties;
-    step?: number;
-    defaultValue?: number | string;
-}
+interface TInputProps extends InputHTMLAttributes<HTMLInputElement>{};
 
 const Input: FC<TInputProps> = ({
     id,
@@ -33,6 +18,7 @@ const Input: FC<TInputProps> = ({
     min,
     max,
     step,
+    maxLength,
     defaultValue
 }) => {
     return (
@@ -51,6 +37,7 @@ const Input: FC<TInputProps> = ({
             max={max}
             step={step}
             defaultValue={defaultValue}
+            maxLength={maxLength}
         />
     );
 }

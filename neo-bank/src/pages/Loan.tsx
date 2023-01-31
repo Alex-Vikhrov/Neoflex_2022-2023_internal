@@ -25,10 +25,9 @@ const Loan: FC = () => {
             block: 'start'
         });
     };
-    // const [disabled, setDisabled] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleSub = () => {
+    const handleLoad = () => {
         setIsLoading(true);
     };
 
@@ -59,8 +58,8 @@ const Loan: FC = () => {
                         isLoading ? <Loader /> :
                             <section ref={ref}>
                                 <CustomizeCard>
-                                    <AmountSelect />
-                                    <FormLoan handleSub={handleSub} />
+                                    {/* <AmountSelect /> */}
+                                    <FormLoan handleLoad={handleLoad} />
                                 </CustomizeCard>
                             </section>
                     }

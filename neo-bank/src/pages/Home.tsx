@@ -7,7 +7,7 @@ import {
     SubscribeNewsSupport,
     Footer,
     Header,
-    World
+    BankMap
 } from "../components";
 import { api } from "api/api";
 import { CURRENCY, footerItem, links } from "constant";
@@ -38,7 +38,7 @@ const Home: FC = () => {
         setInterval(() => {
             fetchCurrency();
             fetchNews();
-        }, api.updateRequest(1000, 60, 15)); // вынести в отдельный метод ! LoadData fetchCurrency()fetchNews(); повторения плохо
+        }, api.updateRequest(1000, 60, 15));
     }, []);
 
     return (
@@ -52,7 +52,7 @@ const Home: FC = () => {
 
                     <ExchangeRates currency={currency} />
 
-                    <World />
+                    <BankMap />
 
                     <SwiperNews news={news} />
 

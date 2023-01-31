@@ -1,14 +1,10 @@
 .defaultInput {
     width: 100%;
     margin-top: 8px;
-    padding: 13px 0px 13px 2px; // ???
+    padding: 13px 0px 13px 16px;
     border: 1px solid #80808033;
     border-radius: 6px;
     background-color: #F9F5E3;
-
-    &::placeholder {
-        padding-left: 14px;
-    }
 
     &:hover {
         border-color: #5a35d594;
@@ -35,38 +31,38 @@
     color: #FF5631;
 }
 
-.erros-icon {
-    margin-right: 0px;
-    position: absolute;
-    top: 35px;
-    right: 0;
-    z-index: 2;
-    display: block;
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    pointer-events: none;
+// .erros-icon {
+//     margin-right: -16px;
+//     position: absolute;
+//     top: 35px;
+//     right: 0;
+//     z-index: 2;
+//     display: block;
+//     width: 34px;
+//     height: 34px;
+//     line-height: 34px;
+//     text-align: center;
+//     pointer-events: none;
 
-    &::before {
-        content: url(../../../img/error.svg);
-    }
-}
+//     &::before {
+//         content: url(../../../img/error.svg);
+//     }
+// }
 
-.ok-icon {
-    margin-right: 0px;
-    position: absolute;
-    top: 35px;
-    right: 0;
-    z-index: 2;
-    display: block;
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    pointer-events: none;
+// .ok-icon {
+//     margin-right: 0px;
+//     position: absolute;
+//     top: 35px;
+//     right: 0;
+//     z-index: 2;
+//     display: block;
+//     width: 34px;
+//     height: 34px;
+//     line-height: 34px;
+//     text-align: center;
+//     pointer-events: none;
 
-    &::before {
-        content: url(../../../img/ok.svg);
-    }
-}
+//     &::before {
+//         content: url(../../../img/ok.svg);
+//     }
+// }

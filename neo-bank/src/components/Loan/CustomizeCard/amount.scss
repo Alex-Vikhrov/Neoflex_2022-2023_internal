@@ -28,8 +28,26 @@ input[type='range']::-webkit-slider-thumb {
     color: #000;
     &:focus {
         outline: none;
-        border-color: #5B35D5; //#4baeff 5B35D5
-        box-shadow: 0 0 0 1px #7b59ec; //#69bbff 7b59ec
-        border-right-width: 1px;
     }
+}
+
+.dividers {
+    &.solid {
+        width: 220px;
+        border-top: 1px solid #80808066;
+    }
+
+    &.dashed {
+        margin-left: 40px;
+        height: 232px;
+        margin-top: 30px;
+        border-right: 1px dashed #80808066;
+        // transform: rotate(90deg);
+    }
+}
+
+.amount__min-max {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

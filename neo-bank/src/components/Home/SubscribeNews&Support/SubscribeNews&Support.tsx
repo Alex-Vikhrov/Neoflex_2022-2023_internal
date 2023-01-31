@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import './support.scss';
 
 const SubscribeNewsSupport: FC = () => {
     const [isSubscribed, setIsSubscribed] = useState(false);

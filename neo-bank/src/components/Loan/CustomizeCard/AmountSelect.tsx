@@ -5,10 +5,16 @@ import './amount.scss';
 
 type TProps = {
     ref?: React.RefObject<HTMLDivElement>;
+    id: string,
+    type: string,
+    placeholder: string,
+    value: string,
+    onChange: React.ChangeEventHandler,
+    onBlur: React.ChangeEventHandler,
 }
 
-const AmountSelect: FC<TProps> = ({ ref }) => {
-    const [value, setValue] = useState(15000);
+const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange, onBlur }) => {
+    // const [amount, setValue] = useState(150000);
 
     return (
         <div className="customize-card__wrapper" ref={ref}>
@@ -20,16 +26,17 @@ const AmountSelect: FC<TProps> = ({ ref }) => {
                 <div className="customize-card__select-amount">
                     <h3>Select amount</h3>
                     <Input
-                        id={""}
+                        id={id}
                         className={'amoutSum'}
                         defaultValue={15000}
                         value={value}
                         placeholder={""}
-                        onBlur={undefined}
-                        onChange={(e: any) => setValue(+e.target.value)}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        // onChange={(e: any) => setValue(isNaN(+e.target.value) ? 15000 : +e.target.value)}
                     />
                     <Input
-                        id={""}
+                        id={id}
                         className={'amountRange'}
                         type={'range'}
                         min={15000}
@@ -37,8 +44,10 @@ const AmountSelect: FC<TProps> = ({ ref }) => {
                         step={1000}
                         value={value}
                         placeholder={""}
-                        onChange={(e: any) => setValue(+e.target.value)}
-                        onBlur={undefined}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        // onChange={(e: any) => setValue(+e.target.value)}
+                        // onBlur={undefined}
                     />
                     <div className="amount__min-max">
                         <span>15 000</span>

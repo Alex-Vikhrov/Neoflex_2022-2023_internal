@@ -1,0 +1,36 @@
+//Секция с картой мира банков
+@import 'scss/vars';
+@import 'scss/mixin';
+
+.world {
+    @include flex_justify-center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 48px;
+
+    & h3 {
+        margin: 0;
+        font-size: 3rem;
+        line-height: 50px;
+        text-align: center;
+        word-break: break-word;
+        color: $h;
+
+    }
+
+    & figure {
+        & figcaption {
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 50px;
+            text-align: center;
+            word-break: break-word;
+            margin-bottom: 48px;
+            color: $black;
+        }
+    }
+
+    &__map {
+        width: 100%;
+    }
+}

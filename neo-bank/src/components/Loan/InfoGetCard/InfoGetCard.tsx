@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './info.scss';
 
 type TInfoGetCardProps = {
     info: any;

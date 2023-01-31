@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import bank from 'img/bank.svg';
-import { CURRENCY } from 'constant/currency';
+import { CURRENCY } from 'constant';
+import './exchangeRates.scss';
 
 type TEchangeProps = {
     currency: Array<string>

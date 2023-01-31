@@ -10,8 +10,6 @@ type TSelectProps = {
 }
 
 const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options, }) => {
-    console.log(options);
-
     return (
         <select
             className={className || 'defaultSelect'}
@@ -23,7 +21,7 @@ const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options,
                 options.map((option, index) => {
                     return (
                         <option
-                            key={option.value + index}
+                            key={option.id + index}
                             value={option.value}
                         >
                             {option.text}

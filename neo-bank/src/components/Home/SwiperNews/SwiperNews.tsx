@@ -1,24 +1,15 @@
 import { Swiper } from 'components/UI';
 import { FC } from 'react';
+import './news.scss';
 
 type TSwiperNewsProps = {
     news: Array<string>
 };
 
-let cardCount = 0;
-let currentActiveIndex = 0;
 const slidesToShow = 3;
 const slidesToScroll = 1;
 
 const SwiperNews: FC<TSwiperNewsProps> = ({ news }) => {
-    cardCount = news.length;
-
-    const btnPrevElement = () => {
-        currentActiveIndex = Math.max(currentActiveIndex - slidesToScroll, 0);
-    };
-    const btnNextElement = () => {
-        currentActiveIndex = Math.min(currentActiveIndex + slidesToScroll, cardCount);
-    };
 
     return (
         <section className="news">
@@ -29,10 +20,7 @@ const SwiperNews: FC<TSwiperNewsProps> = ({ news }) => {
             </p>
             <Swiper
                 news={news}
-                btnPrevElement={btnPrevElement}
-                btnNextElement={btnNextElement}
-                currentActiveIndex={currentActiveIndex}
-                cardCount={cardCount}
+                slidesToScroll={slidesToScroll}
                 slidesToShow={slidesToShow}
             />
         </section>

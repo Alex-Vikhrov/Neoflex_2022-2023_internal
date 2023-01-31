@@ -2,29 +2,40 @@ import { FC, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { basicShema } from 'utils/basicValidate';
 import star from 'img/star.svg';
-import { Button, Input, Label, Loader, Select } from './UI';
+import { Button, Input, Label, Select } from './UI';
+import { AmountSelect } from './Loan';
 
 type TFormLoanProps = {
-    handleSub: () => void;
+    handleLoad: () => void;
 };
 
-const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
-    const { values, touched, errors, isValid, handleBlur, handleChange, handleSubmit, validateOnChange, validateOnBlur } = useFormik({
-        initialValues: {
-            lastName: '',
-            firstName: '',
-            passportSeries: '',
-            passportNumber: '',
-            email: '',
-            birthday: '',
-        },
-        validationSchema: basicShema,
-        // validateOnChange: false,
-        // validateOnBlur: false, 
-        onSubmit: (values) => {
+const initialValues = {
+    lastName: '',
+    firstName: '',
+    passportSeries: '',
+    passportNumber: '',
+    email: '',
+    birthday: '',
+    amount: '150000'
+};
 
+const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
+    const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
+        initialValues,
+        validationSchema: basicShema,
+        onSubmit: (values, args) => {
+            handleLoad();
         },
     });
+
+    const amountForm = {
+        id: 'amount',
+        type: 'number',
+        placeholder: 'For Example Doe',
+        value: values.amount,
+        onChange: handleChange,
+        onBlur: handleBlur,
+    };
 
     const formContact = [
         {
@@ -111,9 +122,10 @@ const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
         },
         {
             id: 'passportSeries',
-            type: 'number',
+            type: 'text',
             placeholder: '0000',
-            value: values.passportSeries,
+            value: isNaN(+values.passportSeries) ? '0000' : values.passportSeries,
+            maxLength: 4,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.passportSeries,
@@ -124,9 +136,10 @@ const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
         },
         {
             id: 'passportNumber',
-            type: 'number',
+            type: 'text',
             placeholder: '000000',
-            value: values.passportNumber,
+            value: isNaN(+values.passportNumber) ? '000000' : values.passportNumber,
+            maxLength: 6,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.passportNumber,
@@ -137,18 +150,9 @@ const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
         },
     ];
 
-    const [formValid, setFormValid] = useState(false);
-
-    useEffect(() => {
-        if (errors === null) {
-            setFormValid(false);
-        } else {
-            setFormValid(true);
-        }
-    }, []);
-
     return (
         <form onSubmit={handleSubmit} className="form">
+            <AmountSelect {...amountForm} />
             <h3>Contact Information</h3>
             <div className="form__wrapper">
                 {formContact.map((item) => {
@@ -172,6 +176,7 @@ const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
                                         value={item.value}
                                         onChange={item.onChange}
                                         onBlur={item.onBlur}
+                                        maxLength={item.maxLength}
                                     />}
                                 {item.errors && item.touched && <span className='erros-icon'></span>}
                                 {!item.errors && item.touched ? <span className='ok-icon'></span> : ''}
@@ -186,7 +191,6 @@ const FormLoan: FC<TFormLoanProps> = ({ handleSub }) => {
                 <Button
                     className={"form__button"}
                     type="submit"
-                    disabled={formValid}
                 >
                     Continue
                 </Button>

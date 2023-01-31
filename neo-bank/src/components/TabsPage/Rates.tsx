@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './rates.scss';
 
 type TRatesProps = {
     rates: any;
@@ -16,7 +17,7 @@ const Rates: FC<TRatesProps> = ({ rates }) => {
                                     <h3>{item.title}</h3>
                                     <p>
                                         {item.description}
-                                        <div>{item.aside}</div>
+                                        <span>{item.aside}</span>
                                     </p>
                                 </li>
                             );

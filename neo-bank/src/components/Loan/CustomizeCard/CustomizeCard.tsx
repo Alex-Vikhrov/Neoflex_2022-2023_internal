@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react';
+import './customize.scss';
 
 type TCustomize = {
     children: ReactNode;

@@ -8,9 +8,9 @@ const Cashback: FC<TCashbackProps> = ({ cashback }) => {
     return (
         <div className="cards">
             {
-                cashback.map((item: any) => {
+                cashback.map((item: any, index: number) => {
                     return (
-                        <div className="cards__card cashback">
+                        <div className="cards__card cashback" key={item.id}>
                             <h3>{item.title}</h3>
                             <p>{item.percent}</p>
                         </div>

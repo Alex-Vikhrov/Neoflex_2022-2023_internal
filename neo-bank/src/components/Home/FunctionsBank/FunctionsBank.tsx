@@ -1,12 +1,42 @@
-import React, { FC } from 'react';
-import pepoleImage from 'img/Illustration2.svg';
-import { functionsList } from 'constant';
+import { FC } from 'react';
+import peopleImage from 'img/Illustration2.svg';
+import verctor from 'img/Vector.svg';
+import './functionsBank.scss';
+
+type TFunctionsList = {
+    id: number;
+    icon: string;
+    children: string;
+}
+
+const functionsList: Array<TFunctionsList> = [
+    {
+        id: 1,
+        icon: verctor,
+        children: 'Powerfull online protection.',
+    },
+    {
+        id: 2,
+        icon: verctor,
+        children: 'Cashback without borders.',
+    },
+    {
+        id: 3,
+        icon: verctor,
+        children: 'Personal design',
+    },
+    {
+        id: 4,
+        icon: verctor,
+        children: 'Work anywhere in the world',
+    },
+];
 
 const FunctionsBank: FC = () => {
     return (
         <section className="functions">
             <figure>
-                <img src={pepoleImage} alt="pepole" />
+                <img src={peopleImage} alt="pepole" />
             </figure>
             <div className="functions__case">
                 <h3>We Provide Many Features You Can Use</h3>

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import world from 'img/world.png';
+import './bankMap.scss';
 
-const World: FC = () => {
+const BankMap: FC = () => {
     return (
         <section className="world">
             <h3>You can use our services anywhere in the world</h3>
@@ -13,4 +14,4 @@ const World: FC = () => {
     );
 };
 
-export { World };
+export { BankMap };
