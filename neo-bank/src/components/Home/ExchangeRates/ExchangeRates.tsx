@@ -35,7 +35,7 @@ const ExchangeRates: FC<TEchangeProps> = ({ currency }) => {
                 </figure>
             </div>
             <div className="courses__all">
-                <a href="#">All courses</a>
+                <p>All courses</p>
             </div>
         </section>
     );

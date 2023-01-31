@@ -1,15 +1,16 @@
+import { IAbout } from 'constant';
 import { FC } from 'react';
 import './cards.scss';
 
 type TAboutProps = {
-    about: Array<any>/* [{ id: number, img: string, alt: string, title: string | number, description: string | number }] */;
+    about: Array<IAbout>;
 };
 
 const About: FC<TAboutProps> = ({ about }) => {
     return (
         <div className="cards">
             {
-                about.map((card: any) => {
+                about.map((card) => {
                     return (
                         <div key={card.id} className="cards__card">
                             <i>

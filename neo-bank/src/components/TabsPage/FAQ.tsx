@@ -1,10 +1,11 @@
-import { Accordion } from 'components/UI/accordion';
+import { Accordion } from 'components';
+import { IFAQ } from 'constant/tabs/faq';
 import { FC } from 'react';
 
 type TFAQProps = {
     id: number;
     topic: string;
-    faq: any;
+    faq: Array<IFAQ>;
 };
 
 const FAQ: FC<TFAQProps> = ({ id, faq, topic }) => {
@@ -12,7 +13,7 @@ const FAQ: FC<TFAQProps> = ({ id, faq, topic }) => {
         <div className='faq' key={id}>
             <h3>{topic}</h3>
             {
-                faq.map((item: any, index: number) => {
+                faq.map((item, index: number) => {
                     return (
                         <Accordion key={index} title={item.question} description={item.answer} />
                     );

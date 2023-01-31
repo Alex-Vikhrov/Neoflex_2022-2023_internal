@@ -1,9 +1,10 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Button } from '../button';
 import newsImg from 'img/news.jpg';
+import { ICard } from "types";
 
 type TSwiperProps = {
-    news: Array<string>;
+    news: Array<ICard>;
     slidesToShow: number;
     slidesToScroll: number;
 };
@@ -39,7 +40,7 @@ const Swiper: FC<TSwiperProps> = ({
         <div className="swiper">
             <div className="swiper__container">
                 <div className="swiper__track" id="track" ref={scrollItem}>
-                    {news.map((card: any, index: number) => {
+                    {news.map((card, index: number) => {
                         return (
                             <div key={index} className="swiper__card">
                                 <figure>

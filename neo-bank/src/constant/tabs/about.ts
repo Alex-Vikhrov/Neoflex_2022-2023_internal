@@ -4,7 +4,7 @@ import Clock from 'img/Clock_duotone.svg';
 import Bag from 'img/Bag_duotone.svg';
 import CreditCard from 'img/CreditCard_duotone.svg';
 
-interface IAbout {
+export interface IAbout {
     id: number;
     img: string;
     alt: string;

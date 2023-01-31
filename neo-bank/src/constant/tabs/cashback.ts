@@ -1,4 +1,4 @@
-interface ICashback {
+export interface ICashback {
     id: number;
     title: string;
     percent: string;

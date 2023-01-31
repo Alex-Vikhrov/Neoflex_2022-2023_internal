@@ -1,10 +1,11 @@
 import { FC, useState } from 'react';
+import { ITab } from 'types';
 import { Button } from '../button';
 import './tabs.scss';
 
 type TTabsProps = {
     className?: string;
-    tabs: Array<any>;
+    tabs: Array<ITab>;
 }
 
 const Tabs: FC<TTabsProps> = ({
@@ -29,7 +30,7 @@ const Tabs: FC<TTabsProps> = ({
                         <nav className={className || "tabbar"}>
                             <ul className='tabs'>
                                 {
-                                    tabs.map((tab: any, index: number) => {
+                                    tabs.map((tab, index: number) => {
                                         return (
                                             <li key={tab.id}>
                                                 <Button

@@ -16,15 +16,15 @@
         color: #EB801D;
     }
 
-    & a {
+    & p {
         margin-bottom: 30px;
-        text-decoration: none;
         font-size: 3rem;
         font-weight: 600;
         line-height: 44px;
         color: $h;
 
         &:hover {
+            cursor: pointer;
             transition: 0.2s;
             color: #B2A35F;
         }

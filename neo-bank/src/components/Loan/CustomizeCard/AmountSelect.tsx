@@ -1,5 +1,5 @@
 import { Input } from "components/UI";
-import { FC, useState } from "react"
+import { FC } from "react"
 import { CustomizeTitle } from "./CustomizeTitle";
 import './amount.scss';
 
@@ -7,14 +7,13 @@ type TProps = {
     ref?: React.RefObject<HTMLDivElement>;
     id: string,
     type: string,
-    placeholder: string,
+    placeholder?: string,
     value: string,
     onChange: React.ChangeEventHandler,
     onBlur: React.ChangeEventHandler,
 }
 
 const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange, onBlur }) => {
-    // const [amount, setValue] = useState(150000);
 
     return (
         <div className="customize-card__wrapper" ref={ref}>
@@ -27,12 +26,12 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
                     <h3>Select amount</h3>
                     <Input
                         id={id}
+                        type={type}
                         className={'amoutSum'}
-                        value={value}
+                        value={!value ? 15000 : value }
                         placeholder={""}
                         onBlur={onBlur}
                         onChange={onChange}
-                        // onChange={(e: any) => setValue(isNaN(+e.target.value) ? 15000 : +e.target.value)}
                     />
                     <Input
                         id={id}
@@ -41,12 +40,10 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
                         min={15000}
                         max={600000}
                         step={1000}
-                        value={value}
+                        value={!value ? 15000 : value}
                         placeholder={""}
                         onBlur={onBlur}
                         onChange={onChange}
-                        // onChange={(e: any) => setValue(+e.target.value)}
-                        // onBlur={undefined}
                     />
                     <div className="amount__min-max">
                         <span>15 000</span>
@@ -57,7 +54,7 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
             <div className="dividers dashed"></div>
             <div className="customize-card__amount">
                 <h3>You have chosen the amount</h3>
-                <span>{value} ₽</span>
+                <span>{!value ? 15000 : value} ₽</span>
                 <div className="dividers solid"></div>
             </div>
         </div>

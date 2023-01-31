@@ -1,8 +1,9 @@
+import { IRates } from 'constant';
 import { FC } from 'react';
 import './rates.scss';
 
 type TRatesProps = {
-    rates: any;
+    rates: Array<IRates>;
 };
 
 const Rates: FC<TRatesProps> = ({ rates }) => {
@@ -11,7 +12,7 @@ const Rates: FC<TRatesProps> = ({ rates }) => {
             <nav className="rates__nav">
                 <ul className="rates__list">
                     {
-                        rates.map((item: any) => {
+                        rates.map((item) => {
                             return (
                                 <li className="rates__item" key={item.id}>
                                     <h3>{item.title}</h3>

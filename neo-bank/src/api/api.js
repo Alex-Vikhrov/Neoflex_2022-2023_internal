@@ -28,4 +28,8 @@ const updateRequest = (ms, seconds, minutes) => {
     return seconds * ms * minutes;
 };
 
-export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest };
+const subscribeEmail = (emailValue) => axios.post('http://localhost:8080/email', {
+    email: emailValue
+});
+
+export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest, subscribeEmail };

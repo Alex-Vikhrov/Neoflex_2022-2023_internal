@@ -1,9 +1,10 @@
 import { Swiper } from 'components/UI';
 import { FC } from 'react';
+import { ICard } from 'types';
 import './news.scss';
 
 type TSwiperNewsProps = {
-    news: Array<string>
+    news: Array<ICard>
 };
 
 const slidesToShow = 3;

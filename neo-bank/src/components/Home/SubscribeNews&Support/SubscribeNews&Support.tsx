@@ -3,8 +3,8 @@ import { Button } from "components/UI";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import './support.scss';
+import { api } from "api/api";
 
 const SubscribeNewsSupport: FC = () => {
     const [isSubscribed, setIsSubscribed] = useState(false);
@@ -15,11 +15,9 @@ const SubscribeNewsSupport: FC = () => {
         setIsSubscribed(localStorageIsSubscribed);
     }, []);
 
-    const subscribeHandler = () => {
+    const subscribeHandler = async () => {
         if (!isSubscribed) {
-            axios.post('http://localhost:8080/email', {
-                email: emailValue
-            }).then(() => {
+            await api.subscribeEmail(emailValue).then(() => {
                 localStorage.setItem('isSubscribed', 'true');
                 setIsSubscribed(true);
             });
@@ -34,8 +32,8 @@ const SubscribeNewsSupport: FC = () => {
         return (
             <section className="support">
                 <h3>Support</h3>
-                <a href="#">Subscribe Newsletter & get</a>
-                <a href="#">Bank News</a>
+                <p>Subscribe Newsletter & get</p>
+                <p>Bank News</p>
                 <form action="#" className="support__form">
                     <label className="support__icon-mail" htmlFor="email">
                         <FontAwesomeIcon className="fa fa-envelope fa-2x" icon={faEnvelope} aria-hidden="true" />
