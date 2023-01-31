@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { useFormik } from 'formik';
 import { basicShema } from 'utils/basicValidate';
 import star from 'img/star.svg';
@@ -95,7 +95,11 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
                 {
                     id: 3,
                     text: '18 month',
-                }
+                },
+                {
+                    id: 4,
+                    text: '24 month'
+                },
             ],
         },
         {
