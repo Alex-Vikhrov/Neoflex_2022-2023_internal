@@ -1,0 +1,156 @@
+//Секция с курсом валют банка
+@import 'scss/vars';
+@import 'scss/mixin';
+
+.courses {
+    width: 100%;
+    margin-bottom: 48px;
+    border: none;
+    border-radius: 28px;
+    background: linear-gradient(358.2deg, rgba(178, 178, 178, 0.8) 8.06%, rgba(178, 178, 178, 0) 67.93%), rgba(244, 244, 244, 0.9);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(187, 187, 187, 0.2);
+
+    &__today {
+        @include flex_justify-between;
+
+
+        & h3 {
+            word-break: break-word;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #1C1C1E;
+        }
+
+        & time {
+            color: #000;
+        }
+
+        & h3,
+        time {
+            line-height: 50px;
+            margin: 0px;
+            margin: 32px 32px 24px 32px;
+        }
+    }
+
+    & span {
+        margin-left: 32px;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #000;
+    }
+
+    &__case {
+        @include flex_justify-between;
+        margin-top: 32px;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 438px;
+        padding-left: 32px;
+        list-style: none;
+        text-transform: uppercase;
+
+        @media (max-width: 700px) {
+            width: 100%;
+        }
+    }
+
+    &__item {
+        margin-right: 32px;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 22px;
+        color: #808080;
+
+        & span {
+            margin-left: 20px;
+            font-weight: 700;
+            line-height: 22px;
+        }
+    }
+
+    & figure {
+        margin: 0px 32px 38px 0px;
+    }
+
+    &__bank {
+        width: 100%;
+    }
+
+    &__all {
+        padding: 19px 0px 32px 32px;
+
+
+        & p {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 22px;
+            color: #fff;
+
+            &:hover {
+                cursor: pointer;
+                transition: 0.2s;
+                color: #000;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .courses {
+        &__today {
+            & h3 {
+                font-size: 2.6rem;
+            }
+
+            & time {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width:740px) {
+    .courses {
+        &__today {
+            flex-direction: column;
+
+            & h3 {
+                font-size: 2.4rem;
+                word-break: break-word;
+
+            }
+
+            & h3,
+            time {
+                line-height: 24px;
+                margin: 32px 0px 24px 32px;
+            }
+
+            & time {
+                margin-top: 12px;
+            }
+        }
+
+        &__case {
+            margin-top: 12px;
+        }
+    }
+}
+
+@media (max-width:500px) {
+    .courses {
+        &__today {
+            & h3 {
+                margin: 24px 0px 24px 16px;
+            }
+
+            & time {
+                margin: 0px 0px 24px 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,95 @@
+@import 'scss/mixin';
+
+.cards {
+    @include flex_justify-between;
+    flex-wrap: wrap;
+    margin-top: 49px;
+    gap: 40px;
+
+    &__card {
+        flex-grow: 1;
+        flex-basis: 406px;
+        background-color: #EAECEE;
+        border: none;
+        border-radius: 28px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+        &:nth-child(odd) {
+            background-color: #EAECEE;
+        }
+
+        &:nth-child(even) {
+            background-color: #7F92ACB2;
+        }
+
+        & img {
+            margin: 32px 0px 0px 32px;
+        }
+
+        & h3 {
+            margin: 24px 0px 0px 32px;
+            word-break: break-word;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 44px;
+            color: #000;
+        }
+
+        & p {
+            margin: 16px 39px 32px 32px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 16px;
+            word-break: break-word;
+            color: #000;
+        }
+    }
+
+    &__card.cashback {
+        flex-direction: column;
+
+        &:nth-child(odd) {
+            background: #EAECEE;
+        }
+
+        &:nth-child(even) {
+            background: #88b3b899;
+
+        }
+
+        & h3 {
+            margin: 32px 0px 0px 32px;
+            word-break: break-word;
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 147%;
+            color: #434343e6;
+        }
+
+        & p {
+            margin: 22px 0px 32px 32px;
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 147%;
+            word-break: break-word;
+            color: #000;
+        }
+    }
+
+    @media (max-width: 1280px) {
+        &__card {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        &__card {
+            &:last-child {
+                & h3 {
+                    margin: 24px 36px 0px 32px;
+                }
+            }
+        }
+    }
+}

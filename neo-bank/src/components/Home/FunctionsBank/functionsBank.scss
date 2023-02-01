@@ -1,0 +1,96 @@
+//Секция с функциями которые предоставляет банк
+@import 'scss/vars';
+@import 'scss/mixin';
+
+.functions {
+    @include flex_justify-between;
+    margin-bottom: 48px;
+
+    & figure {
+        margin-top: 112px;
+    }
+
+    &__case {
+        margin-top: 186px;
+        margin-left: 74px;
+
+        & h3 {
+            margin: 0;
+            margin-bottom: 20px;
+            font-size: 3.5rem;
+            word-break: break-word;
+            line-height: 50px;
+            color: #0B132A;
+        }
+
+        & aside {
+            word-break: break-word;
+            word-wrap: break-word;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 30px;
+            color: #4F5665;
+            margin-bottom: 25px;
+
+            @media (max-width:950px) {
+                width: 270px;
+            }
+        }
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        font-size: 1.4rem;
+        font-weight: 400px;
+        line-height: 30px;
+        color: #4F5665;
+        margin-bottom: 10px;
+    }
+}
+
+.fa-check-circle {
+    margin-right: 18px;
+    color: #2FAB73;
+}
+
+@media (max-width:910px) {
+    .functions {
+        & figure {
+            margin-top: 90px;
+
+            & img {
+                width: 100%;
+            }
+        }
+
+        &__case {
+            margin-top: 96px;
+            margin-left: 64px;
+        }
+    }
+
+}
+
+@media (max-width:500px) {
+    .functions {
+        flex-direction: column;
+
+        & figure {
+            margin-top: 45px;
+            float: left;
+
+            & img {
+                width: 70%;
+            }
+        }
+
+        &__case {
+            margin-top: 6px;
+            margin-left: 20px;
+        }
+    }
+}

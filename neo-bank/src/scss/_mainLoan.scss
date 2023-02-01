@@ -1,0 +1,164 @@
+.functions-card {
+    &__horizontal-line {
+        margin-top: 0px;
+        margin-bottom: 49px;
+        width: 100%;
+        height: 2px;
+        background-color: #80808033;
+    }
+}
+
+//Form_Loan
+.form {
+    margin: 32px 32px 0px 32px;
+
+    & h3 {
+        align-items: baseline;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #000;
+    }
+
+    &__wrapper {
+        @include flex_justify-between;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+        gap: 16px 32px;
+
+        & div {
+            flex-grow: 1;
+            flex-basis: 275px;
+            width: 100%;
+            position: relative;
+
+            &:last-child {
+                .erros-icon {
+                    margin-right: 0px;
+                }
+
+                .ok-icon {
+                    margin-right: 0px;
+                }
+
+                input {
+                    width: 267px;
+                }
+            }
+
+            & .star {
+                margin-bottom: 4px;
+                margin-left: 4px;
+            }
+        }
+    }
+
+    &__button-container {
+        display: flex;
+        justify-content: end;
+    }
+
+    &__button {
+        cursor: pointer;
+        @include flex_justify-center;
+        align-items: center;
+        margin-top: 8px;
+        width: 148px;
+        height: 48px;
+        padding: 8px;
+        background-color: #003CFF;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: 700;
+
+        &:hover {
+            transition: 0.2s;
+            background-color: #7796C0;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: #acb4d1;
+        }
+    }
+
+    @media (max-width:1300px) {
+        &__wrapper {
+            & div {
+                &:last-child {
+                    input {
+                        width: 100%;
+                    }
+                }
+
+                & {
+                    select {
+                        width: 105%;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width:500px) {
+        &__wrapper {
+            & div {
+                &:last-child {
+                    .erros-icon {
+                        margin-right: -16px;
+                    }
+
+                    .ok-icon {
+                        margin-right: -16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.erros-icon {
+    margin-right: -16px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+
+
+
+    &::before {
+        content: url(../img/error.svg);
+    }
+}
+
+.ok-icon {
+    margin-right: -16px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+
+    &::before {
+        content: url(../img/ok.svg);
+    }
+}
+
+
+
+.hidden {
+    display: none;
+}

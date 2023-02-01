@@ -1,0 +1,101 @@
+//Секция по выбору карт
+@import 'scss/vars';
+@import 'scss/mixin';
+
+.card {
+    @include flex_justify-between;
+    margin-top: 130px;
+    width: 100%;
+
+    &__choice {
+        display: flex;
+        flex-direction: column;
+
+        & span {
+            display: block;
+            font-size: 4.8rem;
+            font-weight: 700;
+            line-height: 50px;
+            word-break: break-word;
+        }
+
+        & h2 {
+            margin: 0;
+            margin-bottom: 52px;
+            word-break: break-word;
+            color: $h;
+        }
+    }
+
+    &__button {
+        width: 160px;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    &__grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 535px;
+
+        & img {
+            margin: 0px 0px 8px 0px;
+        }
+
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    article {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .card {
+        &__choice {
+            & span {
+                font-size: 3rem;
+                line-height: 35px;
+            }
+        }
+    }
+}
+
+@media (max-width: 910px) {
+    .card {
+        justify-content: center;
+        flex-direction: column;
+
+        &__choice {
+            justify-content: center;
+            align-items: center;
+
+            & span {
+                font-size: 2.8rem;
+                line-height: 32px;
+            }
+
+            & h2 {
+                margin-bottom: 42px;
+            }
+        }
+
+        &__button {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        &__choice {
+            & h2 {
+                margin-bottom: 32px;
+            }
+        }
+    }
+}
