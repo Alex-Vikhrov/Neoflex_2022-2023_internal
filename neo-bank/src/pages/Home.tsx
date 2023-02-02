@@ -11,7 +11,6 @@ import {
 } from "../components";
 import { api } from "api/api";
 import { CURRENCY } from "constant";
-import Wrapper from "./Wrapper";
 
 const Home: FC = () => {
     const [currency, setCurrency] = useState([]);
@@ -43,39 +42,25 @@ const Home: FC = () => {
     }, []);
 
     return (
-        <Wrapper>
-            <ChooseCreditCard />
+        <div className="wrapper">
+            <Header />
+            <main>
+                <div className="wrapper__main">
+                    <ChooseCreditCard />
 
-            <FunctionsBank />
+                    <FunctionsBank />
 
-            <ExchangeRates currency={currency} />
+                    <ExchangeRates currency={currency} />
 
-            <BankMap />
+                    <BankMap />
 
-            <SliderNews news={news} />
+                    <SliderNews news={news} />
 
-            <SubscribeNewsSupport />
-        </Wrapper>
-
-        // <div className="wrapper">
-        //     <Header />
-        //     <main>
-        //         <div className="wrapper__main">
-        //             <ChooseCreditCard />
-
-        //             <FunctionsBank />
-
-        //             <ExchangeRates currency={currency} />
-
-        //             <BankMap />
-
-        //             <SliderNews news={news} />
-
-        //             <SubscribeNewsSupport />
-        //         </div>
-        //     </main>
-        //     <Footer />
-        // </div>
+                    <SubscribeNewsSupport />
+                </div>
+            </main>
+            <Footer />
+        </div>
     );
 };
 
