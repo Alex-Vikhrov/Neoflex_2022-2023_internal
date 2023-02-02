@@ -4,7 +4,7 @@ import { Home, Loan, NotFound } from "../pages";
 enum RouteNames {
     HOME = '/',
     LOAN = '/loan',
-    NOT = '/404'
+    NOT = '*',
 }
 
 type TRoutes = {

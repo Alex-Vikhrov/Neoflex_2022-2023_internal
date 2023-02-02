@@ -17,7 +17,7 @@ const NavBar: FC<TNavBar> = ({ className, links }) => {
                             <li className="menu__item" key={link.id}>
                                 <NavLink
                                     className={({ isActive }) => (isActive ? 'menu__link active' : "menu__link")}
-                                    to={link.to ? link.to : '/404'}
+                                    to={link.to || ''}
                                 >
                                     {link.children}
                                 </NavLink>

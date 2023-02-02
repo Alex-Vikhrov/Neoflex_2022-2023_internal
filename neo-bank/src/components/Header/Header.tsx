@@ -13,17 +13,17 @@ const links: Array<ILinks> = [
     {
         id: 2,
         children: 'Product',
-        // to: '/product'
+        to: '/product'
     },
     {
         id: 3,
         children: 'Account',
-        // to: '/account'
+        to: '/account'
     },
     {
         id: 4,
         children: 'Resources',
-        // to: '/resources'
+        to: '/resources'
     }
 ];
 
