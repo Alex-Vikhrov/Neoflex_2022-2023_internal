@@ -86,7 +86,11 @@
     @media (max-width:1300px) {
         &__wrapper {
             & div {
+                
                 &:last-child {
+                    .errors-icon {
+                        margin-right: -16px;
+                    }
                     input {
                         width: 100%;
                     }
