@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { ILinks } from "types";
 
 type TNavBar = {
     className?: string;
-    links: Array<any>
+    links: Array<ILinks>
 }
 
 const NavBar: FC<TNavBar> = ({ className, links }) => {
@@ -11,7 +12,7 @@ const NavBar: FC<TNavBar> = ({ className, links }) => {
         <nav className={className || "menu__navbar"}>
             <ul className="menu__list">
                 {
-                    links.map((link: any, index: number) => {
+                    links.map((link) => {
                         return (
                             <li className="menu__item" key={link.id}>
                                 <NavLink

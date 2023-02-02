@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useFormik } from 'formik';
-import { basicShema } from 'utils/basicValidate';
+import { basicSchema } from 'utils/basicValidate';
 import star from 'img/star.svg';
-import { Button, Input, Label, Select } from './UI';
-import { AmountSelect } from './Loan';
+import { Button, Input, Label, Select } from '../../UI';
+import { AmountSelect } from 'components';
 
 type TFormLoanProps = {
     handleLoad: () => void;
@@ -23,7 +23,7 @@ const initialValues = {
 const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues,
-        validationSchema: basicShema,
+        validationSchema: basicSchema,
         onSubmit: (values, args) => {
             handleLoad();
         },
@@ -79,6 +79,8 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             type: 'select',
             label: 'Select term',
             htmlFor: 'term',
+            onChange: handleChange,
+            onBlur: handleBlur,
             img: star,
             id: 'term',
             placeholder: '6 month',
@@ -127,12 +129,14 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             htmlFor: 'birthday',
             img: star,
             placeholder: 'Select Date and Time',
+            min: '1900-01-01',
+            max: '2100-01-01'
         },
         {
             id: 'passportSeries',
             type: 'text',
             placeholder: '0000',
-            value: isNaN(+values.passportSeries) ? '0000' : values.passportSeries,
+            value: isNaN(+values.passportSeries) ? '' : values.passportSeries,
             maxLength: 4,
             onChange: handleChange,
             onBlur: handleBlur,
@@ -146,7 +150,7 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             id: 'passportNumber',
             type: 'text',
             placeholder: '000000',
-            value: isNaN(+values.passportNumber) ? '000000' : values.passportNumber,
+            value: isNaN(+values.passportNumber) ? '' : values.passportNumber,
             maxLength: 6,
             onChange: handleChange,
             onBlur: handleBlur,
@@ -185,11 +189,13 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
                                         onChange={item.onChange}
                                         onBlur={item.onBlur}
                                         maxLength={item.maxLength}
+                                        min={item.min}
+                                        max={item.max}
                                     />}
-                                {item.errors && item.touched && <span className='erros-icon'></span>}
+                                {item.errors && item.touched && <span className='errors-icon'></span>}
                                 {!item.errors && item.touched ? <span className='ok-icon'></span> : ''}
                             </Label>
-                            {item.errors && item.touched && <p className='erros'>{item.errors}</p>}
+                            {item.errors && item.touched && <p className='errors'>{item.errors}</p>}
                         </div>
                     );
                 })}

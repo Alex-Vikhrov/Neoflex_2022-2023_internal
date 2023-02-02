@@ -2,16 +2,15 @@ import { FC } from 'react';
 import logo from 'img/logo.png';
 import './footer.scss';
 
-type TFooterProps = {
-    footerMenu: Array<string>
-};
+const footerMenu:Array<string> = ['About bank', 'Ask a Question', 'Quality of service', 'Requisites', 'Press center',
+        'Bank career', 'Investors', 'Analytics', 'Business and processes', 'Compliance and business ethics'];
 
-const Footer: FC<TFooterProps> = ({ footerMenu }) => {
+const Footer: FC = () => {
     return (
         <footer>
             <section className="footer">
                 <div className="footer__head">
-                    <a href="https://www.neoflex.ru/" target="_blank"
+                    <a href="https://www.neoflex.ru/" target="_blank" rel='noreferrer'
                         title="Заходите к нам на сайт будем рады вас видеть !">
                         <figure>
                             <img src={logo} alt="logo" />
@@ -20,7 +19,7 @@ const Footer: FC<TFooterProps> = ({ footerMenu }) => {
                     <span>
                         <a href="tel:+74959842513" className="footer__phone" title="Нажмите чтобы позвонить">+7 (495)
                             984 25 13</a>
-                        <a href="mailto:info@neoflex.ru" className="footer__mail" target="_blank"
+                        <a href="mailto:info@neoflex.ru" className="footer__mail" target="_blank" rel='noreferrer'
                             title="Или напишите нам">info@neoflex.ru</a>
                     </span>
                 </div>

@@ -1,11 +1,8 @@
-import { ICashback } from 'constant';
 import { FC } from 'react';
+import { cashback } from './tabs';
 
-type TCashbackProps = {
-    cashback: Array<ICashback>;
-};
 
-const Cashback: FC<TCashbackProps> = ({ cashback }) => {
+const Cashback: FC = () => {
     return (
         <div className="cards">
             {

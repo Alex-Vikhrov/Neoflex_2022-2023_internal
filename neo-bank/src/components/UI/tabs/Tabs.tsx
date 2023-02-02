@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { ITab } from 'types';
-import { Button } from '../button';
+import { Button } from '../Button';
 import './tabs.scss';
 
 type TTabsProps = {

@@ -1,14 +1,33 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../button';
-import { NavBar } from '../navbar';
+import { ILinks } from 'types';
+import { Button, NavBar } from '../UI';
 import './header.scss';
 
-type TNavBar = {
-    links: Array<any>
-}
+const links: Array<ILinks> = [
+    {
+        id: 1,
+        children: 'Credit card',
+        to: '/loan'
+    },
+    {
+        id: 2,
+        children: 'Product',
+        // to: '/product'
+    },
+    {
+        id: 3,
+        children: 'Account',
+        // to: '/account'
+    },
+    {
+        id: 4,
+        children: 'Resources',
+        // to: '/resources'
+    }
+];
 
-const Header: FC<TNavBar> = ({ links }) => {
+const Header: FC = () => {
     return (
         <header>
             <section className="menu">

@@ -39,7 +39,7 @@ const SubscribeNewsSupport: FC = () => {
                         <FontAwesomeIcon className="fa fa-envelope fa-2x" icon={faEnvelope} aria-hidden="true" />
                     </label>
                     <input id="email" className="support__email" type="email" placeholder="Your email" value={emailValue} onChange={inputOnChange} />
-                    <Button className="support__button" type="submit" onClick={subscribeHandler}>
+                    <Button className="support__button" onClick={subscribeHandler}>
                         <FontAwesomeIcon className="fa fa-paper-plane" icon={faPaperPlane} aria-hidden="true" />
                         Subscribe
                     </Button>

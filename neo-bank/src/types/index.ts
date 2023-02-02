@@ -11,4 +11,16 @@ export interface ITab {
     id: number;
     label: string;
     component: ReactNode;
-}
+};
+
+export interface ILinks {
+    id: number;
+    children: string;
+    to?: string;
+};
+
+export interface IOptions {
+    id: number;
+    text: string;
+    value?: string;
+};

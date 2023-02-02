@@ -6,7 +6,7 @@ const calcDateBirthday = (birthday: number | Date ) => {
     return Math.abs(ageDate.getFullYear() - 1970);
 };
 
-export const basicShema = yup.object().shape({
+export const basicSchema = yup.object().shape({
     lastName: yup.string()
         .matches(/\b[A-Z][a-zA-Z]*\b/, 'Use only letters, the first capital')
         .ensure()

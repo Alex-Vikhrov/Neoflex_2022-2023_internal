@@ -1,16 +1,16 @@
-import { Swiper } from 'components/UI';
+import { Slider } from 'components';
 import { FC } from 'react';
 import { ICard } from 'types';
 import './news.scss';
 
-type TSwiperNewsProps = {
+type TSliderNewsProps = {
     news: Array<ICard>
 };
 
 const slidesToShow = 3;
 const slidesToScroll = 1;
 
-const SwiperNews: FC<TSwiperNewsProps> = ({ news }) => {
+const SliderNews: FC<TSliderNewsProps> = ({ news }) => {
 
     return (
         <section className="news">
@@ -19,7 +19,7 @@ const SwiperNews: FC<TSwiperNewsProps> = ({ news }) => {
                 We update the news feed every 15 minutes. You can learn more by clicking on the news you are
                 interested in.
             </p>
-            <Swiper
+            <Slider
                 news={news}
                 slidesToScroll={slidesToScroll}
                 slidesToShow={slidesToShow}
@@ -28,4 +28,4 @@ const SwiperNews: FC<TSwiperNewsProps> = ({ news }) => {
     );
 };
 
-export { SwiperNews };
+export { SliderNews };

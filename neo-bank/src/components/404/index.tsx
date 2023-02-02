@@ -1,0 +1,1 @@
+export { Not_404 } from './404';

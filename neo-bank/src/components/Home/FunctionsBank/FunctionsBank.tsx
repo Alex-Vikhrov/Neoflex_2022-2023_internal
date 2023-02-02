@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import peopleImage from 'img/Illustration2.svg';
-import verctor from 'img/Vector.svg';
+import vector from 'img/Vector.svg';
 import './functionsBank.scss';
 
 type TFunctionsList = {
@@ -12,22 +12,22 @@ type TFunctionsList = {
 const functionsList: Array<TFunctionsList> = [
     {
         id: 1,
-        icon: verctor,
+        icon: vector,
         children: 'Powerfull online protection.',
     },
     {
         id: 2,
-        icon: verctor,
+        icon: vector,
         children: 'Cashback without borders.',
     },
     {
         id: 3,
-        icon: verctor,
+        icon: vector,
         children: 'Personal design',
     },
     {
         id: 4,
-        icon: verctor,
+        icon: vector,
         children: 'Work anywhere in the world',
     },
 ];

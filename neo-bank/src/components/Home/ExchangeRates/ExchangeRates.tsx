@@ -3,11 +3,11 @@ import bank from 'img/bank.svg';
 import { CURRENCY } from 'constant';
 import './exchangeRates.scss';
 
-type TEchangeProps = {
-    currency: Array<any>;
+interface ICurrency {
+    currency: Array<{ value: { data: string } }>
 };
 
-const ExchangeRates: FC<TEchangeProps> = ({ currency }) => {
+const ExchangeRates: FC<ICurrency> = ({ currency }) => {
     let curren = CURRENCY.map(item => item).map(i => i.from);
     let count = 0;
 

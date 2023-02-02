@@ -1,13 +1,16 @@
-import { FC } from 'react';
+import { ChangeEventHandler, FC } from 'react';
+import { IOptions } from 'types';
 import './select.scss';
 
 type TSelectProps = {
     className: string;
     htmlFor: string;
     name: string;
-    onChange: any;
-    options: Array<any>;
+    onChange: ChangeEventHandler<HTMLSelectElement>;
+    options: Array<IOptions>;
 }
+
+// interface TSelectProps2 extends Select
 
 const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options, }) => {
     return (
@@ -18,10 +21,10 @@ const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options,
             onChange={onChange}
         >
             {
-                options.map((option, index) => {
+                options.map((option) => {
                     return (
                         <option
-                            key={option.id + index}
+                            key={option.id}
                             value={option.value}
                         >
                             {option.text}

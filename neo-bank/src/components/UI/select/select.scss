@@ -4,7 +4,9 @@
     padding: 13px 0px 13px 16px;
     border: 1px solid #80808033;
     border-radius: 6px;
-    background-color: #F9F5E3;
+    appearance: none;
+    background: url(../../../img/ArrowDown.svg) no-repeat right #F9F5E3;
+    background-position-x: calc(100% - 8px);
 
     &::placeholder {
         padding-left: 14px;
@@ -28,14 +30,14 @@
     box-shadow: 0 0 0 1px #FF5631;
 }
 
-.erros {
+.errors {
     margin-top: 2px;
     font-size: 1.6rem;
     font-weight: 500;
     color: #FF5631;
 }
 
-.erros-icon {
+.errors-icon {
     margin-right: 0px;
     position: absolute;
     top: 35px;

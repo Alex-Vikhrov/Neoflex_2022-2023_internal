@@ -1,12 +1,9 @@
-import { IRates } from 'constant';
 import { FC } from 'react';
 import './rates.scss';
+import { rates } from './tabs';
 
-type TRatesProps = {
-    rates: Array<IRates>;
-};
 
-const Rates: FC<TRatesProps> = ({ rates }) => {
+const Rates: FC = () => {
     return (
         <div className="rates">
             <nav className="rates__nav">

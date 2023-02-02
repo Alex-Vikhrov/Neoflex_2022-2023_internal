@@ -6,7 +6,7 @@ import './accordion.scss';
 type TAccordionProps = {
     title: string;
     description: string;
-}
+};
 
 const Accordion: FC<TAccordionProps> = ({ title, description }) => {
     const [toggle, setToggle] = useState(false);

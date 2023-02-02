@@ -1,21 +1,23 @@
 import { Accordion } from 'components';
-import { IFAQ } from 'constant/tabs/faq';
 import { FC } from 'react';
+import { faqReceivingCard, faqUsingCard } from './tabs';
 
-type TFAQProps = {
-    id: number;
-    topic: string;
-    faq: Array<IFAQ>;
-};
-
-const FAQ: FC<TFAQProps> = ({ id, faq, topic }) => {
+const FAQ: FC = () => {
     return (
-        <div className='faq' key={id}>
-            <h3>{topic}</h3>
+        <div className='faq'>
+            <h3>{'Issuing and receiving a card'}</h3>
             {
-                faq.map((item, index: number) => {
+                faqReceivingCard.map((item) => {
                     return (
-                        <Accordion key={index} title={item.question} description={item.answer} />
+                        <Accordion key={item.id} title={item.question} description={item.answer} />
+                    );
+                })
+            }
+            <h3>{'Using a credit card'}</h3>
+            {
+                faqUsingCard.map((item) => {
+                    return (
+                        <Accordion key={item.id} title={item.question} description={item.answer} />
                     );
                 })
             }

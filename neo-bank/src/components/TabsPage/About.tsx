@@ -1,12 +1,8 @@
-import { IAbout } from 'constant';
 import { FC } from 'react';
 import './cards.scss';
+import { about } from './tabs';
 
-type TAboutProps = {
-    about: Array<IAbout>;
-};
-
-const About: FC<TAboutProps> = ({ about }) => {
+const About: FC = () => {
     return (
         <div className="cards">
             {

@@ -1,15 +1,15 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { Button } from '../button';
+import { Button } from '../Button';
 import newsImg from 'img/news.jpg';
 import { ICard } from "types";
 
-type TSwiperProps = {
+type TSliderProps = {
     news: Array<ICard>;
     slidesToShow: number;
     slidesToScroll: number;
 };
 
-const Swiper: FC<TSwiperProps> = ({
+const Slider: FC<TSliderProps> = ({
     news,
     slidesToScroll,
     slidesToShow,
@@ -37,12 +37,12 @@ const Swiper: FC<TSwiperProps> = ({
     };
 
     return (
-        <div className="swiper">
-            <div className="swiper__container">
-                <div className="swiper__track" id="track" ref={scrollItem}>
+        <div className="slider">
+            <div className="slider__container">
+                <div className="slider__track" id="track" ref={scrollItem}>
                     {news.map((card, index: number) => {
                         return (
-                            <div key={index} className="swiper__card">
+                            <div key={index} className="slider__card">
                                 <figure>
                                     <img src={card.urlToImage || newsImg} alt="news" width="256px" height="120px" />
                                     <figcaption>{card.title}</figcaption>
@@ -55,9 +55,9 @@ const Swiper: FC<TSwiperProps> = ({
                     })}
                 </div>
             </div>
-            <div className="swiper__buttons">
+            <div className="slider__buttons">
                 <Button
-                    className="swiper-prev"
+                    className="slider-prev"
                     id="prev"
                     onClick={handleBtnPrevElement}
                     disabled={currentActiveIndex === 0}
@@ -70,7 +70,7 @@ const Swiper: FC<TSwiperProps> = ({
                     </svg>
                 </Button>
                 <Button
-                    className="swiper-next"
+                    className="slider-next"
                     id="next"
                     onClick={btnNextElement}
                     disabled={currentActiveIndex === cardCount - slidesToShow}
@@ -87,4 +87,4 @@ const Swiper: FC<TSwiperProps> = ({
     )
 };
 
-export { Swiper };
+export { Slider };

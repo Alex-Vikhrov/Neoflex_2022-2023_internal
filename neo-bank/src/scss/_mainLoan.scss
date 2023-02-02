@@ -119,7 +119,7 @@
 }
 
 
-.erros-icon {
+.errors-icon {
     margin-right: -16px;
     position: absolute;
     top: 35px;
@@ -131,8 +131,6 @@
     line-height: 34px;
     text-align: center;
     pointer-events: none;
-
-
 
     &::before {
         content: url(../img/error.svg);

@@ -13,8 +13,8 @@
 
     &:focus {
         outline: none;
-        border-color: #5B35D5; //#4baeff 5B35D5
-        box-shadow: 0 0 0 1px #7b59ec; //#69bbff 7b59ec
+        border-color: #5B35D5;
+        box-shadow: 0 0 0 1px #7b59ec;
         border-right-width: 1px;
     }
 }
@@ -24,7 +24,7 @@
     box-shadow: 0 0 0 1px #FF5631;
 }
 
-.erros {
+.errors {
     margin-top: 2px;
     font-size: 1.6rem;
     font-weight: 500;

@@ -1,12 +1,10 @@
-export { Button } from './button';
-export { NavBar } from './navbar';
-export { Footer } from './footer';
-export { Header } from './header';
-export { Accordion } from './accordion';
-export { Tabs } from './tabs';
-export { Input } from './input';
-export { Label } from './label';
-export { Select } from './select';
-export { Loader } from './loader';
-export { Swiper } from './swiper';
+export { Input } from './Input';
+export { Button } from './Button';
+export { NavBar } from './Navbar';
+export { Accordion } from './Accordion';
+export { Tabs } from './Tabs';
+export { Label } from './Label';
+export { Select } from './Select';
+export { Loader } from './Loader';
+export { Slider } from './Slider';
 

@@ -5,6 +5,7 @@ import cardImage2 from 'img/cardImage2.svg';
 import cardImage3 from 'img/cardImage3.svg';
 import cardImage4 from 'img/cardImage4.svg';
 import './chooseCard.scss';
+import { Link } from 'react-router-dom';
 
 type TCardImage = {
     id: number;
@@ -45,9 +46,9 @@ const ChooseCreditCard: FC = () => {
                     <span>now</span>
                 </h2>
 
-                <Button className="card__button">
+                <Link className="card__button" to={'/loan'}>
                     Choose the card
-                </Button>
+                </Link>
             </div>
             <div className="card__grid">
                 {

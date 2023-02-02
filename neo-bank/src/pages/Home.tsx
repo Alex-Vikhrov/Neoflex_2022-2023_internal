@@ -3,14 +3,14 @@ import {
     ChooseCreditCard,
     FunctionsBank,
     ExchangeRates,
-    SwiperNews,
+    SliderNews,
     SubscribeNewsSupport,
     Footer,
     Header,
     BankMap
 } from "../components";
 import { api } from "api/api";
-import { CURRENCY, footerItem, links } from "constant";
+import { CURRENCY } from "constant";
 
 const Home: FC = () => {
     const [currency, setCurrency] = useState([]);
@@ -43,7 +43,7 @@ const Home: FC = () => {
 
     return (
         <div className="wrapper">
-            <Header links={links} />
+            <Header />
             <main>
                 <div className="wrapper__main">
                     <ChooseCreditCard />
@@ -54,12 +54,12 @@ const Home: FC = () => {
 
                     <BankMap />
 
-                    <SwiperNews news={news} />
+                    <SliderNews news={news} />
 
                     <SubscribeNewsSupport />
                 </div>
             </main>
-            <Footer footerMenu={footerItem} />
+            <Footer />
         </div>
     );
 };

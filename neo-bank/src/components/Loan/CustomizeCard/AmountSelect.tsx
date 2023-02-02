@@ -1,4 +1,4 @@
-import { Input } from "components/UI";
+import { Input } from "components";
 import { FC } from "react"
 import { CustomizeTitle } from "./CustomizeTitle";
 import './amount.scss';
