@@ -1,0 +1,20 @@
+@import 'scss/mixin';
+
+.form-application {
+    margin: 32px 32px 0px 32px;
+
+    &__wrapper{
+        @include flex_justify-between;
+        flex-wrap: wrap;
+        margin-top: 43px;
+        margin-bottom: 16px;
+        gap: 16px 32px;
+
+        & div {
+            flex-grow: 1;
+            flex-basis: 390px;
+            width: 100%;
+            position: relative;
+        }
+    }
+}

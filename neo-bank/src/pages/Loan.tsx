@@ -13,7 +13,8 @@ import {
     FormLoan,
     CustomizeCard,
     CreditOffers,
-    Application,
+    FormApplication,
+    TablePayment,
 } from "../components";
 
 const offers = [
@@ -97,9 +98,11 @@ const Loan: FC = () => {
                             </section>
                     }
 
-                    {/* <CreditOffers offers={offers} />
+                    <CreditOffers offers={offers} />
 
-                    <Application /> 4 модуль */}
+                    <FormApplication />
+
+                    <TablePayment />
                 </div>
             </main>
             <Footer />

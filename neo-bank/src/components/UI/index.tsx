@@ -7,4 +7,6 @@ export { Label } from './Label';
 export { Select } from './Select';
 export { Loader } from './Loader';
 export { Slider } from './Slider';
+export { Table } from './Table';
+export { Modal } from './Modal';
 

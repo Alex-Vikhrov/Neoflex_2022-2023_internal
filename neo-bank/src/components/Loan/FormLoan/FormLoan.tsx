@@ -165,7 +165,7 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
     return (
         <form onSubmit={handleSubmit} className="form">
             <AmountSelect {...amountForm} />
-            <h3>Contact Information</h3>
+            <h3 className='form__h3'>Contact Information</h3>
             <div className="form__wrapper">
                 {formContact.map((item) => {
                     return (

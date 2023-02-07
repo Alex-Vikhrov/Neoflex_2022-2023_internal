@@ -33,7 +33,7 @@ const CreditOffers: FC<TOffersProps> = ({ offers }) => {
                                 </li>
                                 <li className="offers__item">
                                     Insurance included
-                                    <span className='erros-icon visible'></span>
+                                    <span className='errors-icon visible'></span>
                                 </li>
                                 <li className="offers__item">
                                     Salary client

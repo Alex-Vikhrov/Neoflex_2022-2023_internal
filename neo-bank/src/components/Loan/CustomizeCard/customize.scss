@@ -21,7 +21,6 @@
     &__title {
         @include flex_justify-between_align-center;
         width: 568px;
-
         & h3 {
             margin: 32px 0px 0px 0px;
             font-size: 3rem;
@@ -39,6 +38,8 @@
             line-height: 100%;
         }
     }
+
+    
 
     @media (max-width:965px) {
         &__wrapper {
