@@ -1,4 +1,5 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
+import { Button } from "../Button";
 import './modal.scss';
 
 type TModalProps = {
@@ -8,6 +9,7 @@ type TModalProps = {
 }
 
 const Modal: FC<TModalProps> = ({ active, setModalActive, children }) => {
+
     return (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setModalActive(false)}>
             <div

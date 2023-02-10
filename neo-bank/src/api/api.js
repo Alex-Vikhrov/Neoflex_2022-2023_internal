@@ -32,4 +32,12 @@ const subscribeEmail = (emailValue) => axios.post('http://localhost:8080/email',
     email: emailValue
 });
 
-export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest, subscribeEmail };
+const applicationId = localStorage.getItem('applicationId');
+
+const sendFormLoan = (values) => axios.post('http://localhost:8080/application', values, { headers: { 'Content-Type': 'application/json' } });
+const sendOffers = (values) => axios.post('http://localhost:8080/application/apply', values, { headers: { 'Content-Type': 'application/json' } });
+const sendFormApplication = (values) => axios.put(`http://localhost:8080/application/registration/${applicationId}`, values);
+
+
+
+export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest, subscribeEmail, sendFormLoan, sendOffers, sendFormApplication };

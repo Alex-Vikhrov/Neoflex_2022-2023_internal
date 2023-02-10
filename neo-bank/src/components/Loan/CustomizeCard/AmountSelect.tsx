@@ -8,7 +8,7 @@ type TProps = {
     id: string,
     type: string,
     placeholder?: string,
-    value: string,
+    value: string | number,
     onChange: React.ChangeEventHandler,
     onBlur: React.ChangeEventHandler,
 }

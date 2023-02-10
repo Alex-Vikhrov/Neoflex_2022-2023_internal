@@ -13,48 +13,12 @@ import {
     FormLoan,
     CustomizeCard,
     CreditOffers,
-    FormApplication,
-    TablePayment,
+    SuccessfulMessage,
+    ToolTip,
 } from "../components";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { fetchFormLoan, fetchOffers } from "store/reducers/creditCardSlice";
 
-const offers = [
-    {
-        id: 1,
-        list: [
-            {
-                li: 'Requested amount'
-            }
-        ],
-        requestedAmount: '200 000 ₽',
-    },
-    {
-        id: 2,
-        list: [
-            {
-                li: 'Requested amount'
-            }
-        ],
-        requestedAmount: '210 000 ₽',
-    },
-    {
-        id: 3,
-        list: [
-            {
-                li: 'Requested amount'
-            }
-        ],
-        requestedAmount: '220 000 ₽',
-    },
-    {
-        id: 4,
-        list: [
-            {
-                li: 'Requested amount'
-            }
-        ],
-        requestedAmount: '230 000 ₽',
-    },
-];
 
 const Loan: FC = () => {
     const ref = useRef<HTMLDivElement>(null);
@@ -65,10 +29,35 @@ const Loan: FC = () => {
             block: 'start'
         });
     };
+
     const [isLoading, setIsLoading] = useState(false);
+    const { offers, applicationId } = useAppSelector((state) => state.creditOffersReducer);
+    const dispatch = useAppDispatch();
 
     const handleLoad = () => {
         setIsLoading(true);
+    };
+
+    const onSubmitFormLoan = async (values: any) => {
+        try {
+            setIsLoading(true);
+            await dispatch(fetchFormLoan(values));
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const onSubmitOffers = async (values: any) => {
+        try {
+            setIsLoading(true);
+            await dispatch(fetchOffers(values));
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -90,19 +79,20 @@ const Loan: FC = () => {
                     <InfoGetCard />
 
                     {
-                        isLoading ? <Loader /> :
+                        offers.length <= 0 ?
                             <section ref={ref}>
-                                <CustomizeCard>
-                                    <FormLoan handleLoad={handleLoad} />
+                                <CustomizeCard >
+                                    <FormLoan isLoading={isLoading} handleLoad={handleLoad} onSubmitFormLoan={onSubmitFormLoan} />
+                                    {isLoading && <Loader />}
                                 </CustomizeCard>
-                            </section>
+                            </section> : applicationId ?
+                                <SuccessfulMessage
+                                    className="successful-offers"
+                                    title={"The preliminary decision has been sent to your email."}
+                                    message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
+                                />
+                                : <CreditOffers isLoading={isLoading} offers={offers} onSubmitOffers={onSubmitOffers} />
                     }
-
-                    <CreditOffers offers={offers} />
-
-                    <FormApplication />
-
-                    <TablePayment />
                 </div>
             </main>
             <Footer />

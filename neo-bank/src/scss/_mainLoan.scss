@@ -9,8 +9,14 @@
 }
 
 //Form_Loan
+.load {
+    opacity: 0.4;
+}
+
 .form {
     margin: 32px 32px 0px 32px;
+    position: relative;
+    z-index: 1;
 
     &__h3 {
         align-items: baseline;
@@ -86,11 +92,12 @@
     @media (max-width:1300px) {
         &__wrapper {
             & div {
-                
+
                 &:last-child {
                     .errors-icon {
                         margin-right: -16px;
                     }
+
                     input {
                         width: 100%;
                     }
@@ -161,4 +168,46 @@
 
 .hidden {
     display: none;
+}
+
+// вынести в отдельный файл LoanSign
+.sign {
+    margin-top: 110px;
+
+    & p {
+        width: 100%;
+        margin-top: 32px;
+        font-size: 2rem;
+        font-weight: 500;
+        word-break: break-word;
+        letter-spacing: 0.03rem;
+        line-height: 22px;
+        color: #4F5665;
+    }
+
+    &__btn {
+        margin-top: 108px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 30px;
+    }
+
+    @media (max-width: 1300px) {
+        & p {
+            width: 98%;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        & div {
+            margin-left: 1%;
+        }
+    }
+
+    @media (max-width: 640px) {
+        & div {
+            width: 94%;
+        }
+    }
 }

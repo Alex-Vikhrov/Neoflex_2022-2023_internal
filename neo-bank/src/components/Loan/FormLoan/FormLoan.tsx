@@ -1,32 +1,34 @@
 import { FC } from 'react';
 import { useFormik } from 'formik';
-import { basicSchema } from 'utils/basicValidate';
+import { basicSchema } from 'utils/formLoanValidate';
 import star from 'img/star.svg';
 import { Button, Input, Label, Select } from '../../UI';
 import { AmountSelect } from 'components';
+import { api } from 'api/api';
 
 type TFormLoanProps = {
     handleLoad: () => void;
+    onSubmitFormLoan: any;
+    isLoading?: boolean;
 };
 
 const initialValues = {
-    lastName: '',
+    amount: 150000,
+    term: 6,
     firstName: '',
-    patronymic: '',
+    lastName: '',
+    middleName: '',
+    email: '',
+    birthdate: '',
     passportSeries: '',
     passportNumber: '',
-    email: '',
-    birthday: '',
-    amount: '150000'
 };
 
-const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
+const FormLoan: FC<TFormLoanProps> = ({ isLoading, handleLoad, onSubmitFormLoan }) => {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues,
         validationSchema: basicSchema,
-        onSubmit: (values, args) => {
-            handleLoad();
-        },
+        onSubmit: (values) => onSubmitFormLoan(values),
     });
 
     const amountForm = {
@@ -67,10 +69,10 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
         },
         {
             label: 'Your patronymic',
-            htmlFor: 'patronymic',
+            htmlFor: 'middleName',
             img: null,
-            id: 'patronymic',
-            value: values.patronymic,
+            id: 'middleName',
+            value: values.middleName,
             onChange: handleChange,
             onBlur: handleBlur,
             placeholder: 'For Example Victorovich',
@@ -83,24 +85,34 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             onBlur: handleBlur,
             img: star,
             id: 'term',
+            value: values.term,
             placeholder: '6 month',
             selected: true,
             options: [
                 {
                     id: 1,
                     text: '6 month',
+                    // value: '6 month',
+                    value: values.term,
                 },
                 {
                     id: 2,
                     text: '12 month',
+                    // value: '12 month',
+                    value: parseInt('12 month'),
+
                 },
                 {
                     id: 3,
                     text: '18 month',
+                    // value: '18 month',
+                    value: parseInt('18 month'),
                 },
                 {
                     id: 4,
-                    text: '24 month'
+                    text: '24 month',
+                    // value: '24 month',
+                    value: parseInt('24 month'),
                 },
             ],
         },
@@ -118,15 +130,15 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
             placeholder: 'test@gmail.com',
         },
         {
-            id: 'birthday',
+            id: 'birthdate',
             type: 'date',
-            value: values.birthday,
+            value: values.birthdate,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.birthday,
-            touched: touched.birthday,
+            errors: errors.birthdate,
+            touched: touched.birthdate,
             label: 'Your date of birthday',
-            htmlFor: 'birthday',
+            htmlFor: 'birthdate',
             img: star,
             placeholder: 'Select Date and Time',
             min: '1900-01-01',
@@ -163,7 +175,7 @@ const FormLoan: FC<TFormLoanProps> = ({ handleLoad }) => {
     ];
 
     return (
-        <form onSubmit={handleSubmit} className="form">
+        <form onSubmit={handleSubmit} className={isLoading ? "form load" : "form"}>
             <AmountSelect {...amountForm} />
             <h3 className='form__h3'>Contact Information</h3>
             <div className="form__wrapper">

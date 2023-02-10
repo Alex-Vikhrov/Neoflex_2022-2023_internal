@@ -21,6 +21,6 @@ export interface ILinks {
 
 export interface IOptions {
     id: number;
-    text: string;
-    value?: string;
+    text?: string;
+    value?: number;
 };

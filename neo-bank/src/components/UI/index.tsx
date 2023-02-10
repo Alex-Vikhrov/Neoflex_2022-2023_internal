@@ -9,4 +9,5 @@ export { Loader } from './Loader';
 export { Slider } from './Slider';
 export { Table } from './Table';
 export { Modal } from './Modal';
-
+export { PinCodeInput } from './PinCodeInput';
+export { ToolTip } from './ToolTip';

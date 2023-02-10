@@ -1,0 +1,1 @@
+export { SuccessfulMessage } from './SuccessfulMessage';

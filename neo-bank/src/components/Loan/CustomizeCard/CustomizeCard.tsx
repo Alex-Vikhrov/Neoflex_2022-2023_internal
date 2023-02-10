@@ -5,9 +5,9 @@ type TCustomize = {
     children: ReactNode;
 };
 
-const CustomizeCard: FC<TCustomize> = ({ children }) => {
+const CustomizeCard: FC<TCustomize> = ({children }) => {
     return (
-        <section className="customize-card">
+        <section className={"customize-card"} >
             {children}
         </section>
     );

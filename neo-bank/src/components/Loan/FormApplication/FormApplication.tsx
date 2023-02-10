@@ -1,30 +1,31 @@
 import { Button, Input, Label, Select } from "components";
 import { FC } from "react";
 import star from 'img/star.svg';
-
 import { CustomizeCard, CustomizeTitle } from "../CustomizeCard";
 import './formApplication.scss';
-import { basicSchema } from "utils/basicValidate";
 import { useFormik } from "formik";
+import { FieldFormApplication } from "./FieldFormApplication";
+import { formApplicationSchema } from "utils/formApplicationValidate";
 
 const initialValues = {
-    lastName: '',
-    firstName: '',
-    patronymic: '',
-    passportSeries: '',
-    passportNumber: '',
-    email: '',
-    birthday: '',
-    amount: '150000'
+    gender: '',
+    maritalStatus: "MARRIED" || "DIVORCED" || "SINGLE" || "WIDOW_WIDOWER",
+    dependentAmount: '',
+    passportIssueDate: '',
+    passportIssueBranch: '',
+    employmentStatus: "UNEMPLOYED" || "SELF_EMPLOYED" || "EMPLOYED" || "BUSINESS_OWNER",
+    employerINN: '',
+    salary: '',
+    position: "WORKER" || "MID_MANAGER" || "TOP_MANAGER" || "OWNER",
+    workExperienceTotal: '',
+    workExperienceCurrent: '',
 };
 
-const FormApplication: FC = () => {
+const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApplication }) => {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues,
-        validationSchema: basicSchema,
-        onSubmit: (values, args) => {
-            // handleLoad();
-        },
+        validationSchema: formApplicationSchema,
+        onSubmit: (values, args) => onSubmitFormApplication(values),
     });
 
     const formContact = [
@@ -34,11 +35,16 @@ const FormApplication: FC = () => {
             htmlFor: 'gender',
             onChange: handleChange,
             onBlur: handleBlur,
+            value: values.gender,
             img: star,
             id: 'gender',
             placeholder: '',
             selected: true,
             options: [
+                {
+                    id: 0,
+                    text: '',
+                },
                 {
                     id: 1,
                     text: 'MALE',
@@ -60,6 +66,10 @@ const FormApplication: FC = () => {
             placeholder: '',
             selected: true,
             options: [
+                {
+                    id: 0,
+                    text: '',
+                },
                 {
                     id: 1,
                     text: 'MARRIED',
@@ -90,6 +100,10 @@ const FormApplication: FC = () => {
             selected: true,
             options: [
                 {
+                    id: 0,
+                    text: '',
+                },
+                {
                     id: 1,
                     text: 'MARRIED',
                 },
@@ -97,13 +111,13 @@ const FormApplication: FC = () => {
         },
         {
             id: 'passportIssueDate',
-            type: 'text',
+            type: 'date',
             placeholder: 'Select Date and Time',
-            value: values.lastName,
+            value: values.passportIssueDate,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.lastName,
-            touched: touched.lastName,
+            errors: errors.passportIssueDate,
+            touched: touched.passportIssueDate,
             label: 'Date of issue of the passport',
             htmlFor: 'passportIssueDate',
             img: star,
@@ -112,11 +126,12 @@ const FormApplication: FC = () => {
             id: 'passportIssueBranch',
             type: 'number',
             placeholder: '000000',
-            value: values.firstName,
+            value: values.passportIssueBranch,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.firstName,
-            touched: touched.firstName,
+            errors: errors.passportIssueBranch,
+            touched: touched.passportIssueBranch,
+            maxLength: 6,
             label: 'Division code',
             htmlFor: 'passportIssueBranch',
             img: star,
@@ -125,16 +140,20 @@ const FormApplication: FC = () => {
 
     const employment = [
         {
+            id: 'employmentStatus',
             type: 'employmentStatus',
-            label: `Your employment status`,
-            htmlFor: 'employmentStatus',
             onChange: handleChange,
             onBlur: handleBlur,
-            img: star,
-            id: 'employmentStatus',
             placeholder: '',
+            label: `Your employment status`,
+            htmlFor: 'employmentStatus',
+            img: star,
             selected: true,
             options: [
+                {
+                    id: 0,
+                    text: '',
+                },
                 {
                     id: 1,
                     text: 'UNEMPLOYED',
@@ -154,39 +173,50 @@ const FormApplication: FC = () => {
             ],
         },
         {
+            id: 'employerINN',
             type: 'text',
+            placeholder: '',
+            onChange: handleChange,
+            onBlur: handleBlur,
+            value: values.employerINN,
+            errors: errors.employerINN,
+            touched: touched.employerINN,
+            maxLength: 12,
             label: `Your employer INN`,
             htmlFor: 'employerINN',
-            onChange: handleChange,
-            onBlur: handleBlur,
             img: star,
-            id: 'employerINN',
-            placeholder: '',
         },
         {
+            id: 'salary',
             type: 'text',
-            label: `Your salary`,
-            htmlFor: 'salary',
+            placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
+            value: values.salary,
+            errors: errors.salary,
+            touched: touched.salary,
+            label: `Your salary`,
+            htmlFor: 'salary',
             img: star,
-            id: 'salary',
-            placeholder: '',
         },
         {
             id: 'position',
             type: 'text',
             placeholder: 'Select Date and Time',
-            value: values.lastName,
+            value: values.position,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.lastName,
-            touched: touched.lastName,
+            errors: errors.position,
+            touched: touched.position,
             label: 'Your position',
             htmlFor: 'position',
             img: star,
             selected: true,
             options: [
+                {
+                    id: 0,
+                    text: '',
+                },
                 {
                     id: 1,
                     text: 'WORKER',
@@ -207,26 +237,28 @@ const FormApplication: FC = () => {
         },
         {
             id: 'workExperienceTotal',
-            type: 'number',
+            type: 'text',
             placeholder: 'For example 10',
-            value: values.firstName,
+            value: values.workExperienceTotal,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.firstName,
-            touched: touched.firstName,
+            errors: errors.workExperienceTotal,
+            touched: touched.workExperienceTotal,
+            maxLength: 2,
             label: 'Your work experience total',
             htmlFor: 'workExperienceTotal',
             img: star,
         },
         {
             id: 'workExperienceCurrent',
-            type: 'number',
+            type: 'text',
             placeholder: 'For example 2',
-            value: values.firstName,
+            value: values.workExperienceCurrent,
             onChange: handleChange,
             onBlur: handleBlur,
-            errors: errors.firstName,
-            touched: touched.firstName,
+            errors: errors.workExperienceCurrent,
+            touched: touched.workExperienceCurrent,
+            maxLength: 2,
             label: 'Your work experience current',
             htmlFor: 'workExperienceCurrent',
             img: star,
@@ -235,74 +267,11 @@ const FormApplication: FC = () => {
 
     return (
         <CustomizeCard>
-            <form action="" className="form-application">
+            <form className="form-application" onSubmit={handleSubmit}>
                 <CustomizeTitle title={"Continuation of the application"} step={2} />
-                <div className="form-application__wrapper">
-                    {formContact.map((item) => {
-                        return (
-                            <div key={item.id}>
-                                <Label htmlFor={item.htmlFor} className={""}>
-                                    {item.label} {item.img === null ? '' : <img className="star" src={item.img} alt="star" />}
-                                    {item.selected ?
-                                        <Select
-                                            className={''}
-                                            htmlFor={item.htmlFor}
-                                            name={item.id}
-                                            onChange={item.onChange}
-                                            options={item.options} />
-                                        :
-                                        <Input
-                                            id={item.id}
-                                            type={item.type}
-                                            placeholder={item.placeholder}
-                                            className={item.errors && item.touched ? 'defaultInput input-error' : 'defaultInput'}
-                                            value={item.value}
-                                            onChange={item.onChange}
-                                            onBlur={item.onBlur}
-                                        // maxLength={item.maxLength}
-                                        // min={item.min}
-                                        // max={item.max}
-                                        />
-                                    }
-                                </Label>
-                            </div>
-                        )
-                    })}
-                </div>
+                <FieldFormApplication initialValue={formContact} />
                 <h3>Employment</h3>
-                <div className="form-application__wrapper">
-                    {employment.map((item) => {
-                        return (
-                            <div key={item.id}>
-                                <Label htmlFor={item.htmlFor} className={""}>
-                                    {item.label} {item.img === null ? '' : <img className="star" src={item.img} alt="star" />}
-                                    {item.selected ?
-                                        <Select
-                                            className={''}
-                                            htmlFor={item.htmlFor}
-                                            name={item.id}
-                                            onChange={item.onChange}
-                                            options={item.options} />
-                                        :
-                                        <Input
-                                            id={item.id}
-                                            type={item.type}
-                                            placeholder={item.placeholder}
-                                            className={item.errors && item.touched ? 'defaultInput input-error' : 'defaultInput'}
-                                            value={item.value}
-                                            onChange={item.onChange}
-                                            onBlur={item.onBlur}
-                                        // maxLength={item.maxLength}
-                                        // min={item.min}
-                                        // max={item.max}
-                                        />
-                                    }
-                                </Label>
-                            </div>
-                        )
-                    })}
-                </div>
-
+                <FieldFormApplication initialValue={employment} />
                 <div className="form__button-container">
                     <Button
                         className={"form__button"}

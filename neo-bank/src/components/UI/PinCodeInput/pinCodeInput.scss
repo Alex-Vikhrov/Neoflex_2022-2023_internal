@@ -1,0 +1,76 @@
+// вынести в отдельный файл pin
+
+.pin-wrapper{
+    margin-top: 120px;
+    margin-bottom: 95px;
+}
+.title-pin{
+    margin-bottom: 32px;
+    font-size: 3rem;
+    font-weight: 700;
+    word-break: break-word;
+    text-align: center;
+    color: #1C1C1E;
+}
+
+.form-pin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pin {
+    display: flex;
+    gap: 16px;
+    &__input {
+        display: inline-block;
+        border: 1px solid #808080;
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #000;
+        text-align: center;
+        position: relative;
+
+        &::placeholder {
+            content: url(../../../img/Ellipse.svg);
+            position: absolute;
+            top: 30%;
+            left: 30%;
+        }
+
+        &:hover {
+            border-color: #2993f7;
+            border-right-width: 1px;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: #3182CE;
+            box-shadow: 0 0 0 1px #3182CE;
+            border-right-width: 1px;
+        }
+
+        &:focus-visible {
+            border-color: #2993f7;
+            border-right-width: 1px;
+        }
+    }
+
+
+
+    &__ellipse {
+        position: relative;
+        top: 3px;
+        right: 37px;
+        visibility: visible;
+    }
+
+    .focus {
+        visibility: hidden;
+    }
+
+
+}
