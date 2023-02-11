@@ -8,9 +8,25 @@ const LoanApplication: FC = () => {
     const dispatch = useAppDispatch();
 
     const onSubmitFormApplication = async (values: any) => {
+        const data = {
+            gender: values.gender,
+            maritalStatus: values.maritalStatus,
+            dependentAmount: values.dependentAmount,
+            passportIssueDate: values.passportIssueDate,
+            passportIssueBranch: values.passportIssueBranch,
+            employment: {
+                employmentStatus: values.employmentStatus,
+                employerINN: values.employerINN,
+                salary: values.salary,
+                position: values.position,
+                workExperienceTotal: values.workExperienceTotal,
+                workExperienceCurrent: values.workExperienceCurrent
+            },
+            account: values.account
+        };
         try {
-            setIsLoading(true);            
-            await dispatch(fetchFormApplication(values));
+            setIsLoading(true);
+            await dispatch(fetchFormApplication(data));
         } catch (e) {
             console.log(e);
         } finally {

@@ -174,7 +174,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'employerINN',
-            type: 'text',
+            type: 'number',
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
