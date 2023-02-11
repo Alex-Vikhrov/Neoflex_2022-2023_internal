@@ -65,7 +65,7 @@ const Loan: FC = () => {
             <Header />
             <main>
                 <div className="wrapper__main">
-                    <DescriptionCard smoothScroll={smoothScroll} />
+                    <DescriptionCard applicationId={applicationId} offers={offers} smoothScroll={smoothScroll} />
 
                     <section className="functions-card">
                         <Tabs tabs={[
@@ -86,12 +86,16 @@ const Loan: FC = () => {
                                     {isLoading && <Loader />}
                                 </CustomizeCard>
                             </section> : applicationId ?
-                                <SuccessfulMessage
-                                    className="successful-offers"
-                                    title={"The preliminary decision has been sent to your email."}
-                                    message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
-                                />
-                                : <CreditOffers isLoading={isLoading} offers={offers} onSubmitOffers={onSubmitOffers} />
+                                <section ref={ref}>
+                                    <SuccessfulMessage
+                                        className="successful-offers"
+                                        title={"The preliminary decision has been sent to your email."}
+                                        message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
+                                    />
+                                </section>
+                                : <section ref={ref}>
+                                    <CreditOffers isLoading={isLoading} offers={offers} onSubmitOffers={onSubmitOffers} />
+                                </section>
                     }
                 </div>
             </main>

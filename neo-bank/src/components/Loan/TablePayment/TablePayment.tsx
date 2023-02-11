@@ -13,33 +13,7 @@ export interface IThead {
     arrow: string;
 }
 
-const table: Array<TTableRowProps> = [
-    {
-        number: 0,
-        date: '12 01 1998',
-        totalPayment: '0',
-        interestPayment: '10',
-        debtPayment: '250',
-        remainingDebt: '35470',
-    },
-    {
-        number: 1,
-        date: '12 01 2020',
-        totalPayment: '0',
-        interestPayment: '10',
-        debtPayment: '250',
-        remainingDebt: '35470',
-    },
-    {
-        number: 2,
-        date: '21 01 2022',
-        totalPayment: '0',
-        interestPayment: '10',
-        debtPayment: '250',
-        remainingDebt: '35470',
-    },
 
-];
 
 const theadPayment: Array<IThead> = [
     {
@@ -74,13 +48,39 @@ const theadPayment: Array<IThead> = [
     },
 ];
 
-const TablePayment: FC = () => {
-
+const TablePayment: FC<{ table: any}> = ({ table }) => {
+    const table1: Array<TTableRowProps> = [
+        {
+            number: 0,
+            date: '12 01 1998',
+            totalPayment: '0',
+            interestPayment: '10',
+            debtPayment: '250',
+            remainingDebt: '35470',
+        },
+        {
+            number: 1,
+            date: '12 01 2020',
+            totalPayment: '0',
+            interestPayment: '10',
+            debtPayment: '250',
+            remainingDebt: '35470',
+        },
+        {
+            number: 2,
+            date: '21 01 2022',
+            totalPayment: '0',
+            interestPayment: '10',
+            debtPayment: '250',
+            remainingDebt: '35470',
+        },
+    
+    ];
     return (
         <CustomizeCard>
             <div className="payment-wrapper">
                 <CustomizeTitle title={"Payment Schedule"} step={3} />
-                <Table table={table} thead={theadPayment} />
+                <Table table={table1} thead={theadPayment} />
                 <ModalActiveButton />
             </div>
         </CustomizeCard>

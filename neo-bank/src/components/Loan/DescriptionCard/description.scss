@@ -87,6 +87,31 @@
         border-radius: 8px;
         font-size: 1.6rem;
         font-weight: 700;
+        word-break: break-word;
+    }
+
+    &__link {
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        margin-bottom: 48px;
+        width: 145px;
+        height: 48px;
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        word-break: break-word;
+        @include flex_justify-center;
+        align-items: center;
+        padding: 8px;
+        background-color: #003CFF;
+        color: #fff;
+        border: none;
+
+        &:hover {
+            transition: 0.2s;
+            background-color: #7796C0;
+        }
     }
 
     & figure {

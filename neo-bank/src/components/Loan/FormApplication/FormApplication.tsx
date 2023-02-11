@@ -8,17 +8,18 @@ import { FieldFormApplication } from "./FieldFormApplication";
 import { formApplicationSchema } from "utils/formApplicationValidate";
 
 const initialValues = {
-    gender: '',
-    maritalStatus: "MARRIED" || "DIVORCED" || "SINGLE" || "WIDOW_WIDOWER",
-    dependentAmount: '',
-    passportIssueDate: '',
-    passportIssueBranch: '',
-    employmentStatus: "UNEMPLOYED" || "SELF_EMPLOYED" || "EMPLOYED" || "BUSINESS_OWNER",
-    employerINN: '',
-    salary: '',
-    position: "WORKER" || "MID_MANAGER" || "TOP_MANAGER" || "OWNER",
-    workExperienceTotal: '',
-    workExperienceCurrent: '',
+    gender: 'MALE',
+    maritalStatus: 'SINGLE',
+    dependentAmount: 1,
+    passportIssueDate: '2023-02-11',
+    passportIssueBranch: '123-456',
+    employmentStatus: 'EMPLOYED',
+    employerINN: '123456789012',
+    salary: 100000,
+    position: 'WORKER',
+    workExperienceTotal: 15,
+    workExperienceCurrent: 4,
+    account: '11223344556677889900',
 };
 
 const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApplication }) => {
@@ -89,7 +90,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             ],
         },
         {
-            type: 'dependentAmount',
+            type: 'number',
             label: `Your number of dependents`,
             htmlFor: 'dependentAmount',
             onChange: handleChange,
@@ -97,17 +98,6 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             img: star,
             id: 'dependentAmount',
             placeholder: '',
-            selected: true,
-            options: [
-                {
-                    id: 0,
-                    text: '',
-                },
-                {
-                    id: 1,
-                    text: 'MARRIED',
-                },
-            ],
         },
         {
             id: 'passportIssueDate',
@@ -124,7 +114,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'passportIssueBranch',
-            type: 'number',
+            type: 'text',
             placeholder: '000000',
             value: values.passportIssueBranch,
             onChange: handleChange,
@@ -174,7 +164,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'employerINN',
-            type: 'text',
+            type: 'number',
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
@@ -188,7 +178,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'salary',
-            type: 'text',
+            type: 'number',
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
@@ -237,7 +227,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'workExperienceTotal',
-            type: 'text',
+            type: 'number',
             placeholder: 'For example 10',
             value: values.workExperienceTotal,
             onChange: handleChange,
@@ -251,7 +241,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
         },
         {
             id: 'workExperienceCurrent',
-            type: 'text',
+            type: 'number',
             placeholder: 'For example 2',
             value: values.workExperienceCurrent,
             onChange: handleChange,

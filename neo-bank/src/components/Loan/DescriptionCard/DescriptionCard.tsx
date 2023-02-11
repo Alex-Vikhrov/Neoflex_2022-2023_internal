@@ -2,9 +2,13 @@ import { FC } from "react";
 import cardImage from 'img/cardImageLoan.svg';
 import { Button } from "components";
 import './description.scss';
+import { IOffersCards } from "types/IOffersCards";
+import { Link } from "react-router-dom";
 
 type TDescriptionCard = {
-    smoothScroll: () => void
+    smoothScroll: () => void;
+    offers?: any;
+    applicationId?: number;
 };
 
 type TDescription = {
@@ -36,7 +40,7 @@ const description: Array<TDescription> = [
     },
 ];
 
-const DescriptionCard: FC<TDescriptionCard> = ({ smoothScroll }) => {
+const DescriptionCard: FC<TDescriptionCard> = ({ applicationId, offers, smoothScroll }) => {
     return (
         <section className="description-card">
             <article className="description-card__info">
@@ -53,12 +57,18 @@ const DescriptionCard: FC<TDescriptionCard> = ({ smoothScroll }) => {
                         )
                     })}
                 </aside>
-                <Button
-                    className="description-card__button"
-                    onClick={smoothScroll}
-                >
-                    Apply for card
-                </Button>
+                {
+                    applicationId ?
+                        <Link className="description-card__link" to={`/loan/${applicationId}`}>
+                            Continue registration
+                        </Link> :
+                        <Button
+                            className="description-card__button"
+                            onClick={smoothScroll}
+                        >
+                            {offers.length <= 0 ? 'Apply for card' : 'Choose an offer'}
+                        </Button>
+                }
             </article>
             <figure>
                 <img src={cardImage} alt="credit card" />
