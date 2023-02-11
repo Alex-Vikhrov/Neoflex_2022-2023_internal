@@ -71,12 +71,13 @@ export const fetchFormApplication = createAsyncThunk<any, any, any>(
             },
             account: values.account
         };
-        await api.sendFormApplication(values);
+        console.log(data);
+        await api.sendFormApplication(data);
         localStorage.setItem('endRegistration', JSON.stringify(data));
+        console.log(data);
         return data;
     }
 );
-
 
 const creditOffersCardSlice = createSlice({
     name: 'offers',

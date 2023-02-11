@@ -8,17 +8,17 @@ import { FieldFormApplication } from "./FieldFormApplication";
 import { formApplicationSchema } from "utils/formApplicationValidate";
 
 const initialValues = {
-    gender: 'MALE',
-    maritalStatus: 'SINGLE',
-    dependentAmount: 1,
-    passportIssueDate: '2023-02-11',
-    passportIssueBranch: '123-456',
-    employmentStatus: 'EMPLOYED',
-    employerINN: '123456789012',
-    salary: 100000,
-    position: 'WORKER',
-    workExperienceTotal: 15,
-    workExperienceCurrent: 4,
+    gender: '',
+    maritalStatus: '',
+    dependentAmount: '',
+    passportIssueDate: '',
+    passportIssueBranch: '',
+    employmentStatus: '',
+    employerINN: '',
+    salary: '',
+    position: '',
+    workExperienceTotal: '',
+    workExperienceCurrent: '',
     account: '11223344556677889900',
 };
 
@@ -49,10 +49,12 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'MALE',
+                    value: 'MALE'
                 },
                 {
                     id: 2,
                     text: 'FAMALE',
+                    value: 'FAMALE'
                 },
             ],
         },
@@ -74,18 +76,22 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'MARRIED',
+                    value:'MARRIED'
                 },
                 {
                     id: 2,
                     text: 'DIVORCED',
+                    value: 'DIVORCED'
                 },
                 {
                     id: 3,
                     text: 'SINGLE',
+                    value:'SINGLE'
                 },
                 {
                     id: 4,
                     text: 'WIDOW_WIDOWER',
+                    value: 'WIDOW_WIDOWER'
                 },
             ],
         },
@@ -121,7 +127,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             onBlur: handleBlur,
             errors: errors.passportIssueBranch,
             touched: touched.passportIssueBranch,
-            maxLength: 6,
+            maxLength: 7,
             label: 'Division code',
             htmlFor: 'passportIssueBranch',
             img: star,
@@ -147,24 +153,28 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'UNEMPLOYED',
+                    value: 'UNEMPLOYED'
                 },
                 {
                     id: 2,
                     text: 'SELF_EMPLOYED',
+                    value: 'SELF_EMPLOYED'
                 },
                 {
                     id: 3,
                     text: 'EMPLOYED',
+                    value: 'EMPLOYED'
                 },
                 {
                     id: 4,
                     text: 'BUSINESS_OWNER',
+                    value: 'BUSINESS_OWNER'
                 },
             ],
         },
         {
             id: 'employerINN',
-            type: 'number',
+            type: 'text',
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
@@ -210,18 +220,22 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'WORKER',
+                    value:'WORKER'
                 },
                 {
                     id: 2,
                     text: 'MID_MANAGER',
+                    value: 'MID_MANAGER'
                 },
                 {
                     id: 3,
                     text: 'TOP_MANAGER',
+                    value: 'TOP_MANAGER'
                 },
                 {
                     id: 4,
                     text: 'OWNER',
+                    value: 'OWNER'
                 },
             ],
         },

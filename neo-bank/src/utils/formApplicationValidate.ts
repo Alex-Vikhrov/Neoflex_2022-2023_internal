@@ -15,7 +15,7 @@ export const formApplicationSchema = yup.object().shape({
         .ensure().required('Department code must be 12 digits')
         .min(12, 'Department code must be 12 digits'),
     salary: yup.string().ensure().required('Enter your salary'),
-    position: yup.string().ensure().required('Select one of the options'),
+    // position: yup.string().ensure().required('Select one of the options'),
     workExperienceTotal: yup.string()
         .ensure().required('Enter your work experience current')
         .min(1, 'The series must be 2 digits'),
