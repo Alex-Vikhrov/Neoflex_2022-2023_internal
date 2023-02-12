@@ -4,7 +4,6 @@ import { basicSchema } from 'utils/formLoanValidate';
 import star from 'img/star.svg';
 import { Button, Input, Label, Select } from '../../UI';
 import { AmountSelect } from 'components';
-import { api } from 'api/api';
 
 type TFormLoanProps = {
     handleLoad: () => void;
@@ -14,7 +13,7 @@ type TFormLoanProps = {
 
 const initialValues = {
     amount: 150000,
-    term: 6,
+    term: '',
     firstName: '',
     lastName: '',
     middleName: '',
@@ -72,7 +71,7 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, handleLoad, onSubmitFormLoan 
             htmlFor: 'middleName',
             img: null,
             id: 'middleName',
-            value: values.middleName,
+            value: values.middleName || '',
             onChange: handleChange,
             onBlur: handleBlur,
             placeholder: 'For Example Victorovich',
@@ -92,27 +91,23 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, handleLoad, onSubmitFormLoan 
                 {
                     id: 1,
                     text: '6 month',
-                    // value: '6 month',
-                    value: values.term,
+                    value: +'6',
                 },
                 {
                     id: 2,
                     text: '12 month',
-                    // value: '12 month',
-                    value: parseInt('12 month'),
+                    value: +'12',
 
                 },
                 {
                     id: 3,
                     text: '18 month',
-                    // value: '18 month',
-                    value: parseInt('18 month'),
+                    value: +'18',
                 },
                 {
                     id: 4,
                     text: '24 month',
-                    // value: '24 month',
-                    value: parseInt('24 month'),
+                    value: +'24',
                 },
             ],
         },

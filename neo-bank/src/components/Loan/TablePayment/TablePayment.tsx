@@ -13,8 +13,6 @@ export interface IThead {
     arrow: string;
 }
 
-
-
 const theadPayment: Array<IThead> = [
     {
         id: 1,
@@ -76,6 +74,7 @@ const TablePayment: FC<{ table: any}> = ({ table }) => {
         },
     
     ];
+    
     return (
         <CustomizeCard>
             <div className="payment-wrapper">

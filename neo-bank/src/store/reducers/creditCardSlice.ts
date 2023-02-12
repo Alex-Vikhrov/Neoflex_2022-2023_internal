@@ -55,30 +55,8 @@ export const fetchOffers = createAsyncThunk<any, any, any>(
 export const fetchFormApplication = createAsyncThunk<any, any, any>(
     'loan/fetchFormApplication',
     async (values: any, thunkAPI) => {
-        // const data = {
-        //     gender: values.gender,
-        //     maritalStatus: values.maritalStatus,
-        //     dependentAmount: values.dependentAmount,
-        //     passportIssueDate: values.passportIssueDate,
-        //     passportIssueBranch: values.passportIssueBranch,
-        //     employment: {
-        //         employmentStatus: values.employmentStatus,
-        //         employerINN: values.employerINN,
-        //         salary: values.salary,
-        //         position: values.position,
-        //         workExperienceTotal: values.workExperienceTotal,
-        //         workExperienceCurrent: values.workExperienceCurrent
-        //     },
-        //     account: values.account
-        // };
-        // console.log(data);
-        console.log(values);
-        
         await api.sendFormApplication(values);
         localStorage.setItem('endRegistration', JSON.stringify(values));
-        // console.log(data);
-        console.log(values);
-        
         return values;
     }
 );

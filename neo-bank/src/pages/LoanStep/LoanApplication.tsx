@@ -22,7 +22,7 @@ const LoanApplication: FC = () => {
                 workExperienceTotal: values.workExperienceTotal,
                 workExperienceCurrent: values.workExperienceCurrent
             },
-            account: values.account
+            account: "11223344556677890000"
         };
         try {
             setIsLoading(true);
@@ -36,7 +36,6 @@ const LoanApplication: FC = () => {
 
     const endRegistration = localStorage.getItem('endRegistration');
 
-
     return (
         <div className="wrapper">
             <Header />
@@ -45,7 +44,7 @@ const LoanApplication: FC = () => {
                     {endRegistration ? <SuccessfulMessage
                         title={'Wait for a decision on the application'}
                         message={'The answer will come to your mail within 10 minutes'}
-                    /> : <FormApplication onSubmitFormApplication={onSubmitFormApplication} />}
+                    /> : <FormApplication isLoading={isLoading} onSubmitFormApplication={onSubmitFormApplication} />}
                 </div>
             </main>
             <Footer />

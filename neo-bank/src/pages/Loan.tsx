@@ -93,8 +93,24 @@ const Loan: FC = () => {
                                         message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
                                     />
                                 </section>
-                                : <section ref={ref}>
-                                    <CreditOffers isLoading={isLoading} offers={offers} onSubmitOffers={onSubmitOffers} />
+                                : <section ref={ref} className={"offers"}>
+                                    {offers.map((card, index) => {
+                                        return (
+                                            <CreditOffers
+                                                key={index}
+                                                applicationId={card.applicationId}
+                                                requestedAmount={card.requestedAmount}
+                                                totalAmount={card.totalAmount}
+                                                term={card.term}
+                                                monthlyPayment={card.monthlyPayment}
+                                                rate={card.rate}
+                                                isInsuranceEnabled={card.isInsuranceEnabled}
+                                                isSalaryClient={card.isSalaryClient}
+                                                isLoading={isLoading}
+                                                onSubmitOffers={onSubmitOffers}
+                                            />
+                                        );
+                                    })}
                                 </section>
                     }
                 </div>

@@ -114,9 +114,9 @@
 
     @media (max-width:1300px) {
         & {
-            width: 98%;
-            margin-left: 1%;
-            margin-right: 1%;
+            width: 94%;
+            margin-left: 3%;
+            margin-right: 3%;
         }
     }
 
@@ -124,6 +124,10 @@
     @media (max-width:965px) {
         &__amount {
             margin-left: 0px;
+        }
+
+        & &__title {
+            width: 100%;
         }
     }
 

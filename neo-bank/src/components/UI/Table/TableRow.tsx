@@ -20,22 +20,22 @@ const TableRow: FC<TTableRowProps> = ({
 }) => {
     return (
         <tr>
-            <td>
+            <td data-label="NUMBER">
                 {number}
             </td>
-            <td>
+            <td data-label="DATE">
                 {date}
             </td>
-            <td>
+            <td data-label="TOTAL PAYMENT">
                 {totalPayment}
             </td>
-            <td>
+            <td data-label="INTEREST PAYMENT">
                 {interestPayment}
             </td>
-            <td>
+            <td data-label="DEBT PAYMENT">
                 {debtPayment}
             </td>
-            <td>
+            <td data-label="REMAINING DEBT">
                 {remainingDebt}
             </td>
         </tr>

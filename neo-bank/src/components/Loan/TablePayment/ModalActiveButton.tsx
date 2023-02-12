@@ -14,7 +14,7 @@ const ModalActiveButton: FC = () => {
                 </Button>
                 <div>
                     <input type="checkbox" id="payment" className="custom-checkbox" />
-                    <label htmlFor="payment">I agree with the payment schedule</label>
+                    <label htmlFor="payment" className="label-checkbox">I agree with the payment schedule</label>
                     <Button className="send">
                         Send
                     </Button>
@@ -42,19 +42,3 @@ const ModalActiveButton: FC = () => {
 };
 
 export { ModalActiveButton };
-
- {/* <div className="modal__wrapper">
-                    <div className="modal__title">
-                        <h2>Deny application</h2>
-                        <img src={close} alt="close" onClick={() => setModalActive(false)} />
-                    </div>
-                    <p className="modal__description">You exactly sure, you want to cancel this application?</p>
-                    <div className="modal__btn">
-                        <Button className="deny">
-                            Deny
-                        </Button>
-                        <Button className="send" onClick={() => setModalActive(false)}>
-                            Cancel
-                        </Button>
-                    </div>
-                </div> */}

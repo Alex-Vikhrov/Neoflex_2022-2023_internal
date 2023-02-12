@@ -37,24 +37,6 @@ const applicationId = localStorage.getItem('applicationId');
 const sendFormLoan = (values) => axios.post('http://localhost:8080/application', values, { headers: { 'Content-Type': 'application/json' } });
 const sendOffers = (values) => axios.post('http://localhost:8080/application/apply', values, { headers: { 'Content-Type': 'application/json' } });
 const sendFormApplication = (values) => {
-    console.log(values);
-    // const data = {
-    //     gender: values.gender,
-    //     maritalStatus: values.maritalStatus,
-    //     dependentAmount: values.dependentAmount,
-    //     passportIssueDate: values.passportIssueDate,
-    //     passportIssueBranch: values.passportIssueBranch,
-    //     employment: {
-    //         employmentStatus: values.employmentStatus,
-    //         employerINN: values.employerINN,
-    //         salary: values.salary,
-    //         position: values.position,
-    //         workExperienceTotal: values.workExperienceTotal,
-    //         workExperienceCurrent: values.workExperienceCurrent
-    //     },
-    //     account: values.account
-    // };
-    // console.log(data);
     return axios.put(`http://localhost:8080/application/registration/${applicationId}`, values);
 };
 

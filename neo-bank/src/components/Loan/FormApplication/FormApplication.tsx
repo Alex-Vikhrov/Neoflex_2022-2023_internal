@@ -1,4 +1,4 @@
-import { Button, Input, Label, Select } from "components";
+import { Button, Loader } from "components";
 import { FC } from "react";
 import star from 'img/star.svg';
 import { CustomizeCard, CustomizeTitle } from "../CustomizeCard";
@@ -19,10 +19,9 @@ const initialValues = {
     position: '',
     workExperienceTotal: '',
     workExperienceCurrent: '',
-    account: '11223344556677889900',
 };
 
-const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApplication }) => {
+const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> = ({ isLoading, onSubmitFormApplication }) => {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues,
         validationSchema: formApplicationSchema,
@@ -36,7 +35,6 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             htmlFor: 'gender',
             onChange: handleChange,
             onBlur: handleBlur,
-            value: values.gender,
             img: star,
             id: 'gender',
             placeholder: '',
@@ -49,12 +47,12 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'MALE',
-                    value: 'MALE'
+                    value: 'MALE',
                 },
                 {
                     id: 2,
                     text: 'FAMALE',
-                    value: 'FAMALE'
+                    value: 'FAMALE',
                 },
             ],
         },
@@ -76,22 +74,22 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'MARRIED',
-                    value:'MARRIED'
+                    value: 'MARRIED',
                 },
                 {
                     id: 2,
                     text: 'DIVORCED',
-                    value: 'DIVORCED'
+                    value: 'DIVORCED',
                 },
                 {
                     id: 3,
                     text: 'SINGLE',
-                    value:'SINGLE'
+                    value: 'SINGLE',
                 },
                 {
                     id: 4,
                     text: 'WIDOW_WIDOWER',
-                    value: 'WIDOW_WIDOWER'
+                    value: 'WIDOW_WIDOWER',
                 },
             ],
         },
@@ -101,6 +99,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             htmlFor: 'dependentAmount',
             onChange: handleChange,
             onBlur: handleBlur,
+            value: values.dependentAmount,
             img: star,
             id: 'dependentAmount',
             placeholder: '',
@@ -127,7 +126,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             onBlur: handleBlur,
             errors: errors.passportIssueBranch,
             touched: touched.passportIssueBranch,
-            maxLength: 7,
+            maxLength: 6,
             label: 'Division code',
             htmlFor: 'passportIssueBranch',
             img: star,
@@ -153,28 +152,28 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'UNEMPLOYED',
-                    value: 'UNEMPLOYED'
+                    value: 'UNEMPLOYED',
                 },
                 {
                     id: 2,
                     text: 'SELF_EMPLOYED',
-                    value: 'SELF_EMPLOYED'
+                    value: 'SELF_EMPLOYED',
                 },
                 {
                     id: 3,
                     text: 'EMPLOYED',
-                    value: 'EMPLOYED'
+                    value: 'EMPLOYED',
                 },
                 {
                     id: 4,
                     text: 'BUSINESS_OWNER',
-                    value: 'BUSINESS_OWNER'
+                    value: 'BUSINESS_OWNER',
                 },
             ],
         },
         {
             id: 'employerINN',
-            type: 'number',
+            type: 'text',
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
@@ -203,7 +202,6 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
             id: 'position',
             type: 'text',
             placeholder: 'Select Date and Time',
-            value: values.position,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.position,
@@ -220,22 +218,22 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                 {
                     id: 1,
                     text: 'WORKER',
-                    value:'WORKER'
+                    value: 'WORKER',
                 },
                 {
                     id: 2,
                     text: 'MID_MANAGER',
-                    value: 'MID_MANAGER'
+                    value: 'MID_MANAGER',
                 },
                 {
                     id: 3,
                     text: 'TOP_MANAGER',
-                    value: 'TOP_MANAGER'
+                    value: 'TOP_MANAGER',
                 },
                 {
                     id: 4,
                     text: 'OWNER',
-                    value: 'OWNER'
+                    value: 'OWNER',
                 },
             ],
         },
@@ -271,7 +269,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
 
     return (
         <CustomizeCard>
-            <form className="form-application" onSubmit={handleSubmit}>
+            <form className={isLoading ? "form-application load" : "form-application"} onSubmit={handleSubmit}>
                 <CustomizeTitle title={"Continuation of the application"} step={2} />
                 <FieldFormApplication initialValue={formContact} />
                 <h3>Employment</h3>
@@ -285,6 +283,7 @@ const FormApplication: FC<{ onSubmitFormApplication: any }> = ({ onSubmitFormApp
                     </Button>
                 </div>
             </form>
+            {isLoading && <Loader />}
         </CustomizeCard>
     );
 };

@@ -7,11 +7,9 @@ type TSelectProps = {
     htmlFor: string;
     name: string;
     onChange: ChangeEventHandler<HTMLSelectElement>;
-    options: Array<IOptions>;
+    options: Array<any>;
     disabled?: boolean;
 }
-
-// interface TSelectProps2 extends Select
 
 const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options, disabled }) => {
     return (
@@ -28,8 +26,8 @@ const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options,
                             key={option.id}
                             value={option.value}
                         >
+                            {/* {option.text} */}
                             {option.text}
-                            {/* {option.value} */}
                         </option>
                     );
                 })
