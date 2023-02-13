@@ -4,15 +4,12 @@ import './pinCodeInput.scss';
 
 
 type TPinCodeInputProps = {
-    // digits: Array<string>;
-    // changeHandler: any;
-    id: string,
-    onChange: any,
-    onBlur: any,
-    // onFocus: any,
-    value: any,
-    maxLength: number,
-}
+    id: string;
+    onChange: (e: React.ChangeEvent<any>) => void;
+    onBlur: (e: React.FocusEvent<any, Element>) => void;
+    value: string | number;
+    maxLength: number;
+};
 
 const PinCodeInput: FC<TPinCodeInputProps> = ({ maxLength, id, onChange, onBlur, value }) => {
     return (

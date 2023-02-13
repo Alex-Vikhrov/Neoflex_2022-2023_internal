@@ -5,7 +5,7 @@ type TModalContentProps = {
     title: string;
     description: string;
     button: ReactNode;
-    setModalActive: any;
+    setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ModalContent: FC<TModalContentProps> = ({ title, description, button, setModalActive }) => {

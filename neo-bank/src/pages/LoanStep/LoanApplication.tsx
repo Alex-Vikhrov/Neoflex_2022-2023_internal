@@ -3,11 +3,26 @@ import { useAppDispatch } from 'hooks/redux';
 import { FC, useState } from 'react';
 import { fetchFormApplication } from 'store/reducers/creditCardSlice';
 
+type TValue = {
+    gender: string;
+    maritalStatus: string;
+    dependentAmount: number;
+    passportIssueDate: string;
+    passportIssueBranch: string;
+    employmentStatus: string;
+    employerINN: string;
+    salary: number;
+    position: string;
+    workExperienceTotal: number;
+    workExperienceCurrent: number;
+    account: string;
+};
+
 const LoanApplication: FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useAppDispatch();
 
-    const onSubmitFormApplication = async (values: any) => {
+    const onSubmitFormApplication = async (values: TValue) => {
         const data = {
             gender: values.gender,
             maritalStatus: values.maritalStatus,

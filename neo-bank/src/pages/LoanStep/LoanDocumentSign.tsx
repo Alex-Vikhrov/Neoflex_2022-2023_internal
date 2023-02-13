@@ -4,8 +4,8 @@ import { FC, useState } from 'react';
 import file from 'img/File_dock_duotone.svg';
 
 const LoanDocumentSign: FC = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [checked, setChecked] = useState(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(false)
     const handleClick = () => setChecked(!checked);
 
     const onSubmitFileSign = async () => {

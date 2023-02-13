@@ -16,7 +16,7 @@ export interface IThead {
 
 const TablePayment: FC<{
     onTableUpdate: any;
-    onSubmitTableDocument: any,
+    onSubmitTableDocument: () => Promise<void>,
     table: Array<TTableRowProps>
 }> = ({ onTableUpdate, table, onSubmitTableDocument }) => {
     // const [sortField, setSortField] = useState("");
@@ -104,8 +104,6 @@ const TablePayment: FC<{
     //         onTableUpdate(sorted);
     //     }
     // };
-
-
 
     return (
         <CustomizeCard>

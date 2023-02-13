@@ -1,7 +1,7 @@
 import { api } from 'api/api';
-import { Button, Footer, Header, PinCodeInput, SuccessfulMessage } from 'components';
+import { Footer, Header, PinCodeInput, SuccessfulMessage } from 'components';
 import { useFormik } from 'formik';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect,} from 'react';
 import box from 'img/SurpriseImage.svg';
 import { Link } from 'react-router-dom';
 

@@ -6,7 +6,7 @@ import { Button, Input, Label, Select } from '../../UI';
 import { AmountSelect } from 'components';
 
 type TFormLoanProps = {
-    handleLoad: () => void;
+    handleLoad?: () => void;
     onSubmitFormLoan: any;
     isLoading?: boolean;
 };
@@ -23,7 +23,7 @@ const initialValues = {
     passportNumber: '',
 };
 
-const FormLoan: FC<TFormLoanProps> = ({ isLoading, handleLoad, onSubmitFormLoan }) => {
+const FormLoan: FC<TFormLoanProps> = ({ isLoading, onSubmitFormLoan }) => {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues,
         validationSchema: basicSchema,

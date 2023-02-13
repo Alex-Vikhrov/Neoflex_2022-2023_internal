@@ -1,13 +1,12 @@
 import { Button, Modal } from "components";
 import { FC, useState } from "react";
-import close from 'img/Close_square.svg';
 import { ModalContent } from "./ModalContent";
 import { Link } from "react-router-dom";
 
-const ModalActiveButton: FC<{ onSubmitTableDocument: any }> = ({ onSubmitTableDocument }) => {
-    const [modalActive, setModalActive] = useState(false);
-    const [modalActive_2, setModalActive_2] = useState(false);
-    const [checked, setChecked] = useState(false);
+const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void>}> = ({ onSubmitTableDocument }) => {
+    const [modalActive, setModalActive] = useState<boolean>(false);
+    const [modalActive_2, setModalActive_2] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(false);
     const handleClick = () => setChecked(!checked);
 
     return (

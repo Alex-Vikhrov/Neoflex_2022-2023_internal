@@ -1,19 +1,13 @@
 import { api } from 'api/api';
 import { Footer, Header, SuccessfulMessage, TablePayment } from 'components';
-import { useAppDispatch } from 'hooks/redux';
 import { FC, useEffect, useState } from 'react';
-// import { sendTableDocument } from 'store/reducers/creditCardSlice';
 
 const LoanDocument: FC = () => {
-    const [table, setTable] = useState<any>([]);
+    const [table, setTable] = useState<Array<any>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const dispatch = useAppDispatch();
-
 
     const fetchTable = async () => {
         const response = await api.fetchTableDocument().then(function (response: any) {
-            console.log(response);
-            
             return response.data.credit.paymentSchedule;
         });
         setTable(response);

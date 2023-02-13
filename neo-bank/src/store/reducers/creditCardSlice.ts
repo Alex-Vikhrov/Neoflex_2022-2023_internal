@@ -34,7 +34,7 @@ const initialState: CreditOffersCards = {
     applicationId: getOffersCardFromStorage(),
 };
 
-export const fetchFormLoan = createAsyncThunk<any, any, any>(
+export const fetchFormLoan = createAsyncThunk(
     'loan/fetchFormLoan',
     async (values: any, thunkAPI) => {
         const response = await api.sendFormLoan(values);
@@ -43,7 +43,7 @@ export const fetchFormLoan = createAsyncThunk<any, any, any>(
     }
 );
 
-export const fetchOffers = createAsyncThunk<any, any, any>(
+export const fetchOffers = createAsyncThunk(
     'loan/fetchOffers',
     async (values: any, thunkAPI) => {
         await api.sendOffers(values);
@@ -52,7 +52,7 @@ export const fetchOffers = createAsyncThunk<any, any, any>(
     }
 );
 
-export const fetchFormApplication = createAsyncThunk<any, any, any>(
+export const fetchFormApplication = createAsyncThunk(
     'loan/fetchFormApplication',
     async (values: any, thunkAPI) => {
         await api.sendFormApplication(values);
@@ -60,13 +60,6 @@ export const fetchFormApplication = createAsyncThunk<any, any, any>(
         return values;
     }
 );
-
-// export const sendTableDocument = createAsyncThunk(
-//     'loan/sendTableDocument',
-//     async () => {
-//         await api.sendTableDocument().then(() => { });
-//     }
-// );
 
 const creditOffersCardSlice = createSlice({
     name: 'offers',
