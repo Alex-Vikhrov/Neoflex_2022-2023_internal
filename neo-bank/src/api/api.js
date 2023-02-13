@@ -36,10 +36,24 @@ const applicationId = localStorage.getItem('applicationId');
 
 const sendFormLoan = (values) => axios.post('http://localhost:8080/application', values, { headers: { 'Content-Type': 'application/json' } });
 const sendOffers = (values) => axios.post('http://localhost:8080/application/apply', values, { headers: { 'Content-Type': 'application/json' } });
-const sendFormApplication = (values) => {
-    return axios.put(`http://localhost:8080/application/registration/${applicationId}`, values);
-};
+const sendFormApplication = (values) => axios.put(`http://localhost:8080/application/registration/${applicationId}`, values);
 
 const fetchTableDocument = () => axios.get(`http://localhost:8080/admin/application/${applicationId}`);
+const sendTableDocument = () => axios.post(`http://localhost:8080/document/${applicationId}`);
+const sendFileSign = () => axios.post(`http://localhost:8080/document/${applicationId}/sign`);
+const sendPinCode = (values) => axios.post(`http://localhost:8080/document/${applicationId}/sign/code`, values, { headers: { 'Content-Type': 'application/json' } });
 
-export const api = { fetchCurrencyList, fetchCurrency, fetchBusinessNews, updateRequest, subscribeEmail, sendFormLoan, sendOffers, sendFormApplication, fetchTableDocument };
+export const api = {
+    fetchCurrencyList,
+    fetchCurrency,
+    fetchBusinessNews,
+    updateRequest,
+    subscribeEmail,
+    sendFormLoan,
+    sendOffers,
+    sendFormApplication,
+    fetchTableDocument,
+    sendTableDocument,
+    sendFileSign,
+    sendPinCode
+};

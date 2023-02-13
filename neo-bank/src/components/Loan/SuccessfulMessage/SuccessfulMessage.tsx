@@ -1,10 +1,10 @@
 import { Button } from "components/UI";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import './successfulMessage.scss';
 
 type TSuccessfulMessageProps = {
     imaged?: boolean;
-    button?: boolean;
+    button?: ReactNode;
     src?: string;
     alt?: string;
     title: string;
@@ -12,13 +12,21 @@ type TSuccessfulMessageProps = {
     className?: string;
 };
 
-const SuccessfulMessage: FC<TSuccessfulMessageProps> = ({ imaged, button, title, message, className }) => {
+const SuccessfulMessage: FC<TSuccessfulMessageProps> = ({
+    imaged,
+    src,
+    alt,
+    button,
+    title,
+    message,
+    className
+}) => {
     return (
         <div className={className || "successful"}>
-            {imaged ? <img src="" alt="" /> : null}
+            {imaged ? <img className="successful__img" src={src} alt={alt} /> : null}
             <h2>{title}</h2>
             <p>{message}</p>
-            {button ? <Button>View other offers of our bank</Button> : null}
+            {button ? button : null}
 
         </div>
     );

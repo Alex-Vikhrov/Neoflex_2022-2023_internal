@@ -1,5 +1,4 @@
-import { FC, ReactNode, useState } from "react";
-import { Button } from "../Button";
+import { FC, ReactNode } from "react";
 import './modal.scss';
 
 type TModalProps = {

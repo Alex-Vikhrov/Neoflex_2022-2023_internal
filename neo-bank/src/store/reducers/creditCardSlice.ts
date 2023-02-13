@@ -61,6 +61,13 @@ export const fetchFormApplication = createAsyncThunk<any, any, any>(
     }
 );
 
+// export const sendTableDocument = createAsyncThunk(
+//     'loan/sendTableDocument',
+//     async () => {
+//         await api.sendTableDocument().then(() => { });
+//     }
+// );
+
 const creditOffersCardSlice = createSlice({
     name: 'offers',
     initialState,

@@ -2,9 +2,13 @@ import { Button, Modal } from "components";
 import { FC, useState } from "react";
 import close from 'img/Close_square.svg';
 import { ModalContent } from "./ModalContent";
+import { Link } from "react-router-dom";
 
-const ModalActiveButton: FC = () => {
+const ModalActiveButton: FC<{ onSubmitTableDocument: any }> = ({ onSubmitTableDocument }) => {
     const [modalActive, setModalActive] = useState(false);
+    const [modalActive_2, setModalActive_2] = useState(false);
+    const [checked, setChecked] = useState(false);
+    const handleClick = () => setChecked(!checked);
 
     return (
         <>
@@ -13,9 +17,9 @@ const ModalActiveButton: FC = () => {
                     Deny
                 </Button>
                 <div>
-                    <input type="checkbox" id="payment" className="custom-checkbox" />
+                    <input type="checkbox" id="payment" className="custom-checkbox" onChange={handleClick} checked={checked} />
                     <label htmlFor="payment" className="label-checkbox">I agree with the payment schedule</label>
-                    <Button className="send">
+                    <Button disabled={!checked} className={!checked ? "send disabled" : "send"} onClick={() => onSubmitTableDocument()}>
                         Send
                     </Button>
                 </div>
@@ -26,7 +30,7 @@ const ModalActiveButton: FC = () => {
                     description={"You exactly sure, you want to cancel this application?"}
                     button={
                         <>
-                            <Button className="deny" >
+                            <Button className="deny" onClick={() => setModalActive_2(true)}>
                                 Deny
                             </Button>
                             <Button className="send" onClick={() => setModalActive(false)}>
@@ -35,6 +39,27 @@ const ModalActiveButton: FC = () => {
                         </>
                     }
                     setModalActive={setModalActive}
+                />
+            </Modal>
+            <Modal active={modalActive_2} setModalActive={setModalActive_2}>
+                <ModalContent
+                    title={"Deny application"}
+                    description={"Your application has been deny!"}
+                    button={
+                        <>
+                            <Link
+                                className="oops__btn"
+                                to='/'
+                                onClick={() => {
+                                    localStorage.clear();
+                                    setModalActive_2(false)
+                                }}
+                            >
+                                Go home
+                            </Link>
+                        </>
+                    }
+                    setModalActive={setModalActive_2}
                 />
             </Modal>
         </>

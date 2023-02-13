@@ -4,10 +4,10 @@ import './table.scss';
 export interface TTableRowProps {
     number: number;
     date: string;
-    totalPayment: string;
-    interestPayment: string;
-    debtPayment: string;
-    remainingDebt: string;
+    totalPayment: number;
+    interestPayment: number;
+    debtPayment: number;
+    remainingDebt: number;
 };
 
 const TableRow: FC<TTableRowProps> = ({

@@ -6,18 +6,21 @@ import { IThead } from 'components/Loan/TablePayment/TablePayment';
 type TTableProps = {
     table: Array<TTableRowProps>;
     thead: Array<IThead>;
-};
+    handleSortingChange?: any;
+    handleChangeSortTableNumber?: any;
+}; 
 
-const Table: FC<TTableProps> = ({ table, thead }) => {
+
+const Table: FC<TTableProps> = ({ table, thead, handleSortingChange, handleChangeSortTableNumber }) => {
     return (
         <table className='table'>
             <thead>
                 <tr>
                     {thead.map((th) => {
                         return (
-                            <th key={th.id}>
+                            <th key={th.title}>
                                 {th.title}
-                                <img className='arrow' src={th.arrow} alt="sort" />
+                                <img className='arrow' src={th.arrow} alt="sort" onClick={th.onSort} />
                             </th>
                         );
                     })}

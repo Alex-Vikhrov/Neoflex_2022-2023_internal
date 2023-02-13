@@ -7,4 +7,4 @@ export interface IOffersCards {
     rate: number;
     isInsuranceEnabled: boolean;
     isSalaryClient: boolean;
-}
+};

@@ -6,9 +6,9 @@ export const formApplicationSchema = yup.object().shape({
     dependentAmount: yup.string().ensure().required('Select one of the options'),
     passportIssueDate: yup.string().ensure().required('Incorrect date of passport issue date'),
     passportIssueBranch: yup.string()
-        .length(6, 'The series must be 7 digits')
+        .length(6, 'The series must be 6 digits')
         .ensure()
-        .min(6, 'The series must be 7 digits'),
+        .min(6, 'The series must be 6 digits'),
     employmentStatus: yup.string().ensure().required('Select one of the options'),
     employerINN: yup.string()
         .length(12, 'Department code must be 12 digits')

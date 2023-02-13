@@ -18,4 +18,14 @@ button {
         transition: 0.2s;
         background-color: #7796C0;
     }
+
+    &.disabled {
+        cursor: not-allowed;
+        background-color: #5a5a5a;
+
+        &:hover:not([disabled]) {
+            transition: 0.2s;
+            background-color: #7796C0;
+        }
+    }
 }

@@ -1,6 +1,12 @@
+@import '../../../scss/mixin';
+
 .successful {
     margin-top: 180px;
-    margin-bottom: 238px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     &-offers {
         margin-top: 48px;
@@ -25,6 +31,26 @@
             font-size: 1.6rem;
             font-weight: 500;
             color: #4F5665;
+        }
+    }
+
+    &__btn {
+        margin-top: 32px;
+        width: 268px;
+        height: 50px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        @include flex_justify-center;
+        align-items: center;
+        text-decoration: none;
+        background-color: #003CFF;
+        color: #fff;
+        border: none;
+        border-radius: 16px;
+        &:hover {
+            transition: 0.2s;
+            background-color: #7796C0;
         }
     }
 
