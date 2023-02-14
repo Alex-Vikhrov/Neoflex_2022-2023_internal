@@ -3,7 +3,7 @@ import './modal.scss';
 
 type TModalProps = {
     active: boolean;
-    setModalActive: any;
+    setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode | string;
 }
 

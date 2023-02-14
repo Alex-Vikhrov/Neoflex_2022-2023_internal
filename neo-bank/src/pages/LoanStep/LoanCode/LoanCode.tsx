@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import { FC, useEffect,} from 'react';
 import box from 'img/SurpriseImage.svg';
 import { Link } from 'react-router-dom';
+import './loanCode.scss';
 
 const initialValues = {
     digit_0: '',
@@ -19,7 +20,6 @@ const LoanCode: FC = () => {
         onSubmit: async (values) => {
             const pin = `${values.digit_0}${values.digit_1}${values.digit_2}${values.digit_3}`;
             localStorage.setItem('pinCode', JSON.stringify(pin));
-            console.log(pin);
             return await api.sendPinCode(pin);
         },
     });

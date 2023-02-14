@@ -51,7 +51,7 @@ const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void>}> = ({ 
                                 to='/'
                                 onClick={() => {
                                     localStorage.clear();
-                                    setModalActive_2(false)
+                                    setModalActive_2(false);
                                 }}
                             >
                                 Go home

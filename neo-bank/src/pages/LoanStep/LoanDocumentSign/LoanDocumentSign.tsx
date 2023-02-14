@@ -2,6 +2,7 @@ import { api } from 'api/api';
 import { Footer, Header, CustomizeTitle, Button, SuccessfulMessage, Input } from 'components';
 import { FC, useState } from 'react';
 import file from 'img/File_dock_duotone.svg';
+import './loanDocumentSign.scss';
 
 const LoanDocumentSign: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);

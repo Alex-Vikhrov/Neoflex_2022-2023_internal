@@ -11,6 +11,29 @@ interface CreditOffersCards {
 
 };
 
+type TOffersValue = {
+    requestedAmount: number,
+    totalAmount: number,
+    term: number,
+    monthlyPayment: number,
+    rate: number,
+    isInsuranceEnabled: boolean,
+    isSalaryClient: boolean,
+    applicationId: number,
+};
+
+type TFormLoan = {
+    amount: number;
+    term: string;
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    email: string;
+    birthdate: string;
+    passportSeries: string;
+    passportNumber: string;
+}
+
 const getOffersFromStorage = () => {
     try {
         return JSON.parse(localStorage.getItem('offers') || '');
@@ -36,8 +59,9 @@ const initialState: CreditOffersCards = {
 
 export const fetchFormLoan = createAsyncThunk(
     'loan/fetchFormLoan',
-    async (values: any, thunkAPI) => {
+    async (values: TFormLoan) => {
         const response = await api.sendFormLoan(values);
+        console.log(values);
         localStorage.setItem('offers', JSON.stringify(response.data));
         return response.data;
     }
@@ -45,7 +69,8 @@ export const fetchFormLoan = createAsyncThunk(
 
 export const fetchOffers = createAsyncThunk(
     'loan/fetchOffers',
-    async (values: any, thunkAPI) => {
+    async (values: TOffersValue) => {
+        console.log(values);
         await api.sendOffers(values);
         localStorage.setItem('applicationId', JSON.stringify(values.applicationId));
         return values.applicationId;
@@ -54,7 +79,7 @@ export const fetchOffers = createAsyncThunk(
 
 export const fetchFormApplication = createAsyncThunk(
     'loan/fetchFormApplication',
-    async (values: any, thunkAPI) => {
+    async (values: any) => {
         await api.sendFormApplication(values);
         localStorage.setItem('endRegistration', JSON.stringify(values));
         return values;
