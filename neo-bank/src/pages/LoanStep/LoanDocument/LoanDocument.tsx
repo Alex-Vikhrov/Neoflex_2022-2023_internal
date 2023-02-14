@@ -1,6 +1,8 @@
 import { api } from 'api/api';
 import { Footer, Header, SuccessfulMessage, TablePayment } from 'components';
+import { IThead } from 'components/Loan/TablePayment/TablePayment';
 import { FC, useEffect, useState } from 'react';
+import arrow from 'img/Arrow_drop_down.svg';
 
 const LoanDocument: FC = () => {
     const [table, setTable] = useState<Array<any>>([]);

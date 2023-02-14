@@ -10,8 +10,9 @@ export interface IThead {
     id: number;
     title: string;
     arrow: string;
-    sortable: boolean;
+    sortable?: boolean;
     onSort?: any;
+    accessor?: string;
 }
 
 const TablePayment: FC<{
@@ -19,22 +20,21 @@ const TablePayment: FC<{
     onSubmitTableDocument: () => Promise<void>,
     table: Array<TTableRowProps>
 }> = ({ onTableUpdate, table, onSubmitTableDocument }) => {
-    // const [sortField, setSortField] = useState("");
-    // const [order, setOrder] = useState("asc");
-
     const [sorting, setSorting] = useState({
         isNumberSorted: false,
         isDateSort: false,
+        isTotalPayment: false,
         isInterestPayment: false,
     });
 
+    //TO DO я исправлю этот ужас 
     const sortTable = () => {
         if (sorting.isNumberSorted) {
-            const sort = table.sort((a, b) => a.number - b.number);
-            onTableUpdate([...sort]);
+            const sort = [...table].sort((a, b) => a.number - b.number);
+            onTableUpdate(sort);
         } else {
-            const sort = table.sort((a, b) => b.number - a.number);
-            onTableUpdate([...sort]);
+            const sort = [...table].sort((a, b) => b.number - a.number);
+            onTableUpdate(sort);
         }
         setSorting((prevFilters) => {
             return {
@@ -45,12 +45,13 @@ const TablePayment: FC<{
     };
 
     const sortTable_INTEREST_PAYMENT = () => {
+
         if (sorting.isInterestPayment) {
-            const sort = table.sort((a, b) => a.interestPayment - b.interestPayment);
-            onTableUpdate([...sort]);
+            const sort = [...table].sort((a, b) => a.interestPayment - b.interestPayment);
+            onTableUpdate(sort);
         } else {
-            const sort = table.sort((a, b) => b.interestPayment - a.interestPayment);
-            onTableUpdate([...sort]);
+            const sort = [...table].sort((a, b) => b.interestPayment - a.interestPayment);
+            onTableUpdate(sort);
         }
         setSorting((prevFilters) => {
             return {
@@ -60,50 +61,30 @@ const TablePayment: FC<{
         })
     };
 
+    const sortTableTotalPayment = () => {
+        if (sorting.isTotalPayment) {
+            const sort = [...table].sort((a, b) => a.totalPayment - b.totalPayment);
+            onTableUpdate(sort);
+        } else {
+            const sort = [...table].sort((a, b) => b.totalPayment - a.totalPayment);
+            onTableUpdate(sort);
+        }
+        setSorting((prevFilters) => {
+            return {
+                ...prevFilters,
+                isTotalPayment: !prevFilters.isTotalPayment
+            }
+        })
+    };
+
     const theadPayment: Array<IThead> = [
-        { id: 1, title: 'NUMBER', arrow: arrow, onSort: sortTable, sortable: true },
-        { id: 2, title: 'DATE', arrow: arrow, sortable: true },
-        { id: 3, title: 'TOTAL PAYMENT', arrow: arrow, sortable: true },
-        { id: 4, title: 'INTEREST PAYMENT', arrow: arrow, onSort: sortTable_INTEREST_PAYMENT, sortable: true },
-        { id: 5, title: 'DEBT PAYMENT', arrow: arrow, sortable: true },
-        { id: 6, title: 'REMAINING DEBT', arrow: arrow, sortable: true },
+        { id: 1, title: 'NUMBER', arrow: arrow, onSort: sortTable },
+        { id: 2, title: 'DATE', arrow: arrow, },
+        { id: 3, title: 'TOTAL PAYMENT', arrow: arrow, onSort: sortTableTotalPayment },
+        { id: 4, title: 'INTEREST PAYMENT', arrow: arrow, onSort: sortTable_INTEREST_PAYMENT },
+        { id: 5, title: 'DEBT PAYMENT', arrow: arrow },
+        { id: 6, title: 'REMAINING DEBT', arrow: arrow },
     ];
-
-    // const handleSorting = (sortField: string, sortOrder: string) => {
-    //     if (sortField) {
-    //         const sorted = [...table].sort((a: any, b: any) => {
-    //             return (
-    //                 a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
-    //                     numeric: true,
-    //                 }) * (sortOrder === "asc" ? 1 : -1)
-    //             );
-    //         });
-    //         onTableUpdate(sorted);
-    //     }
-    // };
-
-    // const handleSortingChange = (title: string) => {
-    //     const sortOrder = title === sortField && order === "asc" ? "desc" : "asc";
-    //     setSortField(title);
-    //     setOrder(sortOrder);
-    //     handleSorting(title, sortOrder);
-    // };
-
-    // const handleChangeSortTableNumber = (sortField: any, sortOrder: any) => {
-    //     if (sortField) {
-    //         const sorted = [...table].sort((a: any, b: any) => {
-    //             if (a[sortField] === null) return 1;
-    //             if (b[sortField] === null) return -1;
-    //             if (a[sortField] === null && b[sortField] === null) return 0;
-    //             return (
-    //                 a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
-    //                     numeric: true,
-    //                 }) * (sortOrder === "asc" ? 1 : -1)
-    //             );
-    //         });
-    //         onTableUpdate(sorted);
-    //     }
-    // };
 
     return (
         <CustomizeCard>
@@ -112,8 +93,6 @@ const TablePayment: FC<{
                 <Table
                     table={table}
                     thead={theadPayment}
-                    // handleSortingChange={handleSortingChange}
-                    // handleChangeSortTableNumber={handleChangeSortTableNumber}
                 />
                 <ModalActiveButton onSubmitTableDocument={onSubmitTableDocument} />
             </div>
