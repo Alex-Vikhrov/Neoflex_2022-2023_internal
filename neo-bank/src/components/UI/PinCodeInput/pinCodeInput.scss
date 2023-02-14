@@ -1,25 +1,4 @@
 // вынести в отдельный файл pin
-
-.pin-wrapper{
-    margin-top: 120px;
-    margin-bottom: 95px;
-}
-.title-pin{
-    margin-bottom: 32px;
-    font-size: 3rem;
-    font-weight: 700;
-    word-break: break-word;
-    text-align: center;
-    color: #1C1C1E;
-}
-
-.form-pin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-}
-
 .pin {
     display: flex;
     &__input {
@@ -71,6 +50,4 @@
     .focus {
         visibility: hidden;
     }
-
-
 }
