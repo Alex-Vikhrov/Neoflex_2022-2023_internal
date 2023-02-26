@@ -5,4 +5,3 @@ export { CreditOffers } from './CreditOffers';
 export { FormApplication } from './FormApplication';
 export { FormLoan } from './FormLoan';
 export { TablePayment } from './TablePayment';
-export { SuccessfulMessage } from './SuccessfulMessage';

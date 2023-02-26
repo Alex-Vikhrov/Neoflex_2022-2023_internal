@@ -1,9 +1,9 @@
 import { FC } from "react";
-import cardImage from 'img/cardImageLoan.svg';
+import cardImage from 'img/svg/cardImageLoan.svg';
 import { Button } from "components";
 import './description.scss';
-import { IOffersCards } from "types/IOffersCards";
 import { Link } from "react-router-dom";
+import { RouteNames } from "router/routes";
 
 type TDescriptionCard = {
     smoothScroll: () => void;
@@ -59,7 +59,7 @@ const DescriptionCard: FC<TDescriptionCard> = ({ applicationId, offers, smoothSc
                 </aside>
                 {
                     applicationId ?
-                        <Link className="description-card__link" to={`/loan/${applicationId}`}>
+                        <Link className="description-card__link" to={RouteNames.LOAN + `/${applicationId}`}>
                             Continue registration
                         </Link> :
                         <Button

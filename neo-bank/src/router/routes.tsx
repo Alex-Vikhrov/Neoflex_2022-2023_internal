@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Home, Loan, LoanApplication, LoanCode, LoanDocument, LoanDocumentSign, NotFound } from "../pages";
 
-enum RouteNames {
+export enum RouteNames {
     HOME = '/',
     LOAN = '/loan',
     NOT = '*',

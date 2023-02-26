@@ -1,34 +1,21 @@
-import { Button, Loader } from "components";
-import { FC } from "react";
 import star from 'img/svg/star.svg';
-import { CustomizeCard, CustomizeTitle } from "../CustomizeCard";
-import './formApplication.scss';
-import { useFormik } from "formik";
-import { FieldFormApplication } from "./FieldFormApplication";
-import { formApplicationSchema } from "utils/formApplicationValidate";
 
-const initialValues = {
-    gender: '',
-    maritalStatus: '',
-    dependentAmount: '',
-    passportIssueDate: '',
-    passportIssueBranch: '',
-    employmentStatus: '',
-    employerINN: '',
-    salary: '',
-    position: '',
-    workExperienceTotal: '',
-    workExperienceCurrent: '',
-};
-
-const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> = ({ isLoading, onSubmitFormApplication }) => {
-    const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
-        initialValues,
-        validationSchema: formApplicationSchema,
-        onSubmit: (values, args) => onSubmitFormApplication(values),
-    });
-
-    const formContact = [
+export const formContact: any = (
+    values: {
+        dependentAmount: any;
+        passportIssueDate: any;
+        passportIssueBranch: any;
+    },
+    handleChange: () => any,
+    handleBlur: () => any,
+    errors: {
+        passportIssueDate: any;
+        passportIssueBranch: any;
+    },
+    touched: {
+        passportIssueDate: any;
+        passportIssueBranch: any;
+    }) => [
         {
             type: 'gender',
             label: `What's your gender`,
@@ -94,7 +81,7 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
             ],
         },
         {
-            type: 'dependentAmount',
+            type: 'number',
             label: `Your number of dependents`,
             htmlFor: 'dependentAmount',
             onChange: handleChange,
@@ -103,28 +90,6 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
             img: star,
             id: 'dependentAmount',
             placeholder: '',
-            selected: true,
-            options: [
-                {
-                    id: 0,
-                    text: '',
-                },
-                {
-                    id: 1,
-                    text: '0',
-                    value: '0',
-                },
-                {
-                    id: 2,
-                    text: '1',
-                    value: '1',
-                },
-                {
-                    id: 3,
-                    text: '3',
-                    value: '3',
-                },
-            ],
         },
         {
             id: 'passportIssueDate',
@@ -143,7 +108,7 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
             id: 'passportIssueBranch',
             type: 'text',
             placeholder: '000000',
-            value: isNaN(+values.passportIssueBranch) ? '' : values.passportIssueBranch,
+            value: values.passportIssueBranch,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.passportIssueBranch,
@@ -155,12 +120,39 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
         },
     ];
 
-    const employment = [
+
+export const employment: any = (
+    values: {
+        employerINN: any;
+        salary: any;
+        position: any;
+        workExperienceTotal: any;
+        workExperienceCurrent: any
+
+    },
+    handleChange: () => any,
+    handleBlur: () => any,
+    errors: {
+        employerINN: any;
+        salary: any;
+        position: any;
+        workExperienceTotal: any;
+        workExperienceCurrent: any
+
+
+    },
+    touched: {
+        employerINN: any;
+        salary: any;
+        position: any;
+        workExperienceTotal: any;
+        workExperienceCurrent: any
+    }) => [
         {
             id: 'employmentStatus',
             type: 'employmentStatus',
-            onChange: handleChange,
-            onBlur: handleBlur,
+            onChange: () => handleChange(),
+            onBlur: () => handleBlur(),
             placeholder: '',
             label: `Your employment status`,
             htmlFor: 'employmentStatus',
@@ -199,7 +191,7 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
-            value: isNaN(+values.employerINN) ? '' : values.employerINN,
+            value: values.employerINN,
             errors: errors.employerINN,
             touched: touched.employerINN,
             maxLength: 12,
@@ -261,9 +253,9 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
         },
         {
             id: 'workExperienceTotal',
-            type: 'text',
+            type: 'number',
             placeholder: 'For example 10',
-            value: isNaN(+values.workExperienceTotal) ? '' : values.workExperienceTotal,
+            value: values.workExperienceTotal,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.workExperienceTotal,
@@ -275,9 +267,9 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
         },
         {
             id: 'workExperienceCurrent',
-            type: 'text',
+            type: 'number',
             placeholder: 'For example 2',
-            value: isNaN(+values.workExperienceCurrent) ? '' : values.workExperienceCurrent,
+            value: values.workExperienceCurrent,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.workExperienceCurrent,
@@ -288,26 +280,3 @@ const FormApplication: FC<{ isLoading: boolean, onSubmitFormApplication: any }> 
             img: star,
         },
     ];
-
-    return (
-        <CustomizeCard>
-            <form className={isLoading ? "form-application load" : "form-application"} onSubmit={handleSubmit}>
-                <CustomizeTitle title={"Continuation of the application"} step={2} />
-                <FieldFormApplication initialValue={formContact} />
-                <h3>Employment</h3>
-                <FieldFormApplication initialValue={employment} />
-                <div className="form__button-container">
-                    <Button
-                        className={"form__button"}
-                        type="submit"
-                    >
-                        Continue
-                    </Button>
-                </div>
-            </form>
-            {isLoading && <Loader />}
-        </CustomizeCard>
-    );
-};
-
-export { FormApplication };

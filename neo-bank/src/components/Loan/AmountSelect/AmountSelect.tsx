@@ -1,7 +1,6 @@
-import { Input } from "components";
+import { Range } from "components";
 import { FC } from "react"
-import { CustomizeTitle } from "./CustomizeTitle";
-import './amount.scss';
+import { CustomizeTitle } from "../CustomizeCard/CustomizeTitle";
 
 type TProps = {
     ref?: React.RefObject<HTMLDivElement>;
@@ -23,32 +22,14 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
                     step={1}
                 />
                 <div className="customize-card__select-amount">
-                    <h3>Select amount</h3>
-                    <Input
+                    <Range
+                        title={"Select amount"}
+                        min={"15 000"}
+                        max={"600 000"}
                         id={id}
-                        type={type}
-                        className={'amoutSum'}
-                        value={!value ? 15000 : value }
-                        placeholder={""}
+                        value={value}
                         onBlur={onBlur}
-                        onChange={onChange}
-                    />
-                    <Input
-                        id={id}
-                        className={'amountRange'}
-                        type={'range'}
-                        min={15000}
-                        max={600000}
-                        step={1000}
-                        value={!value ? 15000 : value}
-                        placeholder={""}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                    />
-                    <div className="amount__min-max">
-                        <span>15 000</span>
-                        <span>600 000</span>
-                    </div>
+                        onChange={onChange} />
                 </div>
             </div>
             <div className="dividers dashed"></div>
@@ -61,4 +42,4 @@ const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange,
     );
 };
 
-export { AmountSelect }
+export { AmountSelect };

@@ -1,4 +1,4 @@
-import { Input, Label, Select } from 'components';
+import { Select } from 'components';
 import { FC } from 'react';
 
 type TFieldFormApplication = {
@@ -11,7 +11,7 @@ const FieldFormApplication: FC<TFieldFormApplication> = ({ initialValue }) => {
             {initialValue.map((item) => {
                 return (
                     <div key={item.id}>
-                        <Label htmlFor={item.htmlFor} className={""}>
+                        <label htmlFor={item.htmlFor} className={""}>
                             {item.label} {item.img === null ? '' : <img className="star" src={item.img} alt="star" />}
                             {item.selected ?
                                 <Select
@@ -22,7 +22,7 @@ const FieldFormApplication: FC<TFieldFormApplication> = ({ initialValue }) => {
                                     options={item.options}
                                 />
                                 :
-                                <Input
+                                <input
                                     id={item.id}
                                     type={item.type}
                                     placeholder={item.placeholder}
@@ -37,7 +37,7 @@ const FieldFormApplication: FC<TFieldFormApplication> = ({ initialValue }) => {
                             }
                             {item.errors && item.touched && <span className='errors-icon'></span>}
                             {!item.errors && item.touched ? <span className='ok-icon'></span> : ''}
-                        </Label>
+                        </label>
                         {item.errors && item.touched && <p className='errors'>{item.errors}</p>}
                     </div>
                 );

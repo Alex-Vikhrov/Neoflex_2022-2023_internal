@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import close from 'img/Close_square.svg';
+import close from 'img/svg/Close_square.svg';
 
 type TModalContentProps = {
     title: string;

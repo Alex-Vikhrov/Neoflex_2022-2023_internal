@@ -1,8 +1,8 @@
-import Money from 'img/Money_duotone.svg';
-import Calendar from 'img/Calendar_duotone.svg';
-import Clock from 'img/Clock_duotone.svg';
-import Bag from 'img/Bag_duotone.svg';
-import CreditCard from 'img/CreditCard_duotone.svg';
+import Money from 'img/svg/Money_duotone.svg';
+import Calendar from 'img/svg/Calendar_duotone.svg';
+import Clock from 'img/svg/Clock_duotone.svg';
+import Bag from 'img/svg/Bag_duotone.svg';
+import CreditCard from 'img/svg/CreditCard_duotone.svg';
 
 export interface IAbout {
     id: number;

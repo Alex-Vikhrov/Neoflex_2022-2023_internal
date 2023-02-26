@@ -4,8 +4,6 @@ import {
     Cashback,
     DescriptionCard,
     FAQ,
-    Footer,
-    Header,
     InfoGetCard,
     Loader,
     Rates,
@@ -15,6 +13,7 @@ import {
     CreditOffers,
     SuccessfulMessage,
     ToolTip,
+    Layout,
 } from "../components";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { fetchFormLoan, fetchOffers } from "store/reducers/creditCardSlice";
@@ -39,9 +38,21 @@ const Loan: FC = () => {
     };
 
     const onSubmitFormLoan = async (values: any) => {
+        const data = {
+            amount: values.amount,
+            term: values.term,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            middleName: values.middleName === '' ? null : values.middleName,
+            email: values.email,
+            birthdate: values.birthdate,
+            passportSeries: values.passportSeries,
+            passportNumber: values.passportNumber,
+        };
+
         try {
             setIsLoading(true);
-            await dispatch(fetchFormLoan(values));
+            await dispatch(fetchFormLoan(data));
         } catch (e) {
             console.log(e);
         } finally {
@@ -61,62 +72,56 @@ const Loan: FC = () => {
     };
 
     return (
-        <div className="wrapper">
-            <Header />
-            <main>
-                <div className="wrapper__main">
-                    <DescriptionCard applicationId={applicationId} offers={offers} smoothScroll={smoothScroll} />
+        <Layout>
+            <DescriptionCard applicationId={applicationId} offers={offers} smoothScroll={smoothScroll} />
 
-                    <section className="functions-card">
-                        <Tabs tabs={[
-                            { id: 1, label: 'About card', component: <About /> },
-                            { id: 2, label: 'Rates and conditions', component: <Rates /> },
-                            { id: 3, label: 'Cashback', component: <Cashback /> },
-                            { id: 4, label: 'FAQ', component: <FAQ />, }
-                        ]} />
-                    </section>
+            <section className="functions-card">
+                <Tabs tabs={[
+                    { id: 1, label: 'About card', component: <About /> },
+                    { id: 2, label: 'Rates and conditions', component: <Rates /> },
+                    { id: 3, label: 'Cashback', component: <Cashback /> },
+                    { id: 4, label: 'FAQ', component: <FAQ />, }
+                ]} />
+            </section>
 
-                    <InfoGetCard />
+            <InfoGetCard />
 
-                    {
-                        offers.length <= 0 ?
-                            <section ref={ref}>
-                                <CustomizeCard >
-                                    <FormLoan isLoading={isLoading} handleLoad={handleLoad} onSubmitFormLoan={onSubmitFormLoan} />
-                                    {isLoading && <Loader />}
-                                </CustomizeCard>
-                            </section> : applicationId ?
-                                <section ref={ref}>
-                                    <SuccessfulMessage
-                                        className="successful-offers"
-                                        title={"The preliminary decision has been sent to your email."}
-                                        message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
+            {
+                offers.length <= 0 ?
+                    <section ref={ref}>
+                        <CustomizeCard >
+                            <FormLoan isLoading={isLoading} handleLoad={handleLoad} onSubmitFormLoan={onSubmitFormLoan} />
+                            {isLoading && <Loader />}
+                        </CustomizeCard>
+                    </section> : applicationId ?
+                        <section ref={ref}>
+                            <SuccessfulMessage
+                                className="successful-offers"
+                                title={"The preliminary decision has been sent to your email."}
+                                message={"In the letter you can get acquainted with the preliminary decision on the credit card."}
+                            />
+                        </section>
+                        : <section ref={ref} className={"offers"}>
+                            {offers.map((card, index) => {
+                                return (
+                                    <CreditOffers
+                                        key={index}
+                                        applicationId={card.applicationId}
+                                        requestedAmount={card.requestedAmount}
+                                        totalAmount={card.totalAmount}
+                                        term={card.term}
+                                        monthlyPayment={card.monthlyPayment}
+                                        rate={card.rate}
+                                        isInsuranceEnabled={card.isInsuranceEnabled}
+                                        isSalaryClient={card.isSalaryClient}
+                                        isLoading={isLoading}
+                                        onSubmitOffers={onSubmitOffers}
                                     />
-                                </section>
-                                : <section ref={ref} className={"offers"}>
-                                    {offers.map((card, index) => {
-                                        return (
-                                            <CreditOffers
-                                                key={index}
-                                                applicationId={card.applicationId}
-                                                requestedAmount={card.requestedAmount}
-                                                totalAmount={card.totalAmount}
-                                                term={card.term}
-                                                monthlyPayment={card.monthlyPayment}
-                                                rate={card.rate}
-                                                isInsuranceEnabled={card.isInsuranceEnabled}
-                                                isSalaryClient={card.isSalaryClient}
-                                                isLoading={isLoading}
-                                                onSubmitOffers={onSubmitOffers}
-                                            />
-                                        );
-                                    })}
-                                </section>
-                    }
-                </div>
-            </main>
-            <Footer />
-        </div>
+                                );
+                            })}
+                        </section>
+            }
+        </Layout>
     );
 };
 

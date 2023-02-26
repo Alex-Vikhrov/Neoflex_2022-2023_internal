@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import oops from 'img/404.png';
+import oops from 'img/png/404.png';
 import { Link } from "react-router-dom";
 import './not-404.scss';
 

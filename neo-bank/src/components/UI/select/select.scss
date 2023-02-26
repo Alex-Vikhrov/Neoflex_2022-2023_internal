@@ -5,7 +5,7 @@
     border: 1px solid #80808033;
     border-radius: 6px;
     appearance: none;
-    background: url(../../../img/ArrowDown.svg) no-repeat right #F9F5E3;
+    background: url(../../../img/svg/ArrowDown.svg) no-repeat right #F9F5E3;
     background-position-x: calc(100% - 8px);
 
     &::placeholder {
@@ -51,7 +51,7 @@
     pointer-events: none;
 
     &::before {
-        content: url(../../../img/error.svg);
+        content: url(../../../img/svg/error.svg);
     }
 }
 
@@ -69,6 +69,6 @@
     pointer-events: none;
 
     &::before {
-        content: url(../../../img/ok.svg);
+        content: url(../../../img/svg/ok.svg);
     }
 }

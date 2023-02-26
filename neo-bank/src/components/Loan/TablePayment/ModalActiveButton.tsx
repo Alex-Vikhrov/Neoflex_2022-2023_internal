@@ -3,11 +3,24 @@ import { FC, useState } from "react";
 import { ModalContent } from "./ModalContent";
 import { Link } from "react-router-dom";
 
-const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void>}> = ({ onSubmitTableDocument }) => {
+const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void> }> = ({ onSubmitTableDocument }) => {
     const [modalActive, setModalActive] = useState<boolean>(false);
-    const [modalActive_2, setModalActive_2] = useState<boolean>(false);
+    const [modalContent, setModalContent] = useState({
+        title: 'Deny application',
+        description: 'You exactly sure, you want to cancel this application?',
+        buttoned: false
+    });
     const [checked, setChecked] = useState<boolean>(false);
+    
     const handleClick = () => setChecked(!checked);
+
+    const handleDenyClick = () => {
+        setModalContent({
+            title: 'Deny application',
+            description: 'Your application has been denied!',
+            buttoned: true,
+        });
+    };
 
     return (
         <>
@@ -25,40 +38,33 @@ const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void>}> = ({ 
             </div>
             <Modal active={modalActive} setModalActive={setModalActive}>
                 <ModalContent
-                    title={"Deny application"}
-                    description={"You exactly sure, you want to cancel this application?"}
+                    title={modalContent.title}
+                    description={modalContent.description}
                     button={
                         <>
-                            <Button className="deny" onClick={() => setModalActive_2(true)}>
-                                Deny
-                            </Button>
-                            <Button className="send" onClick={() => setModalActive(false)}>
-                                Cancel
-                            </Button>
+                            {
+                                modalContent.buttoned ? <Link
+                                    className="oops__btn"
+                                    to='/'
+                                    onClick={() => {
+                                        localStorage.clear();
+                                        setModalActive(false);
+                                    }}
+                                >
+                                    Go home
+
+                                </Link> : <>
+                                    <Button className="deny" onClick={handleDenyClick}>
+                                        Deny
+                                    </Button>
+                                    <Button className="send" onClick={() => setModalActive(false)}>
+                                        Cancel
+                                    </Button>
+                                </>
+                            }
                         </>
                     }
                     setModalActive={setModalActive}
-                />
-            </Modal>
-            <Modal active={modalActive_2} setModalActive={setModalActive_2}>
-                <ModalContent
-                    title={"Deny application"}
-                    description={"Your application has been deny!"}
-                    button={
-                        <>
-                            <Link
-                                className="oops__btn"
-                                to='/'
-                                onClick={() => {
-                                    localStorage.clear();
-                                    setModalActive_2(false);
-                                }}
-                            >
-                                Go home
-                            </Link>
-                        </>
-                    }
-                    setModalActive={setModalActive_2}
                 />
             </Modal>
         </>

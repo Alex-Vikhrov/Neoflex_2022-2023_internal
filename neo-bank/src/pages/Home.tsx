@@ -5,9 +5,8 @@ import {
     ExchangeRates,
     SliderNews,
     SubscribeNewsSupport,
-    Footer,
-    Header,
-    BankMap
+    BankMap,
+    Layout
 } from "../components";
 import { api } from "api/api";
 import { CURRENCY } from "constant";
@@ -41,26 +40,23 @@ const Home: FC = () => {
         }, api.updateRequest(1000, 60, 15));
     }, []);
 
+
+
     return (
-        <div className="wrapper">
-            <Header />
-            <main>
-                <div className="wrapper__main">
-                    <ChooseCreditCard />
+        <Layout>
 
-                    <FunctionsBank />
+            <ChooseCreditCard />
 
-                    <ExchangeRates currency={currency} />
+            <FunctionsBank />
 
-                    <BankMap />
+            <ExchangeRates currency={currency} />
 
-                    <SliderNews news={news} />
+            <BankMap />
 
-                    <SubscribeNewsSupport />
-                </div>
-            </main>
-            <Footer />
-        </div>
+            <SliderNews news={news} />
+
+            <SubscribeNewsSupport />
+        </Layout>
     );
 };
 

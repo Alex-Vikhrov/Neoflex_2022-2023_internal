@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useRef } from "react";
-import Chevron from 'img/Expand_down.svg';
+import Chevron from 'img/svg/Expand_down.svg';
 import { Button } from "components/UI";
 import './accordion.scss';
 

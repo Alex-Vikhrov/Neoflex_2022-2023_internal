@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import peopleImage from 'img/Illustration2.svg';
-import vector from 'img/Vector.svg';
+import peopleImage from 'img/svg/Illustration2.svg';
+import vector from 'img/svg/Vector.svg';
 import './functionsBank.scss';
 
 type TFunctionsList = {

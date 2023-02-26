@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Button } from '../Button';
-import newsImg from 'img/news.jpg';
+import newsImg from 'img/jpg/news.jpg';
 import { ICard } from "types";
 
 type TSliderProps = {

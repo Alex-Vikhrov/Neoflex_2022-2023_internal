@@ -1,43 +1,77 @@
-import { FC } from 'react';
-import TableRow, { TTableRowProps } from './TableRow';
+import { IColumns } from "components/Loan/TablePayment/TablePayment";
+import { FC, useState } from "react";
 import './table.scss';
-import { IThead } from 'components/Loan/TablePayment/TablePayment';
+
+export interface TTableRowProps {
+    number: number;
+    date: string;
+    totalPayment: number;
+    interestPayment: number;
+    debtPayment: number;
+    remainingDebt: number;
+};
 
 type TTableProps = {
-    table: Array<TTableRowProps>;
-    thead: Array<IThead>;
-    handleSortingChange?: any;
-    handleChangeSortTableNumber?: any;
-}; 
+    data: Array<TTableRowProps>;
+    columns: Array<IColumns>;
+};
 
+const Table: FC<TTableProps> = ({ data, columns }) => {
+    const [sortColumn, setSortColumn] = useState(null);
+    const [sortDirection, setSortDirection] = useState("asc");
 
-const Table: FC<TTableProps> = ({ table, thead, handleSortingChange, handleChangeSortTableNumber }) => {
+    const sortedData = data.sort((a, b) => {
+        if (sortColumn) {
+            const aValue = a[sortColumn];
+            const bValue = b[sortColumn];
+            if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+            if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+        }
+        return 0;
+    });
+
+    const handleSort = (column: any) => {
+        if (column === sortColumn) {
+            setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+        } else {
+            setSortColumn(column);
+            setSortDirection("asc");
+        }
+    };
+
     return (
         <table className='table'>
             <thead>
                 <tr>
-                    {thead.map((th) => {
-                        return (
-                            <th key={th.title}>
-                                {th.title}
-                                <img className='arrow' src={th.arrow} alt="sort" onClick={th.onSort} />
-                            </th>
-                        );
-                    })}
+                    {columns.map((column) =>
+                        <th key={column.key} onClick={() => handleSort(column.key)}>
+                            {column.title}
+                            {sortColumn === column.key ?
+                                <img
+                                    className={sortDirection === "asc" ? 'arrow transform' : 'arrow'}
+                                    src={column.arrow}
+                                    alt="sort"
+                                />
+                                :
+                                <img className='arrow' src={column.arrow} alt="sort" />
+                            }
+                        </th>
+                    )}
                 </tr>
             </thead>
             <tbody>
-                {table.map((row) =>
-                    <TableRow
-                        key={row.number}
-                        number={row.number}
-                        date={row.date}
-                        totalPayment={row.totalPayment}
-                        interestPayment={row.interestPayment}
-                        debtPayment={row.debtPayment}
-                        remainingDebt={row.remainingDebt}
-                    />
-                )}
+                {sortedData.map((row: any, index: number) => (
+                    <tr key={index}>
+                        {columns.map((column) =>
+                            <td
+                                data-label={column.title}
+                                key={column.key}
+                            >
+                                {row[column.key]}
+                            </td>
+                        )}
+                    </tr>
+                ))}
             </tbody>
         </table>
     );

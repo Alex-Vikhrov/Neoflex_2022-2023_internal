@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useFormik } from 'formik';
 import { basicSchema } from 'utils/formLoanValidate';
-import star from 'img/star.svg';
-import { Button, Input, Label, Select } from '../../UI';
+import star from 'img/svg/star.svg';
+import { Button, Select } from '../../UI';
 import { AmountSelect } from 'components';
 
 type TFormLoanProps = {
@@ -71,7 +71,7 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, onSubmitFormLoan }) => {
             htmlFor: 'middleName',
             img: null,
             id: 'middleName',
-            value: values.middleName || '',
+            value: values.middleName,
             onChange: handleChange,
             onBlur: handleBlur,
             placeholder: 'For Example Victorovich',
@@ -177,7 +177,7 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, onSubmitFormLoan }) => {
                 {formContact.map((item) => {
                     return (
                         <div key={item.id}>
-                            <Label htmlFor={item.htmlFor} className={""}>
+                            <label htmlFor={item.htmlFor} className={""}>
                                 {item.label} {item.img === null ? '' : <img className="star" src={item.img} alt="star" />}
                                 {item.selected ?
                                     <Select
@@ -187,7 +187,7 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, onSubmitFormLoan }) => {
                                         onChange={item.onChange}
                                         options={item.options} />
                                     :
-                                    <Input
+                                    <input
                                         id={item.id}
                                         type={item.type}
                                         placeholder={item.placeholder}
@@ -201,7 +201,7 @@ const FormLoan: FC<TFormLoanProps> = ({ isLoading, onSubmitFormLoan }) => {
                                     />}
                                 {item.errors && item.touched && <span className='errors-icon'></span>}
                                 {!item.errors && item.touched ? <span className='ok-icon'></span> : ''}
-                            </Label>
+                            </label>
                             {item.errors && item.touched && <p className='errors'>{item.errors}</p>}
                         </div>
                     );

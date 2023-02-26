@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import world from 'img/world.png';
+import world from 'img/png/world.png';
 import './bankMap.scss';
 
 const BankMap: FC = () => {

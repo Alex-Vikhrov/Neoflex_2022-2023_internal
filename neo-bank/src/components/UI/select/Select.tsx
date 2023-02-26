@@ -26,7 +26,6 @@ const Select: FC<TSelectProps> = ({ className, htmlFor, name, onChange, options,
                             key={option.id}
                             value={option.value}
                         >
-                            {/* {option.text} */}
                             {option.text}
                         </option>
                     );

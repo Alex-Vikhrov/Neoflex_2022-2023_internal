@@ -1,6 +1,6 @@
 import { Button, Loader } from "components";
 import { FC } from "react";
-import surpriseBox from 'img/SurpriseImage.jpg';
+import surpriseBox from 'img/jpg/SurpriseImage.jpg';
 import './creditOffers.scss';
 
 type TOffersProps = {
@@ -39,34 +39,34 @@ const CreditOffers: FC<TOffersProps> = ({
         applicationId,
     };
 
+    const offers = [
+        `Requested amount: ${requestedAmount} ₽`,
+        `Total amount: ${totalAmount} ₽`,
+        `For ${term} months`,
+        `Monthly payment: ${monthlyPayment} ₽`,
+        `Your rate: ${rate}%`,
+        `Insurance included`,
+        `Salary client`
+    ];
+
     return (
         <>
             <div className={isLoading ? "offers__card load" : "offers__card"}>
                 <img className="offers__box" src={surpriseBox} alt="box" />
                 <ul className="offers__list">
-                    <li className="offers__item">
-                        Requested amount: {requestedAmount} ₽
-                    </li>
-                    <li className="offers__item">
-                        Total amount: {totalAmount} ₽
-                    </li>
-                    <li className="offers__item">
-                        For {term} months
-                    </li>
-                    <li className="offers__item">
-                        Monthly payment: {monthlyPayment} ₽
-                    </li>
-                    <li className="offers__item">
-                        Your rate: {rate}%
-                    </li>
-                    <li className="offers__item">
-                        Insurance included
-                        <span className={isInsuranceEnabled ? 'ok-icon visible' : 'errors-icon visible'}></span>
-                    </li>
-                    <li className="offers__item">
-                        Salary client
-                        <span className={isSalaryClient ? 'ok-icon visible' : 'errors-icon visible'}></span>
-                    </li>
+                    {offers.map((offer, index) => {
+                        let icon = null;
+                        if (index === offers.length - 2) {
+                            icon = <span className={isInsuranceEnabled ? 'ok-icon visible' : 'errors-icon visible'}></span>
+                        } else if (index === offers.length - 1) {
+                            icon = <span className={isSalaryClient ? 'ok-icon visible' : 'errors-icon visible'}></span>
+                        }
+                        return (
+                            <li className="offers__item" key={index}>
+                                {offer} {icon}
+                            </li>
+                        )
+                    })}
                 </ul>
                 <Button className="offers__btn" onClick={() => onSubmitOffers(values)}>
                     Select

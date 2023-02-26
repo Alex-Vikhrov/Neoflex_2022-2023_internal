@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import logo from 'img/logo.png';
+import logo from 'img/png/logo.png';
 import './footer.scss';
 
 const footerMenu:Array<string> = ['About bank', 'Ask a Question', 'Quality of service', 'Requisites', 'Press center',

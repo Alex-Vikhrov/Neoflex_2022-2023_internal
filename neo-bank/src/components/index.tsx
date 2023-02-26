@@ -5,3 +5,4 @@ export * from './TabsPage';
 export { Footer } from './Footer';
 export { Header } from './Header';
 export { Not_404 } from './404';
+export { Layout } from './Layout';

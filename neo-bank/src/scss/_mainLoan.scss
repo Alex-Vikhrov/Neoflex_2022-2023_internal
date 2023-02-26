@@ -144,7 +144,7 @@
     pointer-events: none;
 
     &::before {
-        content: url(../img/error.svg);
+        content: url(../img/svg/error.svg);
     }
 }
 
@@ -162,7 +162,7 @@
     pointer-events: none;
 
     &::before {
-        content: url(../img/ok.svg);
+        content: url(../img/svg/ok.svg);
     }
 }
 

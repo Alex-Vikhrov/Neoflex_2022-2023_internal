@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import bank from 'img/bank.svg';
+import bank from 'img/svg/bank.svg';
 import { CURRENCY } from 'constant';
 import './exchangeRates.scss';
 

@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { Button } from '../../UI';
-import cardImage from 'img/cardImage1.svg';
-import cardImage2 from 'img/cardImage2.svg';
-import cardImage3 from 'img/cardImage3.svg';
-import cardImage4 from 'img/cardImage4.svg';
+import cardImage from 'img/svg/cardImage1.svg';
+import cardImage2 from 'img/svg/cardImage2.svg';
+import cardImage3 from 'img/svg/cardImage3.svg';
+import cardImage4 from 'img/svg/cardImage4.svg';
 import './chooseCard.scss';
 import { Link } from 'react-router-dom';
+import { RouteNames } from 'router/routes';
 
 type TCardImage = {
     id: number;
@@ -46,7 +46,7 @@ const ChooseCreditCard: FC = () => {
                     <span>now</span>
                 </h2>
 
-                <Link className="card__button" to={'/loan'}>
+                <Link className="card__button" to={RouteNames.LOAN}>
                     Choose the card
                 </Link>
             </div>
