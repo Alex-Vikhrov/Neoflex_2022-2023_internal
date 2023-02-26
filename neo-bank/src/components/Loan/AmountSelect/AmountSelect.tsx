@@ -2,7 +2,7 @@ import { Range } from "components";
 import { FC } from "react"
 import { CustomizeTitle } from "../CustomizeCard/CustomizeTitle";
 
-type TProps = {
+type TAmountSelectProps = {
     ref?: React.RefObject<HTMLDivElement>;
     id: string,
     type: string,
@@ -12,8 +12,7 @@ type TProps = {
     onBlur: React.ChangeEventHandler,
 }
 
-const AmountSelect: FC<TProps> = ({ ref, id, type, placeholder, value, onChange, onBlur }) => {
-
+const AmountSelect: FC<TAmountSelectProps> = ({ ref, id, value, onChange, onBlur }) => {
     return (
         <div className="customize-card__wrapper" ref={ref}>
             <div className="customize-card__select">

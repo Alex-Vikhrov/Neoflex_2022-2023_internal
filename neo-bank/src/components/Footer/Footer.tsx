@@ -37,7 +37,7 @@ const Footer: FC = () => {
                     </ul>
                 </nav>
                 <div className="horizontal-line"></div>
-                <p className="footer__cooki">
+                <p className="footer__cookie">
                     We use cookies to personalize our services and improve the user experience of our website.
                     Cookies
                     are small files containing information about previous visits to a website. If you do not want to

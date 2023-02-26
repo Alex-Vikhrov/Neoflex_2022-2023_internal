@@ -130,8 +130,8 @@ export const employment: any = (
         workExperienceCurrent: any
 
     },
-    handleChange: () => any,
-    handleBlur: () => any,
+    handleChange: any,
+    handleBlur: any,
     errors: {
         employerINN: any;
         salary: any;

@@ -36,7 +36,7 @@ const FunctionsBank: FC = () => {
     return (
         <section className="functions">
             <figure>
-                <img src={peopleImage} alt="pepole" />
+                <img src={peopleImage} alt="people" />
             </figure>
             <div className="functions__case">
                 <h3>We Provide Many Features You Can Use</h3>
