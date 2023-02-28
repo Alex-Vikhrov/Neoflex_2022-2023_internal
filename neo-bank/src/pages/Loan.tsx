@@ -17,6 +17,7 @@ import {
 } from "../components";
 import { useAppDispatch, useAppSelector } from "hooks/useRedux";
 import { fetchFormLoan, fetchOffers } from "store/reducers/creditCardSlice";
+import { storage } from "utils";
 
 
 const Loan: FC = () => {
@@ -49,7 +50,6 @@ const Loan: FC = () => {
             passportSeries: values.passportSeries,
             passportNumber: values.passportNumber,
         };
-
         try {
             setIsLoading(true);
             await dispatch(fetchFormLoan(data));
@@ -68,6 +68,7 @@ const Loan: FC = () => {
             console.log(e);
         } finally {
             setIsLoading(false);
+            storage.setItem('offers', {});
         }
     };
 

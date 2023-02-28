@@ -37,14 +37,14 @@ type TFormLoan = {
 
 const getOffersFromStorage = () => {
     try {
-        return JSON.parse(storage.getItem('offers') || '');
+        return storage.getItem('offers') || '';
     } catch {
         return [];
     }
 };
 
 const getOffersCardFromStorage = () => {
-    const offersCard: number = +JSON.parse(storage.getItem('applicationId') || '0');
+    const offersCard: number = +(storage.getItem('applicationId') || '0');
     if (offersCard) {
         return offersCard;
     } return 0;
@@ -80,7 +80,7 @@ export const fetchFormApplication = createAsyncThunk(
     'loan/fetchFormApplication',
     async (values: any) => {
         await api.sendFormApplication(values);
-        storage.setItem('endRegistration', values);
+        storage.setItem('endRegistration', {});
         return values;
     }
 );
