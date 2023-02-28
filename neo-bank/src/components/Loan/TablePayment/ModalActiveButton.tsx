@@ -2,6 +2,7 @@ import { Button, Modal } from "components";
 import { FC, useState } from "react";
 import { ModalContent } from "./ModalContent";
 import { Link } from "react-router-dom";
+import { storage } from "utils";
 
 const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void> }> = ({ onSubmitTableDocument }) => {
     const [modalActive, setModalActive] = useState<boolean>(false);
@@ -47,7 +48,7 @@ const ModalActiveButton: FC<{ onSubmitTableDocument: () => Promise<void> }> = ({
                                     className="oops__btn"
                                     to='/'
                                     onClick={() => {
-                                        localStorage.clear();
+                                        storage.clear();
                                         setModalActive(false);
                                     }}
                                 >
