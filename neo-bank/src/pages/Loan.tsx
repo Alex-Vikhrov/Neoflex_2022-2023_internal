@@ -15,7 +15,7 @@ import {
     ToolTip,
     Layout,
 } from "../components";
-import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { useAppDispatch, useAppSelector } from "hooks/useRedux";
 import { fetchFormLoan, fetchOffers } from "store/reducers/creditCardSlice";
 
 

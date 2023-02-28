@@ -1,4 +1,3 @@
-import { Button } from "components/UI";
 import { FC, ReactNode } from "react";
 import './successfulMessage.scss';
 

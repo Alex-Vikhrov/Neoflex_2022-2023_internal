@@ -1,6 +1,7 @@
 import { api } from 'api/api';
 import { Layout, SuccessfulMessage, TablePayment } from 'components';
 import { FC, useEffect, useState } from 'react';
+import { storage } from 'utils';
 
 const LoanDocument: FC = () => {
     const [table, setTable] = useState<Array<any>>([]);
@@ -21,7 +22,7 @@ const LoanDocument: FC = () => {
     const onSubmitTableDocument = async () => {
         try {
             setIsLoading(true);
-            localStorage.setItem('tableDocument', JSON.stringify({}));
+            storage.setItem('tableDocument', {});
             await api.sendTableDocument().then(() => { });
         } catch (e) {
             console.log(e);
@@ -30,7 +31,7 @@ const LoanDocument: FC = () => {
         }
     };
 
-    const tableDocument = localStorage.getItem('tableDocument');
+    const tableDocument = storage.getItem('tableDocument');
 
     return (
         <Layout>

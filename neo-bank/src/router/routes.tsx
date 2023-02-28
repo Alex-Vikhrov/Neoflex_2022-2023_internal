@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { storage } from "utils";
 import { Home, Loan, LoanApplication, LoanCode, LoanDocument, LoanDocumentSign, NotFound } from "../pages";
 
 export enum RouteNames {
@@ -13,7 +14,7 @@ type TRoutes = {
     exact: boolean
 };
 
-const applicationId = localStorage.getItem('applicationId');
+const applicationId = storage.getItem('applicationId');
 
 export const routes: Array<TRoutes> = [
     { path: RouteNames.HOME, component: <Home />, exact: true },

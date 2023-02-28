@@ -5,20 +5,21 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import './support.scss';
 import { api } from "api/api";
+import { storage } from "utils";
 
 const SubscribeNewsSupport: FC = () => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [emailValue, setEmailValue] = useState('');
 
     useEffect(() => {
-        const localStorageIsSubscribed = !!localStorage.getItem('isSubscribed');
+        const localStorageIsSubscribed = !!storage.getItem('isSubscribed');
         setIsSubscribed(localStorageIsSubscribed);
     }, []);
 
     const subscribeHandler = async () => {
         if (!isSubscribed) {
             await api.subscribeEmail(emailValue).then(() => {
-                localStorage.setItem('isSubscribed', 'true');
+                storage.setItem('isSubscribed', 'true');
                 setIsSubscribed(true);
             });
         }

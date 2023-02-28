@@ -1,7 +1,8 @@
 import { FormApplication, Layout, SuccessfulMessage } from 'components';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/useRedux';
 import { FC, useState } from 'react';
 import { fetchFormApplication } from 'store/reducers/creditCardSlice';
+import { storage } from 'utils';
 
 type TValue = {
     gender: string;
@@ -49,7 +50,7 @@ const LoanApplication: FC = () => {
         }
     };
 
-    const endRegistration = localStorage.getItem('endRegistration');
+    const endRegistration = storage.getItem('endRegistration');
 
     return (
         <Layout>

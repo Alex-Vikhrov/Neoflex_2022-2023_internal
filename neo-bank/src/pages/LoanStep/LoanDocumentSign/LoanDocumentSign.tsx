@@ -3,6 +3,8 @@ import { CustomizeTitle, Button, SuccessfulMessage, Layout } from 'components';
 import { FC, useState } from 'react';
 import file from 'img/svg/File_dock_duotone.svg';
 import './loanDocumentSign.scss';
+import { storage } from 'utils';
+import Document from "../../../documents/Document.pdf";
 
 const LoanDocumentSign: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -12,7 +14,7 @@ const LoanDocumentSign: FC = () => {
     const onSubmitFileSign = async () => {
         try {
             setIsLoading(true);
-            localStorage.setItem('sign', JSON.stringify({}));
+            storage.setItem('sign', {});
             await api.sendFileSign().then(() => { });
         } catch (e) {
             console.log(e);
@@ -21,7 +23,7 @@ const LoanDocumentSign: FC = () => {
         }
     };
 
-    const sign = localStorage.getItem('sign');
+    const sign = storage.getItem('sign');
 
     return (
         <Layout>
@@ -40,14 +42,15 @@ const LoanDocumentSign: FC = () => {
                             history, using an analogue of a handwritten signature, an offer, a policy regarding the processing of personal data, a form of consent to the
                             processing of personal data.
                         </p>
-                        <div className="input__wrapper">
-                            <input id="input__file" name="file" type="file" className={'input input__file'} />
-                            <label htmlFor="input__file" className="input__file-button">
-                                <span className="input__file-icon-wrapper">
-                                    <img className="input__file-icon" src={file} alt="Выбрать файл" width="60" />
-                                </span>
-                                <span className="input__file-button-text">Information on your card</span>
-                            </label>
+                        <div className="a__wrapper">
+                            <div>
+                                <a href={Document} target="_blank" rel="noopener noreferrer" className="a__file-button">
+                                    <span className="a__file-icon-wrapper">
+                                        <img className="a__file-icon" src={file} alt="Выбрать файл" width="60" />
+                                    </span>
+                                    <span className="a__file-button-text">Information on your card</span>
+                                </a>
+                            </div>
                         </div>
                         <div className='sign__btn'>
                             <input type="checkbox" id="payment" className="custom-checkbox" onClick={handleClick} checked={checked} />

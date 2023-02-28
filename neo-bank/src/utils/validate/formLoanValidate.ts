@@ -6,7 +6,7 @@ const calcDateBirthday = (birthdate: number | Date) => {
     return Math.abs(ageDate.getFullYear() - 1970);
 };
 
-export const basicSchema = yup.object().shape({
+const formLoanValidate = yup.object().shape({
     lastName: yup.string()
         .matches(/\b[A-Z][a-zA-Z]*\b/, 'Use only letters, the first capital')
         .ensure()
@@ -32,3 +32,5 @@ export const basicSchema = yup.object().shape({
         .ensure()
         .min(6, 'The series must be 6 digits'),
 });
+
+export { formLoanValidate };

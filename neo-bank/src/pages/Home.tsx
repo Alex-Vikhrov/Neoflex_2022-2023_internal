@@ -44,7 +44,6 @@ const Home: FC = () => {
 
     return (
         <Layout>
-
             <ChooseCreditCard />
 
             <FunctionsBank />

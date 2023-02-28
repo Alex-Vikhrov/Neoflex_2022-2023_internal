@@ -1,21 +1,33 @@
 import star from 'img/svg/star.svg';
+import { useFormik } from "formik";
+import { formApplicationSchema } from "utils";
 
-export const formContact: any = (
-    values: {
-        dependentAmount: any;
-        passportIssueDate: any;
-        passportIssueBranch: any;
-    },
-    handleChange: () => any,
-    handleBlur: () => any,
-    errors: {
-        passportIssueDate: any;
-        passportIssueBranch: any;
-    },
-    touched: {
-        passportIssueDate: any;
-        passportIssueBranch: any;
-    }) => [
+interface IApplicationFormParams {
+    onSubmitFormApplication: Function;
+};
+
+const initialValues = {
+    gender: '',
+    maritalStatus: '',
+    dependentAmount: '',
+    passportIssueDate: '',
+    passportIssueBranch: '',
+    employmentStatus: '',
+    employerINN: '',
+    salary: '',
+    position: '',
+    workExperienceTotal: '',
+    workExperienceCurrent: '',
+};
+
+export const useApplicationForm = ({ onSubmitFormApplication }: IApplicationFormParams) => {
+    const { values, touched, errors, handleBlur, handleChange, handleSubmit, } = useFormik({
+        initialValues,
+        validationSchema: formApplicationSchema,
+        onSubmit: (values) => onSubmitFormApplication(values),
+    });
+
+    const formContact = [
         {
             type: 'gender',
             label: `What's your gender`,
@@ -81,7 +93,7 @@ export const formContact: any = (
             ],
         },
         {
-            type: 'number',
+            type: 'dependentAmount',
             label: `Your number of dependents`,
             htmlFor: 'dependentAmount',
             onChange: handleChange,
@@ -90,6 +102,28 @@ export const formContact: any = (
             img: star,
             id: 'dependentAmount',
             placeholder: '',
+            selected: true,
+            options: [
+                {
+                    id: 0,
+                    text: '',
+                },
+                {
+                    id: 1,
+                    text: '0',
+                    value: '0',
+                },
+                {
+                    id: 2,
+                    text: '1',
+                    value: '1',
+                },
+                {
+                    id: 3,
+                    text: '3',
+                    value: '3',
+                },
+            ],
         },
         {
             id: 'passportIssueDate',
@@ -108,7 +142,7 @@ export const formContact: any = (
             id: 'passportIssueBranch',
             type: 'text',
             placeholder: '000000',
-            value: values.passportIssueBranch,
+            value: isNaN(+values.passportIssueBranch) ? '' : values.passportIssueBranch,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.passportIssueBranch,
@@ -120,39 +154,12 @@ export const formContact: any = (
         },
     ];
 
-
-export const employment: any = (
-    values: {
-        employerINN: any;
-        salary: any;
-        position: any;
-        workExperienceTotal: any;
-        workExperienceCurrent: any
-
-    },
-    handleChange: any,
-    handleBlur: any,
-    errors: {
-        employerINN: any;
-        salary: any;
-        position: any;
-        workExperienceTotal: any;
-        workExperienceCurrent: any
-
-
-    },
-    touched: {
-        employerINN: any;
-        salary: any;
-        position: any;
-        workExperienceTotal: any;
-        workExperienceCurrent: any
-    }) => [
+    const employment = [
         {
             id: 'employmentStatus',
             type: 'employmentStatus',
-            onChange: () => handleChange(),
-            onBlur: () => handleBlur(),
+            onChange: handleChange,
+            onBlur: handleBlur,
             placeholder: '',
             label: `Your employment status`,
             htmlFor: 'employmentStatus',
@@ -191,7 +198,7 @@ export const employment: any = (
             placeholder: '',
             onChange: handleChange,
             onBlur: handleBlur,
-            value: values.employerINN,
+            value: isNaN(+values.employerINN) ? '' : values.employerINN,
             errors: errors.employerINN,
             touched: touched.employerINN,
             maxLength: 12,
@@ -253,9 +260,9 @@ export const employment: any = (
         },
         {
             id: 'workExperienceTotal',
-            type: 'number',
+            type: 'text',
             placeholder: 'For example 10',
-            value: values.workExperienceTotal,
+            value: isNaN(+values.workExperienceTotal) ? '' : values.workExperienceTotal,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.workExperienceTotal,
@@ -267,9 +274,9 @@ export const employment: any = (
         },
         {
             id: 'workExperienceCurrent',
-            type: 'number',
+            type: 'text',
             placeholder: 'For example 2',
-            value: values.workExperienceCurrent,
+            value: isNaN(+values.workExperienceCurrent) ? '' : values.workExperienceCurrent,
             onChange: handleChange,
             onBlur: handleBlur,
             errors: errors.workExperienceCurrent,
@@ -280,3 +287,5 @@ export const employment: any = (
             img: star,
         },
     ];
+    return { handleSubmit, employment, formContact }
+};

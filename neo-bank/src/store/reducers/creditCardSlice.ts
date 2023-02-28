@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { api } from 'api/api';
 import { IOffersCards } from 'types/IOffersCards';
+import { storage } from 'utils';
 
 interface CreditOffersCards {
     offers: Array<IOffersCards>;
@@ -36,14 +37,14 @@ type TFormLoan = {
 
 const getOffersFromStorage = () => {
     try {
-        return JSON.parse(localStorage.getItem('offers') || '');
+        return JSON.parse(storage.getItem('offers') || '');
     } catch {
         return [];
     }
 };
 
 const getOffersCardFromStorage = () => {
-    const offersCard: number = +JSON.parse(localStorage.getItem('applicationId') || '0');
+    const offersCard: number = +JSON.parse(storage.getItem('applicationId') || '0');
     if (offersCard) {
         return offersCard;
     } return 0;
@@ -61,8 +62,7 @@ export const fetchFormLoan = createAsyncThunk(
     'loan/fetchFormLoan',
     async (values: TFormLoan) => {
         const response = await api.sendFormLoan(values);
-        console.log(values);
-        localStorage.setItem('offers', JSON.stringify(response.data));
+        storage.setItem('offers', response.data);
         return response.data;
     }
 );
@@ -70,9 +70,8 @@ export const fetchFormLoan = createAsyncThunk(
 export const fetchOffers = createAsyncThunk(
     'loan/fetchOffers',
     async (values: TOffersValue) => {
-        console.log(values);
         await api.sendOffers(values);
-        localStorage.setItem('applicationId', JSON.stringify(values.applicationId));
+        storage.setItem('applicationId', values.applicationId);
         return values.applicationId;
     }
 );
@@ -81,7 +80,7 @@ export const fetchFormApplication = createAsyncThunk(
     'loan/fetchFormApplication',
     async (values: any) => {
         await api.sendFormApplication(values);
-        localStorage.setItem('endRegistration', JSON.stringify(values));
+        storage.setItem('endRegistration', values);
         return values;
     }
 );
@@ -95,7 +94,7 @@ const creditOffersCardSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchFormLoan.fulfilled, (state, action) => {
+        builder.addCase(fetchFormLoan.fulfilled, (state, action: PayloadAction<any>) => {
             state.offers = [...action.payload];
         });
         builder.addCase(fetchOffers.fulfilled, (state, action) => {

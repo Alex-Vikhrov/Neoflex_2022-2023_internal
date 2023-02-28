@@ -1,13 +1,14 @@
 import { Select } from 'components';
 import { FC } from 'react';
 
-type TFieldFormApplication = {
+type TFormWrapper = {
     initialValue: Array<any>;
+    className: string;
 };
 
-const FieldFormApplication: FC<TFieldFormApplication> = ({ initialValue }) => {
+const FormWrapper: FC<TFormWrapper> = ({ initialValue, className }) => {
     return (
-        <div className="form-application__wrapper">
+        <div className={className}>
             {initialValue.map((item) => {
                 return (
                     <div key={item.id}>
@@ -46,4 +47,4 @@ const FieldFormApplication: FC<TFieldFormApplication> = ({ initialValue }) => {
     );
 };
 
-export { FieldFormApplication };
+export { FormWrapper };

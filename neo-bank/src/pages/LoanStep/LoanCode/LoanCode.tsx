@@ -1,10 +1,12 @@
 import { api } from 'api/api';
 import { Layout, PinCodeInput, SuccessfulMessage } from 'components';
 import { useFormik } from 'formik';
-import { FC, KeyboardEvent, useEffect, } from 'react';
+import { FC, useEffect, useState, } from 'react';
 import box from 'img/svg/SurpriseImage.svg';
 import { Link } from 'react-router-dom';
 import './loanCode.scss';
+import { storage } from 'utils';
+import { pinSchema } from 'utils/validate/pinCodeValidate';
 
 const initialValues = {
     digit_0: '',
@@ -14,13 +16,25 @@ const initialValues = {
 };
 
 const LoanCode: FC = () => {
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(true);
     const { values, touched, errors, submitForm, handleBlur, handleChange, } = useFormik({
         initialValues,
-        // validationSchema: basicSchema,
+        validationSchema: pinSchema,
         onSubmit: async (values) => {
             const pin = `${values.digit_0}${values.digit_1}${values.digit_2}${values.digit_3}`;
-            localStorage.setItem('pinCode', JSON.stringify(pin));
-            return await api.sendPinCode(pin);
+            storage.setItem('pinCode', pin);
+            try {
+                const response = await api.sendPinCode(pin);
+                if (response.status === 200) {
+                    setIsSuccess(true);
+                    setIsError(true);
+                } else {
+                    setIsError(false);
+                }
+            } catch (error) {
+                setIsError(false);
+            }
         },
     });
 
@@ -33,8 +47,8 @@ const LoanCode: FC = () => {
             maxLength: 1,
             onChange: handleChange,
             onBlur: handleBlur,
-            // errors: errors.passportNumber,
-            // touched: touched.passportNumber,
+            errors: errors.digit_0,
+            touched: touched.digit_0,
             label: 'Your passport number',
             htmlFor: 'digit_0',
         },
@@ -46,8 +60,8 @@ const LoanCode: FC = () => {
             maxLength: 1,
             onChange: handleChange,
             onBlur: handleBlur,
-            // errors: errors.passportNumber,
-            // touched: touched.passportNumber,
+            errors: errors.digit_1,
+            touched: touched.digit_1,
             label: 'Your passport number',
             htmlFor: 'digit_1',
         },
@@ -59,8 +73,8 @@ const LoanCode: FC = () => {
             maxLength: 1,
             onChange: handleChange,
             onBlur: handleBlur,
-            // errors: errors.passportNumber,
-            // touched: touched.passportNumber,
+            errors: errors.digit_2,
+            touched: touched.digit_2,
             label: 'Your passport number',
             htmlFor: 'digit_2',
         },
@@ -72,47 +86,12 @@ const LoanCode: FC = () => {
             maxLength: 1,
             onChange: handleChange,
             onBlur: handleBlur,
-            // errors: errors.passportNumber,
-            // touched: touched.passportNumber,
+            errors: errors.digit_3,
+            touched: touched.digit_3,
             label: 'Your passport number',
             htmlFor: 'digit_3',
         },
     ];
-
-    // const digits = [
-    //     {
-    //         id: 'digit_0',
-    //         name: 'digit_0',
-    //         value: values.digit_0,
-    //         maxLength: 1,
-    //         onChange: handleChange,
-    //         onBlur: handleBlur,
-    //     },
-    //     {
-    //         id: 'digit_1',
-    //         name: 'digit_1',
-    //         value: values.digit_1,
-    //         maxLength: 1,
-    //         onChange: handleChange,
-    //         onBlur: handleBlur,
-    //     },
-    //     {
-    //         id: 'digit_2',
-    //         name: 'digit_2',
-    //         value: values.digit_2,
-    //         maxLength: 1,
-    //         onChange: handleChange,
-    //         onBlur: handleBlur,
-    //     },
-    //     {
-    //         id: 'digit_3',
-    //         name: 'digit_3',
-    //         value: values.digit_3,
-    //         maxLength: 1,
-    //         onChange: handleChange,
-    //         onBlur: handleBlur,
-    //     },
-    // ];
 
     useEffect(() => {
         if (values.digit_0 && values.digit_1 && values.digit_2 && values.digit_3) {
@@ -120,12 +99,13 @@ const LoanCode: FC = () => {
         }
     }, [values]);
 
-    const pinCode = localStorage.getItem('pinCode');
+    const pinCode = storage.getItem('pinCode');
+
 
     return (
         <Layout>
             {
-                pinCode ?
+                isSuccess && pinCode ?
                     <SuccessfulMessage
                         title={'Congratulations! You have completed your new credit card.'}
                         message={'Your credit card will arrive soon. Thank you for choosing us!'}
@@ -134,7 +114,7 @@ const LoanCode: FC = () => {
                                 className="successful__btn"
                                 to='/'
                                 onClick={() => {
-                                    localStorage.clear();
+                                    storage.clear();
                                 }}
                             >
                                 View other offers of our bank
@@ -149,17 +129,20 @@ const LoanCode: FC = () => {
                         <form className='form-pin'>
                             {digits.map((pin, index) => {
                                 return (
-                                    <PinCodeInput
-                                        key={index}
-                                        id={pin.id}
-                                        onChange={pin.onChange}
-                                        onBlur={pin.onBlur}
-                                        value={pin.value}
-                                        maxLength={pin.maxLength}
-                                    />
-                                )
+                                    <>
+                                        <PinCodeInput
+                                            key={index}
+                                            id={pin.id}
+                                            onChange={pin.onChange}
+                                            onBlur={pin.onBlur}
+                                            value={pin.value}
+                                            maxLength={pin.maxLength}
+                                        />
+                                    </>
+                                );
                             })}
                         </form>
+                        {isError ? null : <p className='errors-pin'>Invalid confirmation code</p>}
                     </div>
             }
         </Layout>

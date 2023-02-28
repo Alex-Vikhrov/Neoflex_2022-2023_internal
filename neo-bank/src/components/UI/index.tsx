@@ -11,3 +11,4 @@ export { PinCodeInput } from './PinCodeInput';
 export { ToolTip } from './ToolTip';
 export { SuccessfulMessage } from './SuccessfulMessage';
 export { Range } from './Range';
+export { FormWrapper } from './FormWrapper';
