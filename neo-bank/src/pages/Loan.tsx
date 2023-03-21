@@ -68,7 +68,7 @@ const Loan: FC = () => {
             console.log(e);
         } finally {
             setIsLoading(false);
-            storage.setItem('offers', {});
+            storage.removeItem('offers');
         }
     };
 

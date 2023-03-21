@@ -8,12 +8,12 @@ const calcDateBirthday = (birthdate: number | Date) => {
 
 const formLoanValidate = yup.object().shape({
     lastName: yup.string()
-        .matches(/\b[a-z][a-zA-Z]*\b/, 'Use only letters, the first capital')
+        .matches(/\b[A-Za-z]+\b/, 'Use only letters')
         .ensure()
         .min(2, 'The minimum number of letters is 2')
         .required('Enter your last name'),
     firstName: yup.string()
-        .matches(/\b[a-z][a-zA-Z]*\b/, 'Use only letters, the first capital')
+        .matches(/\b[A-Za-z]+\b/, 'Use only letters')
         .ensure().min(2, 'The minimum number of letters is 2')
         .required('Enter your first name'),
     email: yup.string()
